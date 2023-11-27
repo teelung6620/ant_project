@@ -1,10 +1,7 @@
-import 'package:ant_project/widget/circle_icon.dart';
 import 'package:ant_project/widget/circle_layout.dart';
 import 'package:ant_project/widget/coin_exchange.dart';
 import 'package:ant_project/widget/flexpoint_layout.dart';
 import 'package:ant_project/widget/insurance_layout.dart';
-import 'package:ant_project/widget/insurance_list.dart';
-import 'package:ant_project/widget/menu_circle_icon.dart';
 import 'package:ant_project/widget/text_header.dart';
 import 'package:ant_project/widget/text_list.dart';
 import 'package:ant_project/widget/text_listbutton.dart';
@@ -28,7 +25,7 @@ class _FirstState extends State<FirstPage> {
               child: Column(
                 children: [
                   Container(
-                      child: Row(
+                      child: const Row(
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,15 +48,15 @@ class _FirstState extends State<FirstPage> {
                     ],
                   )),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                  CoinExchange(
+                  const CoinExchange(
                     title: '26',
                   ),
                   // CircleIcons(
                   //   title: 'test',
                   // ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                  CircleLayout(),
-                  Row(
+                  const CircleLayout(),
+                  const Row(
                     children: [
                       TextList(
                         title: 'ประกันที่น่าสนใจ',
@@ -80,9 +77,9 @@ class _FirstState extends State<FirstPage> {
                   //     ),
                   //   ],
                   // )
-                  InsuranceLayout(),
+                  const InsuranceLayout(),
 
-                  Row(
+                  const Row(
                     children: [
                       TextList(
                         title: 'แลก Flexpoint',
@@ -94,7 +91,7 @@ class _FirstState extends State<FirstPage> {
                     ],
                   ),
 
-                  FlexpointLayout(),
+                  const FlexpointLayout(),
                 ],
               )),
         ),

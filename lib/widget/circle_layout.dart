@@ -1,6 +1,5 @@
 import 'package:ant_project/pages/flexpoint_bag.dart';
 import 'package:ant_project/widget/circle_icon2.dart';
-import 'package:ant_project/widget/insurance_list.dart';
 import 'package:flutter/material.dart';
 
 class CircleLayout extends StatelessWidget {
@@ -20,7 +19,8 @@ class CircleLayout extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => FlexpointBagPage()),
+                    MaterialPageRoute(
+                        builder: (context) => const FlexpointBagPage()),
                   );
                 },
               ),
@@ -48,12 +48,26 @@ class CircleLayout extends StatelessWidget {
           Column(
             children: [
               CircleIcon(
-                title: 'สิทธิของฉัน',
+                title: 'ประวัติ flexpoint',
                 imgPath: 'assets/images/pink_mileage.png',
                 onTap: () {},
               ),
               CircleIcon(
                 title: 'ผลสุขภาพ',
+                imgPath: 'assets/images/pink_mileage.png',
+                onTap: () {},
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              CircleIcon(
+                title: 'สิทธิของฉัน',
+                imgPath: 'assets/images/pink_mileage.png',
+                onTap: () {},
+              ),
+              CircleIcon(
+                title: 'แพ็คเกจ\nตรวจสุขภาพ',
                 imgPath: 'assets/images/pink_mileage.png',
                 onTap: () {},
               ),

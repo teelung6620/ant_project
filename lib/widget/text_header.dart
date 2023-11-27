@@ -12,7 +12,7 @@ class TextHeader extends StatelessWidget {
           right: MediaQuery.of(context).devicePixelRatio * 7.5,
           bottom: MediaQuery.of(context).devicePixelRatio * 2),
       child: Row(children: [
-        Text(title, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+        Text(title, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
       ]),
     );
   }

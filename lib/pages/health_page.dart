@@ -9,7 +9,7 @@ class HealthPage extends StatefulWidget {
 class _HealthState extends State<HealthPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(),
     );
   }

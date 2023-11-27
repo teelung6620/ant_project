@@ -1,4 +1,3 @@
-import 'package:ant_project/widget/product_list.dart';
 import 'package:ant_project/widget/product_layout.dart';
 import 'package:flutter/material.dart';
 
@@ -12,13 +11,13 @@ class _FlexpointState extends State<FlexpointPage> {
   @override
   Widget build(BuildContext context) {
     double rightValue = MediaQuery.of(context).size.width * 0.03;
-    double bottomValue = MediaQuery.of(context).size.width * 0.015;
+    double bottomValue = MediaQuery.of(context).size.width * 0.1;
     return DefaultTabController(
       length: 7,
       child: Scaffold(
           appBar: AppBar(
             // automaticallyImplyLeading: false,
-            title: Text(
+            title: const Text(
               ('แลก Flexpoint'),
               style: TextStyle(fontSize: 25),
             ),
@@ -27,9 +26,13 @@ class _FlexpointState extends State<FlexpointPage> {
             toolbarHeight: MediaQuery.of(context).size.height * 0.23,
             flexibleSpace: Stack(
               children: [
-                Image.asset(
-                  'assets/images/Vector 8.png',
-                  fit: BoxFit.fill,
+                Positioned(
+                  right: 0,
+                  left: 0,
+                  child: Image.asset(
+                    'assets/images/Vector 8.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 Positioned(
                   right: rightValue,
@@ -42,7 +45,7 @@ class _FlexpointState extends State<FlexpointPage> {
                 ),
               ],
             ),
-            bottom: TabBar(
+            bottom: const TabBar(
               isScrollable: true,
               tabs: [
                 Tab(
@@ -86,29 +89,29 @@ class _FlexpointState extends State<FlexpointPage> {
             child: TabBarView(
               children: [
                 Container(
-                  child: SingleChildScrollView(
+                  child: const SingleChildScrollView(
                     child: Column(
                       children: [ProductLayout()],
                     ),
                   ),
                 ),
                 Container(
-                  child: Text('อาหาร'),
+                  child: const Text('อาหาร'),
                 ),
                 Container(
-                  child: Text('ชอปปิง'),
+                  child: const Text('ชอปปิง'),
                 ),
                 Container(
-                  child: Text('ความบันเทิง'),
+                  child: const Text('ความบันเทิง'),
                 ),
                 Container(
-                  child: Text('ไลฟ์สไตล์'),
+                  child: const Text('ไลฟ์สไตล์'),
                 ),
                 Container(
-                  child: Text('ท่องเที่ยว'),
+                  child: const Text('ท่องเที่ยว'),
                 ),
                 Container(
-                  child: Text('สุขภาพ'),
+                  child: const Text('สุขภาพ'),
                 ),
               ],
             ),

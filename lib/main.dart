@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // SharedPreferences prefs = await SharedPreferences.getInstance();
-  runApp(MyApp(
+  runApp(const MyApp(
       // token: prefs.getString('token'),
       ));
 }
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'kanit',
-        cardTheme: CardTheme(color: Colors.white),
+        cardTheme: const CardTheme(color: Colors.white),
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
         dialogTheme: const DialogTheme(backgroundColor: Colors.white),
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         // colorScheme: ColorScheme.light(primary: Colors.white)
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

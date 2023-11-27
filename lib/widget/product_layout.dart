@@ -1,6 +1,4 @@
 import 'package:ant_project/widget/product_list.dart';
-import 'package:ant_project/widget/flexpoint_list.dart';
-import 'package:ant_project/widget/insurance_list.dart';
 import 'package:flutter/material.dart';
 
 class ProductLayout extends StatelessWidget {
@@ -8,7 +6,7 @@ class ProductLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Column(
         children: [
           ProductList(

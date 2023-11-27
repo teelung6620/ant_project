@@ -19,7 +19,7 @@ class TextListButton extends StatelessWidget {
           onPressed: () {},
           child: Text(
             title,
-            style: TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.black),
           ),
         ),
       ]),

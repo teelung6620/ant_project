@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
-class ButtonExchange extends StatefulWidget {
-  const ButtonExchange({Key? key}) : super(key: key);
+class ButtonExchangeBag extends StatefulWidget {
+  const ButtonExchangeBag({Key? key}) : super(key: key);
 
   @override
-  _ButtonExchangeState createState() => _ButtonExchangeState();
+  _ButtonExchangeBagState createState() => _ButtonExchangeBagState();
 }
 
-class _ButtonExchangeState extends State<ButtonExchange> {
+class _ButtonExchangeBagState extends State<ButtonExchangeBag> {
   final controller = ConfettiController();
 
   @override
@@ -64,7 +64,7 @@ class _ButtonExchangeState extends State<ButtonExchange> {
   }
 
   Future<void> _celebrate() async {
-    // await Future.delayed(const Duration(milliseconds: 1));
+    await Future.delayed(const Duration(milliseconds: 200));
     controller.play();
 
     // Show AlertDialog after Confetti celebration
@@ -72,34 +72,20 @@ class _ButtonExchangeState extends State<ButtonExchange> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Column(
-            children: [
-              Row(
-                children: [
-                  Spacer(),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(); // Close the AlertDialog
-                    },
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
-              Image.asset(
-                'assets/images/image 8.png', // เปลี่ยนเป็น path ของรูปที่คุณต้องการใช้
-                width: 100, // ปรับขนาดตามที่ต้องการ
-                height: 100,
-              ),
-              const SizedBox(height: 16), // ระยะห่างระหว่างรูปกับข้อความ
-              const Text('สำเร็จ!'),
-            ],
-          ),
+          title: const Text('แลกของรางวัลสำเร็จ'),
           content: const Text('คุณได้ทำการแลกของรางวัลเรียบร้อยแล้ว!'),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the AlertDialog
+              },
+              child: const Text('ตกลง'),
+            ),
+          ],
         );
       },
     );
-    // await Future.delayed(const Duration(seconds: 3));
-    //Navigator.pop(context);
+    await Future.delayed(const Duration(seconds: 1));
     controller.stop();
   }
 
@@ -107,24 +93,50 @@ class _ButtonExchangeState extends State<ButtonExchange> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              minimumSize: const Size(double.infinity, 50),
-              backgroundColor: const Color.fromARGB(255, 251, 111, 158),
-              foregroundColor: Colors.white),
-          onPressed: () async {
-            await _showDeleteConfirmationDialog();
+        InkWell(
+          // style: ElevatedButton.styleFrom(
+          //   minimumSize: const Size(double.infinity, 50),
+          //   elevation: 5, // ปรับตัวกวน
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.circular(10.0),
+          //   ),
+          // ),
+          onTap: () async {
+            // await _showDeleteConfirmationDialog();
           },
-          child: const Text(
-            'แลกของรางวัล',
-            style: TextStyle(color: Colors.white, fontSize: 25),
+          child: Container(
+            width: 218,
+            height: 48,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFFFCB0C2),
+                  Color(0xFFFFE4EB),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  '400',
+                  style: TextStyle(color: Colors.black, fontSize: 32),
+                ),
+                Text(
+                  '/500',
+                  style: TextStyle(color: Color(0xFF757575), fontSize: 13),
+                ),
+              ],
+            ),
           ),
         ),
         ConfettiWidget(
           confettiController: controller,
           blastDirectionality: BlastDirectionality.explosive,
           // blastDirection: 3.14, // หรือใช้ 180 ก็ได้
-          // shouldLoop: true,
+          shouldLoop: true,
           // emissionFrequency: 0.01,
           //  numberOfParticles: 20,
           gravity: 0.2,

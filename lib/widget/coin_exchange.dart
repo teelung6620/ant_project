@@ -16,7 +16,7 @@ class CoinExchange extends StatelessWidget {
         height: 180.0,
         width: constraints.maxWidth,
         decoration: BoxDecoration(
-          color: Color(0xFFFFE7EB),
+          color: const Color(0xFFFFE7EB),
           borderRadius: BorderRadius.circular(10), // กำหนดขอบโค้ง
         ),
         // color: Color.fromARGB(255, 255, 213, 227),
@@ -27,19 +27,19 @@ class CoinExchange extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Flexcoin ของฉัน',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Row(children: [
                   Text(
                     title,
-                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                   ),
                 ]),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFF7697),
+                      backgroundColor: const Color(0xFFFF7697),
                       foregroundColor: Colors.white),
                   onPressed: () {
                     // ตอบสนองเมื่อปุ่มถูกกด
@@ -51,7 +51,7 @@ class CoinExchange extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Image.asset(
               'assets/images/image 2 (1).png',
               scale: 1,

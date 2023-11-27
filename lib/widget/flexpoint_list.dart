@@ -11,13 +11,13 @@ class FlexpointList extends StatelessWidget {
       onTap: () {},
       child: Card(
         elevation: 10,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
               child: Image.asset(
                 imgPath,
@@ -31,18 +31,18 @@ class FlexpointList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         'หมดเขต : 30 Nov 2023',
                         style: TextStyle(
                           fontSize: 12,
-                          color: const Color.fromARGB(255, 113, 113, 113),
+                          color: Color.fromARGB(255, 113, 113, 113),
                         ),
                       ),
                       // Text(
@@ -59,11 +59,11 @@ class FlexpointList extends StatelessWidget {
                       // ),
                     ],
                   ),
-                  Text(
+                  const Text(
                     'available : 0',
                     style: TextStyle(
                       fontSize: 12,
-                      color: const Color.fromARGB(255, 113, 113, 113),
+                      color: Color.fromARGB(255, 113, 113, 113),
                     ),
                   ),
                   Row(
@@ -73,11 +73,11 @@ class FlexpointList extends StatelessWidget {
                         size: MediaQuery.of(context).size.width * 0.05,
                         color: Colors.amber,
                       ),
-                      Text(
+                      const Text(
                         'x3',
                         style: TextStyle(
                           fontSize: 12,
-                          color: const Color.fromARGB(255, 113, 113, 113),
+                          color: Color.fromARGB(255, 113, 113, 113),
                         ),
                       ),
                     ],

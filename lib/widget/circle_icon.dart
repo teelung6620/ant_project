@@ -1,8 +1,5 @@
-import 'package:ant_project/button/bottom_navbar_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 // import '../../../../../core/provider/bottom_navbar/bottom_navbar_provider.dart';
 
 class CircleIcons extends StatelessWidget {
@@ -23,8 +20,8 @@ class CircleIcons extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.05,
                 vertical: MediaQuery.of(context).size.height * 0.015),
-            decoration: BoxDecoration(
-              boxShadow: const [
+            decoration: const BoxDecoration(
+              boxShadow: [
                 BoxShadow(
                     color: Colors.black54,
                     blurRadius: 5.0,
@@ -41,7 +38,7 @@ class CircleIcons extends StatelessWidget {
             height: MediaQuery.of(context).size.width * 0.03,
           ),
           Text(title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
         ],
       ),
     );

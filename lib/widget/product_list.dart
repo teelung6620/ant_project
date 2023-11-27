@@ -34,21 +34,21 @@ class ProductList extends StatelessWidget {
       },
       child: Card(
         elevation: 10,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                 ),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
                 ),
@@ -68,29 +68,29 @@ class ProductList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   Text(
                     describ,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12,
-                      color: const Color.fromARGB(255, 113, 113, 113),
+                      color: Color.fromARGB(255, 113, 113, 113),
                     ),
                     softWrap: true,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.width * 0.02,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         'หมดเขต : 30 Nov 2023',
                         style: TextStyle(
                           fontSize: 12,
-                          color: const Color.fromARGB(255, 113, 113, 113),
+                          color: Color.fromARGB(255, 113, 113, 113),
                         ),
                       ),
                       // Text(
@@ -108,10 +108,10 @@ class ProductList extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    'available : ' + avai,
-                    style: TextStyle(
+                    'available : $avai',
+                    style: const TextStyle(
                       fontSize: 12,
-                      color: const Color.fromARGB(255, 113, 113, 113),
+                      color: Color.fromARGB(255, 113, 113, 113),
                     ),
                   ),
                   Row(
@@ -122,10 +122,10 @@ class ProductList extends StatelessWidget {
                         color: Colors.amber,
                       ),
                       Text(
-                        'x' + coins,
-                        style: TextStyle(
+                        'x$coins',
+                        style: const TextStyle(
                           fontSize: 12,
-                          color: const Color.fromARGB(255, 113, 113, 113),
+                          color: Color.fromARGB(255, 113, 113, 113),
                         ),
                       ),
                     ],

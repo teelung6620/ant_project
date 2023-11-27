@@ -1,5 +1,6 @@
 import 'package:ant_project/widget/button_exchange.dart';
 import 'package:flutter/material.dart';
+import 'package:iconamoon/iconamoon.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
 
 class DetailPage extends StatefulWidget {
@@ -28,13 +29,22 @@ class _DetailState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(
+            IconaMoon.arrowLeft2,
+            size: 40,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        automaticallyImplyLeading: false,
         // title: Text(
         //   (widget.userP.postName),
         //   style: TextStyle(fontSize: 25),
         // ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         toolbarHeight: 60,
       ),
       backgroundColor: const Color(0xFF4D4C7D),
@@ -43,9 +53,9 @@ class _DetailState extends State<DetailPage> {
           //await fetchData();
           //await getScore();
         },
-        color: Color.fromARGB(255, 142, 61, 255),
+        color: const Color.fromARGB(255, 142, 61, 255),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             // สีบน
             color: Color.fromARGB(255, 255, 255, 255), // สีล่าง
           ),
@@ -54,9 +64,8 @@ class _DetailState extends State<DetailPage> {
             children: <Widget>[
               Center(
                 child: Container(
-                  decoration: BoxDecoration(
-                    color:
-                        const Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomLeft: Radius.circular(10),
@@ -91,9 +100,8 @@ class _DetailState extends State<DetailPage> {
                       left: MediaQuery.of(context).devicePixelRatio * 7.5,
                       right: MediaQuery.of(context).devicePixelRatio * 7.5,
                       bottom: MediaQuery.of(context).devicePixelRatio * 2),
-                  decoration: BoxDecoration(
-                    color:
-                        const Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
@@ -113,20 +121,20 @@ class _DetailState extends State<DetailPage> {
                         child: Text(
                           widget.title,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 25,
-                              color: const Color.fromARGB(255, 0, 0, 0)),
+                              color: Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).devicePixelRatio * 3,
                       ),
                       Text(
-                        'available : ' + widget.avai,
+                        'available : ${widget.avai}',
                         textAlign: TextAlign.start,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12,
-                          color: const Color.fromARGB(255, 113, 113, 113),
+                          color: Color.fromARGB(255, 113, 113, 113),
                         ),
                       ),
                       SizedBox(
@@ -134,7 +142,7 @@ class _DetailState extends State<DetailPage> {
                       ),
                       Text(
                         widget.describ,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Color.fromARGB(255, 0, 0, 0),
                         ),
@@ -150,8 +158,8 @@ class _DetailState extends State<DetailPage> {
                             color: Colors.amber,
                           ),
                           Text(
-                            ' x ' + widget.coins,
-                            style: TextStyle(
+                            ' x ${widget.coins}',
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
@@ -163,14 +171,14 @@ class _DetailState extends State<DetailPage> {
                       ),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'จำนวน',
                             style: TextStyle(
                               fontSize: 20,
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
@@ -195,8 +203,8 @@ class _DetailState extends State<DetailPage> {
                           ),
                         ],
                       ),
-                      Spacer(),
-                      Center(child: ButtonExchange()),
+                      const Spacer(),
+                      const Center(child: ButtonExchange()),
                       SizedBox(
                         height: MediaQuery.of(context).devicePixelRatio * 5,
                       ),

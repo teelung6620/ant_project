@@ -24,10 +24,15 @@ class CircleIcon extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundImage: AssetImage(imgPath),
+              radius: 30,
             ),
             Text(
               title,
-              style: TextStyle(color: Colors.black, fontSize: 12),
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+              ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),

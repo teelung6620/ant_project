@@ -1,15 +1,15 @@
 import 'package:ant_project/pages/first_page.dart';
+import 'package:ant_project/pages/flexpoint_bag.dart';
 import 'package:ant_project/pages/flexpoint_page.dart';
 import 'package:ant_project/pages/health_page.dart';
-import 'package:ant_project/pages/privilege_page.dart';
+import 'package:ant_project/pages/privileges_page.dart';
 import 'package:ant_project/pages/profile_page.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ming_cute_icons/ming_cute_icons.dart';
-import 'package:solar/solar.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -17,43 +17,60 @@ class HomePage extends StatefulWidget {
 class _MyHomePageState extends State<HomePage> {
   //final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int _selectedIndex = 0;
+  PageController _pageController = PageController();
 
   void _navigateBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
+      _pageController.animateToPage(index,
+          duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
     });
   }
 
   final List<Widget> _pages = [
-    FirstPage(),
-    FlexpointPage(),
-    PrivilegePage(),
-    HealthPage(),
-    ProfilePage()
+    const FirstPage(),
+    const FlexpointPage(),
+    const PrivilegesPage(),
+    const HealthPage(),
+    const ProfilePage(),
+    //const FlexpointBagPage()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      body: _pages[_selectedIndex],
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      resizeToAvoidBottomInset: false,
+      extendBody: true, //Bug
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        children: _pages,
+        onPageChanged: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 14.0,
         unselectedFontSize: 12.0,
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        selectedItemColor: Color(0xFFFCB0C2),
-        unselectedItemColor: Color(0xFFFCB0C2),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        selectedItemColor: const Color(0xFFFCB0C2),
+        unselectedItemColor: const Color(0xFFFCB0C2),
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
         currentIndex: _selectedIndex,
         onTap: _navigateBottomBar,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.all(10), // Adjust padding as needed
+              padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _selectedIndex == 0
-                    ? Color(0xFFFCB0C2) // Selected color
+                    ? const Color(0xFFFCB0C2) // Selected color
                     : Colors.transparent, // Unselected color
               ),
               child: _selectedIndex == 0
@@ -63,17 +80,17 @@ class _MyHomePageState extends State<HomePage> {
                           ? Colors.white
                           : null, // Icon color
                     )
-                  : Icon(FluentIcons.home_24_filled),
+                  : const Icon(FluentIcons.home_24_filled),
             ),
             label: 'หน้าแรก',
           ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.all(10), // Adjust padding as needed
+              padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _selectedIndex == 1
-                    ? Color(0xFFFCB0C2) // Selected color
+                    ? const Color(0xFFFCB0C2) // Selected color
                     : Colors.transparent, // Unselected color
               ),
               child: _selectedIndex == 1
@@ -83,17 +100,17 @@ class _MyHomePageState extends State<HomePage> {
                           ? Colors.white
                           : null, // Icon color
                     )
-                  : Icon(MingCuteIcons.mgc_copper_coin_line),
+                  : const Icon(MingCuteIcons.mgc_copper_coin_line),
             ),
             label: 'flexpoint',
           ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.all(10), // Adjust padding as needed
+              padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _selectedIndex == 2
-                    ? Color(0xFFFCB0C2) // Selected color
+                    ? const Color(0xFFFCB0C2) // Selected color
                     : Colors.transparent, // Unselected color
               ),
               child: _selectedIndex == 2
@@ -103,17 +120,17 @@ class _MyHomePageState extends State<HomePage> {
                           ? Colors.white
                           : null, // Icon color
                     )
-                  : Icon(FluentIcons.person_heart_20_regular),
+                  : const Icon(FluentIcons.person_heart_20_regular),
             ),
             label: 'สิทธิของฉัน',
           ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.all(10), // Adjust padding as needed
+              padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _selectedIndex == 3
-                    ? Color(0xFFFCB0C2)
+                    ? const Color(0xFFFCB0C2)
                     : Colors.transparent, // Unselected color
               ),
               child: _selectedIndex == 3
@@ -123,7 +140,7 @@ class _MyHomePageState extends State<HomePage> {
                           ? Colors.white
                           : null, // Icon color
                     )
-                  : Icon(
+                  : const Icon(
                       FluentIcons.heart_circle_hint_48_filled,
                     ),
             ),
@@ -131,11 +148,11 @@ class _MyHomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.all(10), // Adjust padding as needed
+              padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _selectedIndex == 4
-                    ? Color(0xFFFCB0C2) // Selected color
+                    ? const Color(0xFFFCB0C2) // Selected color
                     : Colors.transparent, // Unselected color
               ),
               child: _selectedIndex == 4
@@ -145,17 +162,17 @@ class _MyHomePageState extends State<HomePage> {
                           ? Colors.white
                           : null, // Icon color
                     )
-                  : Icon(
+                  : const Icon(
                       Icons.account_circle_outlined,
                     ),
             ),
             label: 'โปรไฟล์',
           ),
         ],
-        selectedIconTheme: IconThemeData(
+        selectedIconTheme: const IconThemeData(
           size: 32.0, // ขนาดของ icon เมื่อถูกเลือก
         ),
-        unselectedIconTheme: IconThemeData(
+        unselectedIconTheme: const IconThemeData(
           size: 24.0, // ขนาดของ icon เมื่อไม่ถูกเลือก
         ),
       ),

@@ -1,63 +1,63 @@
 import 'package:flutter/material.dart';
 
-class InsuranceList extends StatelessWidget {
-  final String imgPath;
+class Privileges_list extends StatelessWidget {
   final String title;
-  const InsuranceList({super.key, required this.imgPath, required this.title});
+  final String describe;
+  final String price;
+  const Privileges_list(
+      {super.key,
+      required this.title,
+      required this.describe,
+      required this.price});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
-      child: Card(
-        elevation: 10,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        //color: Colors.amber,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-              child: Image.asset(
-                imgPath,
-                width: 250,
-              ),
-            ),
             Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'ประกัน',
+                      Text(
+                        title,
                         style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      const Text(
-                        'รายละเอียดประกัน',
+                      Text(
+                        describe,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 10,
                           color: Color.fromARGB(255, 113, 113, 113),
                         ),
-                      ),
-                      const Divider(
-                        color: Colors.black,
                       ),
                       Row(
                         children: [
                           const Text(
-                            'เบี้ยประกันเริ่มต้น ',
+                            'วงเงิน',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               color: Color.fromARGB(255, 75, 75, 75),
                             ),
                           ),
-                          Text(title),
+                          Spacer(),
+                          Text(
+                            price,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromARGB(255, 75, 75, 75),
+                            ),
+                          ),
                           const Text(
                             ' บาท/ปี',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               color: Color.fromARGB(255, 75, 75, 75),
                             ),
                           ),
@@ -65,6 +65,10 @@ class InsuranceList extends StatelessWidget {
                             height: 5,
                           ),
                         ],
+                      ),
+                      const Divider(
+                        color: Color(0xFFF0F0F0),
+                        thickness: 2,
                       ),
                     ]))
           ],
