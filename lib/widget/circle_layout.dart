@@ -1,4 +1,5 @@
 import 'package:ant_project/pages/flexpoint_bag.dart';
+import 'package:ant_project/pages/health_check_page.dart';
 import 'package:ant_project/widget/circle_icon2.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +70,13 @@ class CircleLayout extends StatelessWidget {
               CircleIcon(
                 title: 'แพ็คเกจ\nตรวจสุขภาพ',
                 imgPath: 'assets/images/pink_mileage.png',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HealthCheckPage()),
+                  );
+                },
               ),
             ],
           ),

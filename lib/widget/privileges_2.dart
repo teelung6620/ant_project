@@ -7,27 +7,30 @@ class Privileges2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Privileges_list(
-          title: 'IPD',
-          describe:
-              'คุ้มครองครอบคลุมค่าใช้จ่ายต่าง ๆ ที่เกี่ยวข้องกับการรักษา ในโรงพยาบาล เช่น ค่าห้องพัก ค่าอาหาร และค่าบริการต่าง ๆ ',
-          price: '10,000',
-        ),
-        Privileges_list(
-          title: 'OPD',
-          describe:
-              'คุ้มครองครอบคลุมค่าใช้จ่ายต่าง ๆ ที่เกี่ยวข้องกับการรักษา ในโรงพยาบาล เช่น ค่าห้องพัก ค่าอาหาร และค่าบริการต่าง ๆ ',
-          price: '35,000',
-        ),
-        Privileges_list(
-          title: 'Dental',
-          describe:
-              'คุ้มครองครอบคลุมค่าใช้จ่ายต่าง ๆ ที่เกี่ยวข้องกับการรักษา ในโรงพยาบาล เช่น ค่าห้องพัก ค่าอาหาร และค่าบริการต่าง ๆ ',
-          price: '5,000',
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 70),
+      child: Column(
+        children: [
+          Privileges_list(
+            title: 'IPD',
+            describe:
+                'คุ้มครองครอบคลุมค่าใช้จ่ายต่าง ๆ ที่เกี่ยวข้องกับการรักษา ในโรงพยาบาล เช่น ค่าห้องพัก ค่าอาหาร และค่าบริการต่าง ๆ ',
+            price: '10,000',
+          ),
+          Privileges_list(
+            title: 'OPD',
+            describe:
+                'คุ้มครองครอบคลุมค่าใช้จ่ายต่าง ๆ ที่เกี่ยวข้องกับการรักษา ในโรงพยาบาล เช่น ค่าห้องพัก ค่าอาหาร และค่าบริการต่าง ๆ ',
+            price: '35,000',
+          ),
+          Privileges_list(
+            title: 'Dental',
+            describe:
+                'คุ้มครองครอบคลุมค่าใช้จ่ายต่าง ๆ ที่เกี่ยวข้องกับการรักษา ในโรงพยาบาล เช่น ค่าห้องพัก ค่าอาหาร และค่าบริการต่าง ๆ ',
+            price: '5,000',
+          ),
+        ],
+      ),
     );
   }
 }
