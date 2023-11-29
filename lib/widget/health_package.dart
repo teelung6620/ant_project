@@ -38,39 +38,26 @@ class HealthPackage extends StatelessWidget {
             ],
           ),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 width: 20,
               ),
               Container(
-                width: 100,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                  ),
-                ),
                 child: Center(
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      bottomLeft: Radius.circular(10),
-                    ),
-                    child: Image.asset(
-                      imgPath,
-                      width: MediaQuery.of(context).size.width * 0.3,
+                  child: Image.asset(
+                    imgPath,
+                    width: MediaQuery.of(context).size.width * 0.25,
 
-                      fit: BoxFit
-                          .cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
-                    ),
+                    fit:
+                        BoxFit.cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
                   ),
                 ),
               ),
               Spacer(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -129,8 +116,10 @@ class HealthPackage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    ButtonTheme(
-                      height: 100,
+                    Spacer(),
+                    Container(
+                      height: 20,
+                      width: 130,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFFF7697),
@@ -140,14 +129,14 @@ class HealthPackage extends StatelessWidget {
                           // ตอบสนองเมื่อปุ่มถูกกด
                         },
                         child: const Text(
-                          'แลก Flexcoin',
+                          'จอง',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

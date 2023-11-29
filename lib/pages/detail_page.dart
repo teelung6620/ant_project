@@ -28,44 +28,56 @@ class _DetailState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            IconaMoon.arrowLeft2,
-            size: 40,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        automaticallyImplyLeading: false,
-        // title: Text(
-        //   (widget.userP.postName),
-        //   style: TextStyle(fontSize: 25),
-        // ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        toolbarHeight: 60,
-      ),
-      backgroundColor: const Color(0xFF4D4C7D),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     icon: Icon(
+      //       IconaMoon.arrowLeft2,
+      //       size: 40,
+      //     ),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      //   automaticallyImplyLeading: false,
+      //   // title: Text(
+      //   //   (widget.userP.postName),
+      //   //   style: TextStyle(fontSize: 25),
+      //   // ),
+      //   centerTitle: true,
+      //   backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      //   toolbarHeight: 60,
+      // ),
+      //backgroundColor: const Color(0xFF4D4C7D),
       body: RefreshIndicator(
         onRefresh: () async {
           //await fetchData();
           //await getScore();
         },
-        color: const Color.fromARGB(255, 142, 61, 255),
+        // color: const Color.fromARGB(255, 142, 61, 255),
         child: Container(
           decoration: const BoxDecoration(
-            // สีบน
-            color: Color.fromARGB(255, 255, 255, 255), // สีล่าง
+            image: DecorationImage(
+              image: AssetImage("assets/images/Group 722.png"),
+              fit: BoxFit.cover,
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              IconButton(
+                icon: Icon(
+                  IconaMoon.arrowLeft2,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
               Center(
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
+                    //color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomLeft: Radius.circular(10),
@@ -78,7 +90,7 @@ class _DetailState extends State<DetailPage> {
                       height: MediaQuery.of(context).size.width *
                           0.55, // ปรับขนาดรูป
                       fit: BoxFit
-                          .cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
+                          .contain, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
                     ),
                   ),
                 ),
@@ -152,13 +164,17 @@ class _DetailState extends State<DetailPage> {
                       ),
                       Row(
                         children: [
-                          Icon(
-                            Icons.monetization_on_rounded,
-                            size: MediaQuery.of(context).size.width * 0.05,
-                            color: Colors.amber,
+                          Image.asset(
+                            'assets/images/image 6.png',
+                            scale: 1.5,
                           ),
+                          // Icon(
+                          //   Icons.monetization_on_rounded,
+                          //   size: MediaQuery.of(context).size.width * 0.05,
+                          //   color: Colors.amber,
+                          // ),
                           Text(
-                            ' x ${widget.coins}',
+                            ' x${widget.coins}',
                             style: const TextStyle(
                               fontSize: 16,
                               color: Color.fromARGB(255, 0, 0, 0),

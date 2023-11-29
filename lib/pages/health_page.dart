@@ -33,57 +33,55 @@ class _HealthState extends State<HealthPage> {
             showBackButton: false,
           ),
           SliverToBoxAdapter(
-            child: Container(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 50),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Container(
-                        height: 30.0, // Adjust the height as needed
-                        width: 80,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30.0),
-                          border: Border.all(
-                            color: Color(0xFFEC5B7E), // Change color as needed
-                            width: 2.0,
-                          ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 50),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      height: 30.0, // Adjust the height as needed
+                      width: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.0),
+                        border: Border.all(
+                          color: Color(0xFFEC5B7E), // Change color as needed
+                          width: 2.0,
                         ),
-                        child: Center(
-                          child: DropdownButton(
-                            borderRadius: BorderRadius.circular(10),
-                            value: dropdownvalue,
-                            icon: const Icon(
-                              Icons.keyboard_arrow_down,
-                              color: Color(0xFFEC5B7E),
-                            ),
-                            items: items.map((String items) {
-                              return DropdownMenuItem(
-                                value: items,
-                                child: Text(
-                                  items,
-                                  style: TextStyle(
-                                    color: Color(0xFFEC5B7E),
-                                  ),
-                                ),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownvalue = newValue!;
-                              });
-                            },
+                      ),
+                      child: Center(
+                        child: DropdownButton(
+                          borderRadius: BorderRadius.circular(10),
+                          value: dropdownvalue,
+                          icon: const Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Color(0xFFEC5B7E),
                           ),
+                          items: items.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(
+                                items,
+                                style: TextStyle(
+                                  color: Color(0xFFEC5B7E),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownvalue = newValue!;
+                            });
+                          },
                         ),
                       ),
                     ),
                   ),
-                  Center(
-                    child: HealthResultList(),
-                  ),
-                ],
-              ),
+                ),
+                HealthResultList(),
+              ],
             ),
           ),
         ],

@@ -31,7 +31,8 @@ class FlexpointList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 5,
@@ -68,13 +69,17 @@ class FlexpointList extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(
-                        Icons.monetization_on_rounded,
-                        size: MediaQuery.of(context).size.width * 0.05,
-                        color: Colors.amber,
+                      Image.asset(
+                        'assets/images/image 6.png',
+                        scale: 1.5,
                       ),
+                      // Icon(
+                      //   Icons.monetization_on_rounded,
+                      //   size: MediaQuery.of(context).size.width * 0.05,
+                      //   color: Colors.amber,
+                      // ),
                       const Text(
-                        'x3',
+                        ' x3',
                         style: TextStyle(
                           fontSize: 12,
                           color: Color.fromARGB(255, 113, 113, 113),

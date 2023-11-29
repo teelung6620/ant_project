@@ -11,14 +11,14 @@ class ProductLayout extends StatelessWidget {
         children: [
           ProductList(
             title: 'หม้อทอดไร้น้ำมัน',
-            imgPath: 'assets/images/image 8.png',
+            imgPath: 'assets/images/imageElec.png',
             describ: 'anabishi หม้อทอดไร้น้ำมัน 4 ลิตร',
             avai: '9',
             coins: '30',
           ),
           ProductList(
             title: 'ทองคำ 2 สลึง',
-            imgPath: 'assets/images/gold.png',
+            imgPath: 'assets/images/gold2.png',
             describ: 'anabishi',
             avai: '9',
             coins: '30',

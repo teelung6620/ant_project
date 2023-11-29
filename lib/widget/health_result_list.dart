@@ -14,6 +14,7 @@ class HealthResultList extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               HealthResult(
                 imgPath: 'assets/images/background_img.png',
@@ -29,6 +30,7 @@ class HealthResultList extends StatelessWidget {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               HealthResult(
                 imgPath: 'assets/images/cat.jpg',
@@ -44,6 +46,7 @@ class HealthResultList extends StatelessWidget {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               HealthResult(
                 imgPath: 'assets/images/cat.jpg',

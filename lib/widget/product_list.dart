@@ -57,7 +57,8 @@ class ProductList extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.35,
                   height:
                       MediaQuery.of(context).size.width * 0.35, // ปรับขนาดรูป
-                  fit: BoxFit.cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
+                  fit:
+                      BoxFit.contain, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
                 ),
               ),
             ),
@@ -68,7 +69,8 @@ class ProductList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 5,
@@ -116,13 +118,17 @@ class ProductList extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(
-                        Icons.monetization_on_rounded,
-                        size: MediaQuery.of(context).size.width * 0.05,
-                        color: Colors.amber,
+                      Image.asset(
+                        'assets/images/image 6.png',
+                        scale: 1.5,
                       ),
+                      // Icon(
+                      //   Icons.monetization_on_rounded,
+                      //   size: MediaQuery.of(context).size.width * 0.05,
+                      //   color: Colors.amber,
+                      // ),
                       Text(
-                        'x$coins',
+                        ' x$coins',
                         style: const TextStyle(
                           fontSize: 12,
                           color: Color.fromARGB(255, 113, 113, 113),

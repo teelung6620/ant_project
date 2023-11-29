@@ -26,13 +26,16 @@ class CircleIcon extends StatelessWidget {
               backgroundImage: AssetImage(imgPath),
               radius: 30,
             ),
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 12,
+            Container(
+              height: MediaQuery.of(context).size.height * 0.04,
+              child: Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 12,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:ant_project/pages/flexpoint_bag.dart';
+import 'package:ant_project/pages/guarantee_page.dart';
 import 'package:ant_project/pages/health_check_page.dart';
 import 'package:ant_project/widget/circle_icon2.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,12 @@ class CircleLayout extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleIcon(
                 title: 'กระเป๋า flexpoint',
@@ -35,7 +40,7 @@ class CircleLayout extends StatelessWidget {
           Column(
             children: [
               CircleIcon(
-                title: 'แลก flexpoint',
+                title: 'แลก\nFlexpoint',
                 imgPath: 'assets/images/pink_mileage.png',
                 onTap: () {},
               ),
@@ -49,7 +54,7 @@ class CircleLayout extends StatelessWidget {
           Column(
             children: [
               CircleIcon(
-                title: 'ประวัติ flexpoint',
+                title: 'ประวัติการแลก\nFlexpoint',
                 imgPath: 'assets/images/pink_mileage.png',
                 onTap: () {},
               ),
@@ -61,6 +66,7 @@ class CircleLayout extends StatelessWidget {
             ],
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CircleIcon(
                 title: 'สิทธิของฉัน',
@@ -85,14 +91,25 @@ class CircleLayout extends StatelessWidget {
               CircleIcon(
                 title: 'ซื้อประกัน',
                 imgPath: 'assets/images/pink_mileage.png',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GuaranteePage()),
+                  );
+                },
               ),
               CircleIcon(
-                title: 'แพ็คเกจตรวจสุขภาพ',
+                title: 'Certificate\nสุขภาพ',
                 imgPath: 'assets/images/pink_mileage.png',
                 onTap: () {},
               ),
             ],
+          ),
+          CircleIcon(
+            title: 'ประกันของฉัน',
+            imgPath: 'assets/images/pink_mileage.png',
+            onTap: () {},
           ),
         ],
       ),

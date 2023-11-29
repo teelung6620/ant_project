@@ -22,6 +22,30 @@ class HealthPackageList extends StatelessWidget {
             describ: '(สำหรับผู้หญิง อายุระหว่าง 30 - 40 ปี)',
             price: '20,000',
           ),
+          HealthPackage(
+            title: 'แพ็กเกจตรวจสุขภาพ\nAdvanced Check-Up',
+            imgPath: 'assets/images/Rectangle 278.png',
+            describ: '(สำหรับผู้หญิง อายุระหว่าง 30 - 40 ปี)',
+            price: '30,000',
+          ),
+          HealthPackage(
+            title: 'แพ็กเกจตรวจสุขภาพ\nAdvanced Check-Up',
+            imgPath: 'assets/images/Rectangle 278.png',
+            describ: '(สำหรับผู้หญิง อายุระหว่าง 30 - 40 ปี)',
+            price: '30,000',
+          ),
+          HealthPackage(
+            title: 'แพ็กเกจตรวจสุขภาพ\nAdvanced Check-Up',
+            imgPath: 'assets/images/Rectangle 278.png',
+            describ: '(สำหรับผู้หญิง อายุระหว่าง 30 - 40 ปี)',
+            price: '30,000',
+          ),
+          HealthPackage(
+            title: 'แพ็กเกจตรวจสุขภาพ\nAdvanced Check-Up',
+            imgPath: 'assets/images/Rectangle 278.png',
+            describ: '(สำหรับผู้หญิง อายุระหว่าง 30 - 40 ปี)',
+            price: '30,000',
+          ),
         ],
       ),
     );

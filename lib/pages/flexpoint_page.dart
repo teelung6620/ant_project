@@ -1,5 +1,7 @@
+import 'package:ant_project/widget/AppBarCustom.dart';
 import 'package:ant_project/widget/product_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:iconamoon/iconamoon.dart';
 
 class FlexpointPage extends StatefulWidget {
   const FlexpointPage({Key? key}) : super(key: key);
@@ -17,10 +19,9 @@ class _FlexpointState extends State<FlexpointPage> {
       child: Scaffold(
           appBar: AppBar(
             // automaticallyImplyLeading: false,
-            title: const Text(
-              ('แลก Flexpoint'),
-              style: TextStyle(fontSize: 25),
-            ),
+            leadingWidth: 200,
+            leading:
+                AppBarCustom(title: 'แลก Flexpoint', showBackButton: false),
             //centerTitle: true,
             // backgroundColor: Color(0xFF363062),
             toolbarHeight: MediaQuery.of(context).size.height * 0.23,
