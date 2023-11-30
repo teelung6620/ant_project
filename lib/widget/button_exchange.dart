@@ -86,7 +86,7 @@ class _ButtonExchangeState extends State<ButtonExchange> {
                 ],
               ),
               Image.asset(
-                'assets/images/image 8.png', // เปลี่ยนเป็น path ของรูปที่คุณต้องการใช้
+                'assets/images/confetti.gif', // เปลี่ยนเป็น path ของรูปที่คุณต้องการใช้
                 width: 100, // ปรับขนาดตามที่ต้องการ
                 height: 100,
               ),

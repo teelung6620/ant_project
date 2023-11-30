@@ -1,4 +1,5 @@
 import 'package:ant_project/pages/detail_page.dart';
+import 'package:ant_project/pages/guarantee_des_page.dart';
 import 'package:flutter/material.dart';
 
 class GuaranteeLayout extends StatelessWidget {
@@ -22,7 +23,17 @@ class GuaranteeLayout extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: onTap,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => GuaranteeDesPage(
+                      title: title.toString(),
+                      age: age.toString(),
+                      distance: distance.toString(),
+                    )),
+          );
+        },
         child: Container(
           width: 340,
           height: 159,

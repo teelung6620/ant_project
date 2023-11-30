@@ -31,17 +31,8 @@ class _FlexpointState extends State<FlexpointPage> {
                   right: 0,
                   left: 0,
                   child: Image.asset(
-                    'assets/images/Vector 8.png',
+                    'assets/images/Group 725.png',
                     fit: BoxFit.fill,
-                  ),
-                ),
-                Positioned(
-                  right: rightValue,
-                  bottom: bottomValue,
-                  child: Image.asset(
-                    'assets/images/tradecoin.png',
-                    scale: MediaQuery.of(context).size.width * 0.0023,
-                    fit: BoxFit.cover,
                   ),
                 ),
               ],

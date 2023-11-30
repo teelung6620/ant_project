@@ -11,7 +11,7 @@ class EmployeeLayout extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
+        padding: const EdgeInsets.only(left: 15, right: 15),
         child: Row(
           children: [
             Employee(

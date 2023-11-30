@@ -17,23 +17,24 @@ class Employee extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
+          width: 132,
           //shadowColor: Colors.black,
           decoration: BoxDecoration(
             color: Color(0xFFFFFFFF),
-            borderRadius: BorderRadius.circular(10.0), // ปรับตามที่คุณต้องการ
+            borderRadius: BorderRadius.circular(22.0), // ปรับตามที่คุณต้องการ
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
+                color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 2,
-                blurRadius: 5,
-                offset: Offset(-1, 2), // การปรับตำแหน่งแสงเงา
+                blurRadius: 1,
+                offset: Offset(1, 1), // การปรับตำแหน่งแสงเงา
               ),
             ],
           ),
 
           // elevation: 10,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),

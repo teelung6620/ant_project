@@ -1,6 +1,8 @@
 import 'package:ant_project/pages/flexpoint_bag.dart';
 import 'package:ant_project/pages/guarantee_page.dart';
 import 'package:ant_project/pages/health_check_page.dart';
+import 'package:ant_project/pages/medical_treatment_page.dart';
+import 'package:ant_project/pages/my_guarantee_page.dart';
 import 'package:ant_project/widget/circle_icon2.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +35,13 @@ class CircleLayout extends StatelessWidget {
               CircleIcon(
                 title: 'ประวัติการรักษา',
                 imgPath: 'assets/images/pink_mileage.png',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MedicalTreatmentPage()),
+                  );
+                },
               )
             ],
           ),
@@ -109,7 +117,13 @@ class CircleLayout extends StatelessWidget {
           CircleIcon(
             title: 'ประกันของฉัน',
             imgPath: 'assets/images/pink_mileage.png',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MyGuaranteePage()),
+              );
+            },
           ),
         ],
       ),

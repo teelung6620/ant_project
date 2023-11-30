@@ -3,6 +3,7 @@ import 'package:ant_project/widget/AppBarCustom2.dart';
 import 'package:ant_project/widget/button_exchange_bag.dart';
 import 'package:ant_project/widget/employee.dart';
 import 'package:ant_project/widget/employee_layout.dart';
+import 'package:ant_project/widget/guarantee_list.dart';
 import 'package:ant_project/widget/privileges_2.dart';
 import 'package:ant_project/widget/silver_appbar.dart';
 import 'package:ant_project/widget/total_credit.dart';
@@ -10,13 +11,13 @@ import 'package:ant_project/widget/total_credit.dart';
 import 'package:flutter/material.dart';
 import 'package:iconamoon/iconamoon.dart';
 
-class PrivilegesPage extends StatefulWidget {
-  const PrivilegesPage({Key? key}) : super(key: key);
+class MyGuaranteePage extends StatefulWidget {
+  const MyGuaranteePage({Key? key}) : super(key: key);
   @override
-  State<PrivilegesPage> createState() => _PrivilegesState();
+  State<MyGuaranteePage> createState() => _MyGuaranteeState();
 }
 
-class _PrivilegesState extends State<PrivilegesPage> {
+class _MyGuaranteeState extends State<MyGuaranteePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,28 +45,15 @@ class _PrivilegesState extends State<PrivilegesPage> {
         child: Container(
           // height: 488.64, // Adjust the height as needed
 
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child: Column(children: [
             AppBarCustom2(
                 title: 'สิทธิของฉัน',
                 imgPath: 'assets/images/Group 718.png',
-                showBackButton: false),
+                showBackButton: true),
             EmployeeLayout(),
+
+            GuaranteeList(),
             //Image.asset('assets/images/coin_privi.png'),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            Row(
-              children: [
-                SizedBox(width: MediaQuery.of(context).size.width * 0.06),
-                Text(
-                  'สิทธิ',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            TotalCredit(
-              title: '10,000',
-            ),
-            Privileges2()
           ]),
 
           // Your other widgets or content goes here

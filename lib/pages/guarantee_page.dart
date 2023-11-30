@@ -25,7 +25,7 @@ class _GuaranteeState extends State<GuaranteePage> {
     double rightValue = MediaQuery.of(context).size.width * 0.03;
     double bottomValue = MediaQuery.of(context).size.width * 0.1;
     return DefaultTabController(
-        length: 2, // จำนวน Tab ทั้งหมด
+        length: 5, // จำนวน Tab ทั้งหมด
         child: Scaffold(
           appBar: AppBar(
             leadingWidth: 200,
@@ -46,17 +46,8 @@ class _GuaranteeState extends State<GuaranteePage> {
                   right: 0,
                   left: 0,
                   child: Image.asset(
-                    'assets/images/Vector 8.png',
+                    'assets/images/Group 723.png',
                     fit: BoxFit.fill,
-                  ),
-                ),
-                Positioned(
-                  right: rightValue,
-                  bottom: bottomValue,
-                  child: Image.asset(
-                    'assets/images/tradecoin.png',
-                    scale: MediaQuery.of(context).size.width * 0.0023,
-                    fit: BoxFit.cover,
                   ),
                 ),
               ],
@@ -68,7 +59,16 @@ class _GuaranteeState extends State<GuaranteePage> {
                   text: 'ทั้งหมด',
                 ),
                 Tab(
-                  text: 'อาหาร',
+                  text: 'ประกันกลุ่ม',
+                ),
+                Tab(
+                  text: 'ประกันบุคคล',
+                ),
+                Tab(
+                  text: 'ประกันอุบัติเหตุ',
+                ),
+                Tab(
+                  text: 'ประกันชีวิต',
                 ),
               ],
               indicatorColor: Colors.pink,
@@ -78,6 +78,27 @@ class _GuaranteeState extends State<GuaranteePage> {
           body: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TabBarView(children: [
+                Container(
+                  child: const SingleChildScrollView(
+                    child: Column(
+                      children: [GuaranteeList()],
+                    ),
+                  ),
+                ),
+                Container(
+                  child: const SingleChildScrollView(
+                    child: Column(
+                      children: [GuaranteeList()],
+                    ),
+                  ),
+                ),
+                Container(
+                  child: const SingleChildScrollView(
+                    child: Column(
+                      children: [GuaranteeList()],
+                    ),
+                  ),
+                ),
                 Container(
                   child: const SingleChildScrollView(
                     child: Column(

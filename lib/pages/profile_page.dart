@@ -1,3 +1,4 @@
+import 'package:ant_project/widget/AppBarCustom.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -9,8 +10,13 @@ class ProfilePage extends StatefulWidget {
 class _ProfileState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(),
+    return Scaffold(
+      body: SingleChildScrollView(
+          child: Column(
+        children: [
+          // AppBarCustom(title: 'แลก Flexpoint', showBackButton: true),
+        ],
+      )),
     );
   }
 }

@@ -13,11 +13,11 @@ class TotalCredit extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(0),
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 10),
+              padding: const EdgeInsets.only(right: 16),
               child: Align(
                 alignment: Alignment
                     .centerRight, // This will align the child to the center-right
