@@ -23,7 +23,7 @@ class _MyHomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
       _pageController.animateToPage(index,
-          duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
+          duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
     });
   }
 

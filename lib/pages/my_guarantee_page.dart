@@ -47,10 +47,19 @@ class _MyGuaranteeState extends State<MyGuaranteePage> {
 
           child: Column(children: [
             AppBarCustom2(
-                title: 'สิทธิของฉัน',
-                imgPath: 'assets/images/Group 718.png',
+                title: 'ประกันของฉัน',
+                imgPath: 'assets/images/Group 727.png',
                 showBackButton: true),
             EmployeeLayout(),
+            Row(
+              children: [
+                SizedBox(width: MediaQuery.of(context).size.width * 0.09),
+                Text(
+                  'ประกัน',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
 
             GuaranteeList(),
             //Image.asset('assets/images/coin_privi.png'),

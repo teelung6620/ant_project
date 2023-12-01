@@ -17,7 +17,7 @@ class _ButtonExchangeState extends State<ButtonExchange> {
     super.dispose();
   }
 
-  Future<void> _showDeleteConfirmationDialog() async {
+  Future<void> _showConfirmationDialog() async {
     bool confirm = await showDialog(
       context: context,
       builder: (context) {
@@ -72,33 +72,60 @@ class _ButtonExchangeState extends State<ButtonExchange> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Column(
+          title: Stack(
             children: [
-              Row(
+              // Image.asset(
+              //   'assets/images/Rectangle 90.png',
+              //   fit: BoxFit.cover,
+              // ),
+
+              Column(
                 children: [
-                  Spacer(),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(); // Close the AlertDialog
-                    },
-                    icon: const Icon(Icons.close),
+                  Row(
+                    children: [
+                      Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Close the AlertDialog
+                        },
+                        icon: const Icon(Icons.close),
+                      ),
+                    ],
                   ),
+                  Image.asset(
+                    'assets/images/imageElec.png', // เปลี่ยนเป็น path ของรูปที่คุณต้องการใช้
+                    width: 100, // ปรับขนาดตามที่ต้องการ
+                    height: 100,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: ConfettiWidget(
+                      confettiController: controller,
+                      blastDirectionality: BlastDirectionality.explosive,
+                      // blastDirection: 3.14, // หรือใช้ 180 ก็ได้
+                      // shouldLoop: true,
+                      // emissionFrequency: 1,
+                      //numberOfParticles: 200,
+                      gravity: 0.2,
+                      colors: const [
+                        Colors.green,
+                        Colors.blue,
+                        Colors.pink,
+                        Colors.orange
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16), // ระยะห่างระหว่างรูปกับข้อความ
+                  const Text('สำเร็จ!'),
                 ],
               ),
-              Image.asset(
-                'assets/images/confetti.gif', // เปลี่ยนเป็น path ของรูปที่คุณต้องการใช้
-                width: 100, // ปรับขนาดตามที่ต้องการ
-                height: 100,
-              ),
-              const SizedBox(height: 16), // ระยะห่างระหว่างรูปกับข้อความ
-              const Text('สำเร็จ!'),
             ],
           ),
           content: const Text('คุณได้ทำการแลกของรางวัลเรียบร้อยแล้ว!'),
         );
       },
     );
-    // await Future.delayed(const Duration(seconds: 3));
+    // await Future.delayed(const Duration(seconds: 1));
     //Navigator.pop(context);
     controller.stop();
   }
@@ -113,22 +140,12 @@ class _ButtonExchangeState extends State<ButtonExchange> {
               backgroundColor: const Color.fromARGB(255, 251, 111, 158),
               foregroundColor: Colors.white),
           onPressed: () async {
-            await _showDeleteConfirmationDialog();
+            await _showConfirmationDialog();
           },
           child: const Text(
             'แลกของรางวัล',
             style: TextStyle(color: Colors.white, fontSize: 25),
           ),
-        ),
-        ConfettiWidget(
-          confettiController: controller,
-          blastDirectionality: BlastDirectionality.explosive,
-          // blastDirection: 3.14, // หรือใช้ 180 ก็ได้
-          // shouldLoop: true,
-          // emissionFrequency: 0.01,
-          //  numberOfParticles: 20,
-          gravity: 0.2,
-          colors: const [Colors.green, Colors.blue, Colors.pink, Colors.orange],
         ),
       ],
     );

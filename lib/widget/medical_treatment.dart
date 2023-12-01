@@ -46,86 +46,92 @@ class MedicalTreatment extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          imgPath,
-                          width: MediaQuery.of(context).size.width * 0.15,
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            imgPath,
+                            width: MediaQuery.of(context).size.width * 0.15,
 
-                          fit: BoxFit
-                              .cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01,
-                        ),
-                        Text(
-                          'สถานที่ :',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color.fromARGB(255, 113, 113, 113),
+                            fit: BoxFit
+                                .cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
                           ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.005,
-                        ),
-                        Text(
-                          'วันที่ :',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color.fromARGB(255, 113, 113, 113),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01,
                           ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.005,
-                        ),
-                        Text(
-                          'รวมเบิก :',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color.fromARGB(255, 113, 113, 113),
+                          Text(
+                            'สถานที่ :',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color.fromARGB(255, 113, 113, 113),
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.005,
+                          ),
+                          Text(
+                            'วันที่ :',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color.fromARGB(255, 113, 113, 113),
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.005,
+                          ),
+                          Text(
+                            'รวมเบิก :',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color.fromARGB(255, 113, 113, 113),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01,
-                        ),
-                        Text(
-                          location,
-                          style: TextStyle(
-                            fontSize: 12,
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: const TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.005,
-                        ),
-                        Text(
-                          date,
-                          style: TextStyle(
-                            fontSize: 12,
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01,
                           ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.005,
-                        ),
-                        Text(
-                          totalPrice + ' บาท',
-                          style: TextStyle(
-                            fontSize: 12,
+                          Text(
+                            location,
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.005,
+                          ),
+                          Text(
+                            date,
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.005,
+                          ),
+                          Text(
+                            totalPrice + ' บาท',
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.02,

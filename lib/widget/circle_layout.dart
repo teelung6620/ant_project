@@ -1,4 +1,5 @@
 import 'package:ant_project/pages/flexpoint_bag.dart';
+import 'package:ant_project/pages/flexpoint_history_page.dart';
 import 'package:ant_project/pages/guarantee_page.dart';
 import 'package:ant_project/pages/health_check_page.dart';
 import 'package:ant_project/pages/medical_treatment_page.dart';
@@ -18,11 +19,9 @@ class CircleLayout extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleIcon(
-                title: 'กระเป๋า flexpoint',
+                title: 'กระเป๋า\nFlexpoint',
                 imgPath: 'assets/images/pink_mileage.png',
                 onTap: () {
                   Navigator.push(
@@ -64,7 +63,13 @@ class CircleLayout extends StatelessWidget {
               CircleIcon(
                 title: 'ประวัติการแลก\nFlexpoint',
                 imgPath: 'assets/images/pink_mileage.png',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FlexpointHistoryPage()),
+                  );
+                },
               ),
               CircleIcon(
                 title: 'ผลสุขภาพ',

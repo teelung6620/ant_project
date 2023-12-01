@@ -1,27 +1,29 @@
 import 'package:ant_project/widget/AppBarCustom.dart';
+import 'package:ant_project/widget/AppBarCustom2line.dart';
 import 'package:ant_project/widget/product_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:iconamoon/iconamoon.dart';
 
-class FlexpointPage extends StatefulWidget {
-  const FlexpointPage({Key? key}) : super(key: key);
+class FlexpointHistoryPage extends StatefulWidget {
+  const FlexpointHistoryPage({Key? key}) : super(key: key);
   @override
-  State<FlexpointPage> createState() => _FlexpointState();
+  State<FlexpointHistoryPage> createState() => _FlexpointHistoryState();
 }
 
-class _FlexpointState extends State<FlexpointPage> {
+class _FlexpointHistoryState extends State<FlexpointHistoryPage> {
   @override
   Widget build(BuildContext context) {
     double rightValue = MediaQuery.of(context).size.width * 0.03;
     double bottomValue = MediaQuery.of(context).size.width * 0.1;
     return DefaultTabController(
-      length: 7,
+      length: 5,
       child: Scaffold(
           appBar: AppBar(
             // automaticallyImplyLeading: false,
             leadingWidth: 200,
-            leading:
-                AppBarCustom(title: 'แลก Flexpoint', showBackButton: false),
+
+            leading: AppBarCustom2Line(
+                title: 'ประวัติการแลก\nFlexpoint', showBackButton: true),
             //centerTitle: true,
             // backgroundColor: Color(0xFF363062),
             toolbarHeight: MediaQuery.of(context).size.height * 0.23,
@@ -44,22 +46,16 @@ class _FlexpointState extends State<FlexpointPage> {
                   text: 'ทั้งหมด',
                 ),
                 Tab(
-                  text: 'อาหาร',
+                  text: 'รอตรวจสอบ',
                 ),
                 Tab(
-                  text: 'ชอปปิง',
+                  text: 'สำเร็จ',
                 ),
                 Tab(
-                  text: 'ความบันเทิง',
+                  text: 'รับของรางวัลแล้ว',
                 ),
                 Tab(
-                  text: 'ไลฟ์สไตล์',
-                ),
-                Tab(
-                  text: 'ท่องเที่ยว',
-                ),
-                Tab(
-                  text: 'สุขภาพ',
+                  text: 'ไม่สำเร็จ',
                 ),
               ],
               indicatorColor: Colors.pink,
@@ -99,12 +95,6 @@ class _FlexpointState extends State<FlexpointPage> {
                 ),
                 Container(
                   child: const Text('ไลฟ์สไตล์'),
-                ),
-                Container(
-                  child: const Text('ท่องเที่ยว'),
-                ),
-                Container(
-                  child: const Text('สุขภาพ'),
                 ),
               ],
             ),

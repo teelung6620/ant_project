@@ -15,8 +15,8 @@ class CircleIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: MediaQuery.of(context).devicePixelRatio * 7.5,
-          right: MediaQuery.of(context).devicePixelRatio * 7.5,
+          left: MediaQuery.of(context).devicePixelRatio * 4,
+          right: MediaQuery.of(context).devicePixelRatio * 4,
           bottom: MediaQuery.of(context).devicePixelRatio * 2),
       child: InkWell(
         onTap: onTap,

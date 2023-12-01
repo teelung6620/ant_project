@@ -30,7 +30,7 @@ class _GuaranteeState extends State<GuaranteePage> {
           appBar: AppBar(
             leadingWidth: 200,
             leading: AppBarCustom(
-              title: 'ประกัน',
+              title: 'ซื้อประกัน',
             ),
             // automaticallyImplyLeading: false,
             // title: const Text(

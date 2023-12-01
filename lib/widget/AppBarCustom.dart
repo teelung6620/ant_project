@@ -43,7 +43,7 @@ class AppBarCustom extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.09),
         ],
       ),
     );

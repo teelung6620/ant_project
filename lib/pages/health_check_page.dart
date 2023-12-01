@@ -1,3 +1,4 @@
+import 'package:ant_project/widget/AppBarCustom2.dart';
 import 'package:ant_project/widget/button_exchange_bag.dart';
 import 'package:ant_project/widget/employee.dart';
 import 'package:ant_project/widget/employee_layout.dart';
@@ -19,22 +20,23 @@ class _HealthCheckState extends State<HealthCheckPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(
-      slivers: [
-        AllAppBar(
-          title: 'แพคเกจตรวจสุขภาพ',
-          imgPath: 'assets/images/Group 721.png',
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            // height: 488.64, // Adjust the height as needed
+      body: SingleChildScrollView(
+        child: Container(
+          // height: 488.64, // Adjust the height as needed
 
-            child: Column(children: [HealthPackageList()]),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            AppBarCustom2(
+                title: 'สิทธิของฉัน',
+                imgPath: 'assets/images/Group 721.png',
+                showBackButton: true),
+            HealthPackageList(),
+            //Image.asset('assets/images/coin_privi.png'),
+          ]),
 
-            // Your other widgets or content goes here
-          ),
+          // Your other widgets or content goes here
         ),
-      ],
-    ));
+      ),
+    );
   }
 }

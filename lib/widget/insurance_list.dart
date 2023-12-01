@@ -53,6 +53,8 @@ class InsuranceList extends StatelessWidget {
                               color: Color.fromARGB(255, 75, 75, 75),
                             ),
                           ),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.15),
                           Text(title),
                           const Text(
                             ' บาท/ปี',
