@@ -1,4 +1,4 @@
-import 'package:ant_project/pages/home_page.dart';
+import 'package:ant_project/src/components/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
