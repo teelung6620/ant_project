@@ -1,6 +1,12 @@
+import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/presentation/widget/AppBarCustom.dart';
-import 'package:ant_project/presentation/widget/product_layout.dart';
+import 'package:ant_project/presentation/widget/text_header.dart';
+import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_model.dart';
+import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
+import 'package:ant_project/src/features/user/flexpoint/presentations/widget/product_layout.dart';
+import 'package:ant_project/src/features/user/flexpoint/presentations/widget/product_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconamoon/iconamoon.dart';
 
 class FlexpointPage extends StatefulWidget {
@@ -10,6 +16,14 @@ class FlexpointPage extends StatefulWidget {
 }
 
 class _FlexpointState extends State<FlexpointPage> {
+  final getItemBloc = sl<GetItemBloc>();
+
+  @override
+  void initState() {
+    super.initState();
+    getItemBloc.add(GetItemDataEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     double rightValue = MediaQuery.of(context).size.width * 0.03;
@@ -78,13 +92,43 @@ class _FlexpointState extends State<FlexpointPage> {
             // ],
           ),
           body: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: TabBarView(
               children: [
-                Container(
-                  child: const SingleChildScrollView(
-                    child: Column(
-                      children: [ProductLayout()],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    child: BlocProvider(
+                      create: (context) => getItemBloc,
+                      child: SingleChildScrollView(
+                          child: BlocBuilder<GetItemBloc, GetItemState>(
+                        builder: (context, state) {
+                          if (state is GetItemInitial) {
+                            return Text('errIni');
+                          } else if (state is GetItemLoading) {
+                            return CircularProgressIndicator();
+                          } else if (state is GetItemFailure) {
+                            return Text('failure');
+                          } else if (state is GetItemSuccess) {
+                            return Container(
+                              height: MediaQuery.of(context).size.height,
+                              child: ListView.builder(
+                                itemCount: state.getItem.length,
+                                itemBuilder: (context, index) {
+                                  return ProductList(
+                                      // imgPath: '${state.getItem.first.image}',
+                                      title: '${state.getItem[index].name}',
+                                      describ: '${state.getItem[index].detail}',
+                                      avai: '${state.getItem[index].category}',
+                                      coins:
+                                          '${state.getItem[index].quantity}');
+                                },
+                              ),
+                            );
+                          }
+                          return Container();
+                        },
+                      )),
                     ),
                   ),
                 ),

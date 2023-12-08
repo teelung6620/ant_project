@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:ant_project/src/features/user/home/domain/entity/profile_entity_test.dart';
 
-GetProfileModel userPostFromJson(String str) =>
+GetProfileModel userListFromJson(String str) =>
     GetProfileModel.fromJson(json.decode(str));
 
-String userPostToJson(GetProfileModel data) => json.encode(data.toJson());
+String userListToJson(GetProfileModel data) => json.encode(data.toJson());
 
 class GetProfileModel extends ProfileEntityTest {
   GetProfileModel({
@@ -15,34 +15,34 @@ class GetProfileModel extends ProfileEntityTest {
     required String? password,
     required String? image,
     required String? firstname,
-    required DateTime? lastname,
-    required String? idDepartment,
+    required String? lastname,
+    required int? idDepartment,
     required String? department,
     required String? position,
     required String? type,
     required String? mobileNumber,
     required String? workingLocation,
     required String? province,
-    required dynamic site,
+    required int? site,
     required String? status,
     required String? company,
     required List<int>? fovorite,
-    required String? follower,
-    required String? following,
+    required int? follower,
+    required int? following,
     required List<String>? authorities,
     required List<int>? coachId,
-    required String? rating,
+    required double? rating,
     required String? profile,
     required String? experdence,
     required String? price,
     required List<EducationModel>? education,
-    required String? esy,
+    required int? esy,
     required int? tig,
-    required int? div,
-    required dynamic sect,
-    required dynamic serviceY,
+    required String? div,
+    required String? sect,
+    required int? serviceY,
     required int? tip,
-    required int? reportTo,
+    required String? reportTo,
   }) : super(
           username: username,
           email: email,

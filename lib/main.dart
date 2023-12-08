@@ -1,9 +1,11 @@
 import 'package:ant_project/src/components/home_page.dart';
 import 'package:flutter/material.dart';
+import 'injection_container.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // SharedPreferences prefs = await SharedPreferences.getInstance();
+  await di.init();
   runApp(const MyApp(
       // token: prefs.getString('token'),
       ));

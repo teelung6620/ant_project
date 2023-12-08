@@ -8,34 +8,34 @@ class ProfileEntityTest extends Equatable {
   final String? password;
   final String? image;
   final String? firstname;
-  final DateTime? lastname;
-  final String? idDepartment;
+  final String? lastname;
+  final int? idDepartment;
   final String? department;
   final String? position;
   final String? type;
   final String? mobileNumber;
   final String? workingLocation;
   final String? province;
-  final dynamic site;
+  final int? site;
   final String? status;
   final String? company;
   final List<int>? fovorite;
-  final String? follower;
-  final String? following;
+  final int? follower;
+  final int? following;
   final List<String>? authorities;
   final List<int>? coachId;
-  final String? rating;
+  final double? rating;
   final String? profile;
   final String? experdence;
   final String? price;
   final List<Education>? education;
-  final String? esy;
+  final int? esy;
   final int? tig;
-  final int? div;
-  final dynamic sect;
-  final dynamic serviceY;
+  final String? div;
+  final String? sect;
+  final int? serviceY;
   final int? tip;
-  final int? reportTo;
+  final String? reportTo;
 
   const ProfileEntityTest({
     this.id,

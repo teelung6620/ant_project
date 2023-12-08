@@ -3,5 +3,5 @@ import 'package:ant_project/src/features/user/home/domain/entity/profile_entity_
 import 'package:dartz/dartz.dart';
 
 abstract class ProfileRepository {
-  Future<Either<Failure, List<ProfileEntityTest>>> getProfile();
+  Future<Either<Failure, ProfileEntityTest>> getProfile();
 }

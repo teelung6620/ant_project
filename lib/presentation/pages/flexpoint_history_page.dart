@@ -1,6 +1,5 @@
-import 'package:ant_project/presentation/widget/AppBarCustom.dart';
 import 'package:ant_project/presentation/widget/AppBarCustom2line.dart';
-import 'package:ant_project/presentation/widget/product_layout.dart';
+import 'package:ant_project/src/features/user/flexpoint/presentations/widget/product_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:iconamoon/iconamoon.dart';
 

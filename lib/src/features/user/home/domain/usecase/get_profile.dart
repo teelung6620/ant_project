@@ -7,7 +7,7 @@ class GetProfile {
   final ProfileRepository repository;
 
   GetProfile({required this.repository});
-  Future<Either<Failure, List<ProfileEntityTest>>> call() async {
+  Future<Either<Failure, ProfileEntityTest>> call() async {
     return await repository.getProfile();
   }
 }

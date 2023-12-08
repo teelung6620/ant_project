@@ -4,14 +4,14 @@ import 'package:iconamoon/iconamoon.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
 
 class DetailPage extends StatefulWidget {
-  final String imgPath;
+  //final String imgPath;
   final String title;
   final String describ;
   final String avai;
   final String coins;
   const DetailPage(
       {Key? key,
-      required this.imgPath,
+      // required this.imgPath,
       required this.title,
       required this.describ,
       required this.avai,
@@ -74,27 +74,27 @@ class _DetailState extends State<DetailPage> {
                   Navigator.pop(context);
                 },
               ),
-              Center(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    //color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      bottomLeft: Radius.circular(10),
-                    ),
-                  ),
-                  child: ClipRRect(
-                    child: Image.asset(
-                      widget.imgPath,
-                      width: MediaQuery.of(context).size.width * 0.55,
-                      height: MediaQuery.of(context).size.width *
-                          0.55, // ปรับขนาดรูป
-                      fit: BoxFit
-                          .contain, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
-                    ),
-                  ),
-                ),
-              ),
+              // Center(
+              //   child: Container(
+              //     decoration: const BoxDecoration(
+              //       //color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
+              //       borderRadius: BorderRadius.only(
+              //         topLeft: Radius.circular(10),
+              //         bottomLeft: Radius.circular(10),
+              //       ),
+              //     ),
+              //     child: ClipRRect(
+              //       child: Image.asset(
+              //         widget.imgPath,
+              //         width: MediaQuery.of(context).size.width * 0.55,
+              //         height: MediaQuery.of(context).size.width *
+              //             0.55, // ปรับขนาดรูป
+              //         fit: BoxFit
+              //             .contain, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
+              //       ),
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: MediaQuery.of(context).devicePixelRatio * 3,
               ),

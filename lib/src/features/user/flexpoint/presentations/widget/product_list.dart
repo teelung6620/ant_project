@@ -2,14 +2,14 @@ import 'package:ant_project/presentation/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductList extends StatelessWidget {
-  final String imgPath;
+  //final String imgPath;
   final String title;
   final String describ;
   final String avai;
   final String coins;
   const ProductList(
       {super.key,
-      required this.imgPath,
+      //required this.imgPath,
       required this.title,
       required this.describ,
       required this.avai,
@@ -23,7 +23,7 @@ class ProductList extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DetailPage(
-              imgPath: imgPath.toString(),
+              // imgPath: imgPath.toString(),
               title: title.toString(),
               describ: describ.toString(),
               avai: avai.toString(),
@@ -50,29 +50,29 @@ class ProductList extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                  ),
-                ),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                  ),
-                  child: Image.asset(
-                    imgPath,
-                    width: MediaQuery.of(context).size.width * 0.35,
-                    height:
-                        MediaQuery.of(context).size.width * 0.35, // ปรับขนาดรูป
-                    fit: BoxFit
-                        .contain, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
-                  ),
-                ),
-              ),
+              // Container(
+              //   decoration: const BoxDecoration(
+              //     color: Color.fromARGB(255, 255, 255, 255), // สีพื้นหลัง
+              //     borderRadius: BorderRadius.only(
+              //       topLeft: Radius.circular(10),
+              //       bottomLeft: Radius.circular(10),
+              //     ),
+              //   ),
+              //   child: ClipRRect(
+              //     borderRadius: const BorderRadius.only(
+              //       topLeft: Radius.circular(10),
+              //       bottomLeft: Radius.circular(10),
+              //     ),
+              //     child: Image.asset(
+              //       imgPath,
+              //       width: MediaQuery.of(context).size.width * 0.35,
+              //       height:
+              //           MediaQuery.of(context).size.width * 0.35, // ปรับขนาดรูป
+              //       fit: BoxFit
+              //           .contain, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
+              //     ),
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -87,11 +87,16 @@ class ProductList extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      describ,
+                      describ.length >
+                              50 // 50 คือจำนวนตัวอักษรที่คุณต้องการให้แสดง
+                          ? '${describ.substring(0, 50)}...' // ตัดเป็น ... เมื่อยาวเกิน 50 ตัวอักษร
+                          : describ,
                       style: const TextStyle(
                         fontSize: 12,
                         color: Color.fromARGB(255, 113, 113, 113),
                       ),
+                      maxLines: 2, // จำนวนบรรทัดสูงสุดที่ต้องการให้แสดง
+                      overflow: TextOverflow.ellipsis,
                       softWrap: true,
                     ),
                     SizedBox(
