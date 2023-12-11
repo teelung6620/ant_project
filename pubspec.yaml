@@ -73,6 +73,9 @@ flutter:
         - assets/images/employees_list_manager/
         - assets/images/learning_user/
         - assets/icons/
+        - assets/icons/health/
+        - assets/icons/health/redBlood/
+        - assets/icons/health/whiteBlood/
         - assets/icons/overview_manager/
         - assets/icons/learning_user/
         - assets/gifs/

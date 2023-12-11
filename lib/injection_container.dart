@@ -1,3 +1,8 @@
+import 'package:ant_project/src/features/user/all_health_result/data/datasource/health_remote_datasource.dart';
+import 'package:ant_project/src/features/user/all_health_result/data/repositories/health_repository_impl.dart';
+import 'package:ant_project/src/features/user/all_health_result/domain/repositories/health_repositories.dart';
+import 'package:ant_project/src/features/user/all_health_result/domain/usecase/get_health.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/bloc/get_health_bloc.dart';
 import 'package:ant_project/src/features/user/flexpoint/data/datasource/item_remote_datasource.dart';
 import 'package:ant_project/src/features/user/flexpoint/data/repositories/item_repository_impl.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/repositories/item_repositories.dart';
@@ -41,4 +46,18 @@ Future<void> init() async {
   //DataSource
   sl.registerLazySingleton<ItemRemoteDatasource>(
       () => ItemRemoteDatasourceIMPL(client: sl()));
+
+  //=========================================================================
+
+  //Get Health
+  // * Bloc
+  sl.registerFactory(() => GetHealthBloc(getHealth: sl()));
+  //Usecase
+  sl.registerLazySingleton(() => GetHealth(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<HealthRepository>(
+      () => HealthRepositoryIMPL(remoteDatasource: sl()));
+  //DataSource
+  sl.registerLazySingleton<HealthRemoteDatasource>(
+      () => HealthRemoteDatasourceIMPL(client: sl()));
 }

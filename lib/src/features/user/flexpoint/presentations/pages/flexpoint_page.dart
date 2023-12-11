@@ -26,8 +26,8 @@ class _FlexpointState extends State<FlexpointPage> {
 
   @override
   Widget build(BuildContext context) {
-    double rightValue = MediaQuery.of(context).size.width * 0.03;
-    double bottomValue = MediaQuery.of(context).size.width * 0.1;
+    //double rightValue = MediaQuery.of(context).size.width * 0.03;
+    //double bottomValue = MediaQuery.of(context).size.width * 0.1;
     return DefaultTabController(
       length: 7,
       child: Scaffold(

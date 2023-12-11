@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HealthResult extends StatelessWidget {
   final String imgPath;
   final String title;
+  final VoidCallback onTap;
 
   const HealthResult({
     super.key,
     required this.imgPath,
     required this.title,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -40,10 +43,10 @@ class HealthResult extends StatelessWidget {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 6.0, bottom: 2.0),
-                  child: Image.asset(
+                  child: SvgPicture.asset(
                     imgPath,
-                    width: 100,
-                    height: 100,
+                    width: 90,
+                    height: 90,
                     fit: BoxFit.cover, // ให้รูปทำการ fit ใน CircleAvatar
                   ),
                 ),
