@@ -1,3 +1,3 @@
 class NetworkAPI {
-  static const String baseURL = 'http://10.84.15.57:8080/';
+  static const String baseURL = 'http://192.168.0.119:8080/';
 }

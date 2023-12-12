@@ -1,8 +1,13 @@
 import 'package:ant_project/presentation/pages/flexpoint_bag.dart';
 import 'package:ant_project/presentation/widget/circle_icon2.dart';
 import 'package:ant_project/presentation/widget/employee.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/pages/addictive_page.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/pages/kidney_page.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/pages/lipid_page.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/pages/liver_page.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/pages/redblood_page.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/pages/sugar_page.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/pages/urine_page.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/pages/whiteblood_page.dart';
 import 'package:ant_project/src/features/user/health/presentations/widget/health_result.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +70,12 @@ class HealthResultList extends StatelessWidget {
               HealthResult(
                 imgPath: 'assets/icons/health/kidney.svg',
                 title: 'ผลตรวจสุขภาพ\nการทำงานของไต',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const KidneyPage()),
+                  );
+                },
               ),
             ],
           ),
@@ -75,7 +85,12 @@ class HealthResultList extends StatelessWidget {
               HealthResult(
                 imgPath: 'assets/icons/health/liver.svg',
                 title: 'ผลตรวจสุขภาพ\nการทำงานของตับ',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LiverPage()),
+                  );
+                },
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.height * 0.01,
@@ -83,7 +98,12 @@ class HealthResultList extends StatelessWidget {
               HealthResult(
                 imgPath: 'assets/icons/health/trans-fat.svg',
                 title: '\nผลตรวจไขมันในเลือด',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LipidPage()),
+                  );
+                },
               ),
             ],
           ),
@@ -93,7 +113,12 @@ class HealthResultList extends StatelessWidget {
               HealthResult(
                 imgPath: 'assets/icons/health/urine.svg',
                 title: '\nผลตรวจปัสสาวะ',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const UrinePage()),
+                  );
+                },
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.height * 0.01,
@@ -101,7 +126,13 @@ class HealthResultList extends StatelessWidget {
               HealthResult(
                 imgPath: 'assets/icons/health/addictiveSubstance.svg',
                 title: '\nผลตรวจสารเสพติด',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AddictivePage()),
+                  );
+                },
               ),
             ],
           ),

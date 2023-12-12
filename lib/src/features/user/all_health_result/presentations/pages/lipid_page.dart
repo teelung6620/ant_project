@@ -10,14 +10,14 @@ import 'package:ant_project/src/features/user/health/presentations/widget/health
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SugarPage extends StatefulWidget {
-  const SugarPage({Key? key}) : super(key: key);
+class LipidPage extends StatefulWidget {
+  const LipidPage({Key? key}) : super(key: key);
 
   @override
-  State<SugarPage> createState() => _SugarState();
+  State<LipidPage> createState() => _LipidState();
 }
 
-class _SugarState extends State<SugarPage> {
+class _LipidState extends State<LipidPage> {
   final getHealthBloc = sl<GetHealthBloc>();
 
   @override
@@ -46,7 +46,7 @@ class _SugarState extends State<SugarPage> {
           child: Column(
             children: [
               AppBarCustom2(
-                  title: 'ผลการตรวจระดับ\nกรดยูริก/น้ำตาล',
+                  title: 'ผลการตรวจไขมันในเลือด',
                   imgPath: 'assets/images/Group 721.png',
                   showBackButton: true),
               // RedbloodList(),
@@ -71,7 +71,7 @@ class _SugarState extends State<SugarPage> {
                               var time = state.getHealth.time![timeIndex];
 
                               for (var testResult in time.testResult!) {
-                                if (testResult.category == 3) {
+                                if (testResult.category == 6) {
                                   return GridView.builder(
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(

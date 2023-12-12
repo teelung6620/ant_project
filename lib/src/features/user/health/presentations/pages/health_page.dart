@@ -35,51 +35,51 @@ class _HealthState extends State<HealthPage> {
                   title: 'ผลสุขภาพ',
                   imgPath: 'assets/images/Group 721.png',
                   showBackButton: false),
-              Padding(
-                padding: const EdgeInsets.only(right: 50),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    height: 30.0, // Adjust the height as needed
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.0),
-                      border: Border.all(
-                        color: Color(0xFFEC5B7E), // Change color as needed
-                        width: 2.0,
-                      ),
-                    ),
-                    child: Center(
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton(
-                          borderRadius: BorderRadius.circular(10),
-                          value: dropdownvalue,
-                          icon: const Icon(
-                            Icons.arrow_drop_down,
-                            color: Color(0xFFEC5B7E),
-                          ),
-                          items: items.map((String items) {
-                            return DropdownMenuItem(
-                              value: items,
-                              child: Text(
-                                items,
-                                style: TextStyle(
-                                  color: Color(0xFFEC5B7E),
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropdownvalue = newValue!;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(right: 50),
+              //   child: Align(
+              //     alignment: Alignment.centerRight,
+              //     child: Container(
+              //       height: 30.0, // Adjust the height as needed
+              //       width: 80,
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(30.0),
+              //         border: Border.all(
+              //           color: Color(0xFFEC5B7E), // Change color as needed
+              //           width: 2.0,
+              //         ),
+              //       ),
+              //       child: Center(
+              //         child: DropdownButtonHideUnderline(
+              //           child: DropdownButton(
+              //             borderRadius: BorderRadius.circular(10),
+              //             value: dropdownvalue,
+              //             icon: const Icon(
+              //               Icons.arrow_drop_down,
+              //               color: Color(0xFFEC5B7E),
+              //             ),
+              //             items: items.map((String items) {
+              //               return DropdownMenuItem(
+              //                 value: items,
+              //                 child: Text(
+              //                   items,
+              //                   style: TextStyle(
+              //                     color: Color(0xFFEC5B7E),
+              //                   ),
+              //                 ),
+              //               );
+              //             }).toList(),
+              //             onChanged: (String? newValue) {
+              //               setState(() {
+              //                 dropdownvalue = newValue!;
+              //               });
+              //             },
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               HealthResultList(),
             ],
           ),

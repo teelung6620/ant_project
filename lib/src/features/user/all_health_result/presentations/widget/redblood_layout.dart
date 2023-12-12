@@ -7,6 +7,7 @@ class RedbloodLayout extends StatelessWidget {
   final String value;
   final String unit;
   final String standard;
+  final String status;
 
   const RedbloodLayout({
     super.key,
@@ -15,6 +16,7 @@ class RedbloodLayout extends StatelessWidget {
     required this.value,
     required this.unit,
     required this.standard,
+    required this.status,
   });
 
   @override
@@ -71,7 +73,7 @@ class RedbloodLayout extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(bottom: 8.0, top: 8.0),
                 child: Center(
                   child: Column(
                     children: [
@@ -85,6 +87,28 @@ class RedbloodLayout extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 13,
                             color: const Color.fromARGB(255, 108, 108, 108)),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        status == '1'
+                            ? 'อยู่ในเกณฑ์มาตรฐาน'
+                            : status == '2'
+                                ? 'อยู่ในเกณฑ์เสี่ยงมาตรฐาน'
+                                : status == '3'
+                                    ? 'ไม่อยู่ในเกณฑ์มาตรฐาน'
+                                    : 'ไม่ทราบสถานะ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: status == '1'
+                              ? Color.fromARGB(255, 0, 156, 5)
+                              : status == '2'
+                                  ? Color.fromARGB(255, 246, 208, 19)
+                                  : status == '3'
+                                      ? Colors.red
+                                      : Colors
+                                          .black, // สีเริ่มต้นหากไม่ตรงกับเงื่อนไขใด ๆ
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],

@@ -76,6 +76,12 @@ flutter:
         - assets/icons/health/
         - assets/icons/health/redBlood/
         - assets/icons/health/whiteBlood/
+        - assets/icons/health/liver/
+        - assets/icons/health/addictiveSubstance/
+        - assets/icons/health/kidney/
+        - assets/icons/health/urine/
+        - assets/icons/health/uric_acid/
+        - assets/icons/health/lipid/
         - assets/icons/overview_manager/
         - assets/icons/learning_user/
         - assets/gifs/

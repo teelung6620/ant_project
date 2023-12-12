@@ -63,7 +63,7 @@ class _WhitebloodState extends State<WhitebloodPage> {
                         return Text('failure');
                       } else if (state is GetHealthSuccess) {
                         return Container(
-                          height: MediaQuery.of(context).size.height * 1.5,
+                          height: MediaQuery.of(context).size.height * 1.73,
                           child: ListView.builder(
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: state.getHealth.time!.length,
@@ -72,44 +72,33 @@ class _WhitebloodState extends State<WhitebloodPage> {
 
                               for (var testResult in time.testResult!) {
                                 if (testResult.category == 2) {
-                                  return ListView.builder(
+                                  return GridView.builder(
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount:
+                                          2, // number of items in each row
+                                      mainAxisSpacing:
+                                          5.0, // spacing between rows
+                                      crossAxisSpacing:
+                                          2.0, // spacing between columns
+                                      childAspectRatio: 0.91,
+                                    ),
+                                    padding: EdgeInsets.all(8.0),
                                     shrinkWrap: true,
                                     physics: NeverScrollableScrollPhysics(),
-                                    itemCount: testResult.result!.length ~/ 2,
+                                    itemCount: testResult.result!.length,
                                     itemBuilder: (context, resultIndex) {
                                       var result1 =
-                                          testResult.result![resultIndex * 2];
-                                      var result2 = testResult
-                                          .result![resultIndex * 2 + 1];
+                                          testResult.result![resultIndex];
 
-                                      return Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          RedbloodLayout(
-                                            imgPath:
-                                                'assets/icons/health/${result1.icon}',
-                                            section: result1.section.toString(),
-                                            value: result1.value.toString(),
-                                            unit: result1.unit.toString(),
-                                            standard:
-                                                result1.standard.toString(),
-                                          ),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.007), // ระยะห่างระหว่าง 2 รายการ
-                                          RedbloodLayout(
-                                            imgPath:
-                                                'assets/icons/health/${result2.icon}',
-                                            section: result2.section.toString(),
-                                            value: result2.value.toString(),
-                                            unit: result2.unit.toString(),
-                                            standard:
-                                                result2.standard.toString(),
-                                          ),
-                                        ],
+                                      return RedbloodLayout(
+                                        imgPath:
+                                            'assets/icons/health/${result1.icon}',
+                                        section: result1.section.toString(),
+                                        value: result1.value.toString(),
+                                        unit: result1.unit.toString(),
+                                        standard: result1.standard.toString(),
+                                        status: result1.status.toString(),
                                       );
                                     },
                                   );

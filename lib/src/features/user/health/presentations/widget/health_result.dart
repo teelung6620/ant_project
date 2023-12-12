@@ -20,8 +20,8 @@ class HealthResult extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          width: 150,
-          height: 150,
+          width: MediaQuery.of(context).size.width * 0.4,
+          height: MediaQuery.of(context).size.height * 0.18,
           //shadowColor: Colors.black,
           decoration: BoxDecoration(
             color: Color(0xFFFFFFFF),
@@ -42,7 +42,7 @@ class HealthResult extends StatelessWidget {
             children: [
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 6.0, bottom: 2.0),
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 2.0),
                   child: SvgPicture.asset(
                     imgPath,
                     width: 90,
