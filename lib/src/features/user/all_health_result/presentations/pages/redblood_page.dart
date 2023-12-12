@@ -63,7 +63,7 @@ class _RedbloodState extends State<RedbloodPage> {
                         return Text('failure');
                       } else if (state is GetHealthSuccess) {
                         return Container(
-                          height: MediaQuery.of(context).size.height * 1.23,
+                          height: MediaQuery.of(context).size.height * 1.33,
                           child: ListView.builder(
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: state.getHealth.time!.length,

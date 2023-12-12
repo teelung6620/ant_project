@@ -63,7 +63,7 @@ class _WhitebloodState extends State<WhitebloodPage> {
                         return Text('failure');
                       } else if (state is GetHealthSuccess) {
                         return Container(
-                          height: MediaQuery.of(context).size.height * 1.73,
+                          height: MediaQuery.of(context).size.height * 1.85,
                           child: ListView.builder(
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: state.getHealth.time!.length,
