@@ -1,4 +1,4 @@
-import 'package:ant_project/presentation/pages/detail_page.dart';
+import 'package:ant_project/src/features/user/flexpoint/presentations/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class MedicalTreatment extends StatelessWidget {

@@ -8,6 +8,11 @@ import 'package:ant_project/src/features/user/flexpoint/data/repositories/item_r
 import 'package:ant_project/src/features/user/flexpoint/domain/repositories/item_repositories.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/usecase/get_item.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
+import 'package:ant_project/src/features/user/health_check/data/datasource/hospital_remote_datasource.dart';
+import 'package:ant_project/src/features/user/health_check/data/repositories/hospital_repository_impl.dart';
+import 'package:ant_project/src/features/user/health_check/domain/repositories/hospital_repositories.dart';
+import 'package:ant_project/src/features/user/health_check/domain/usecase/get_hospital.dart';
+import 'package:ant_project/src/features/user/health_check/presentations/bloc/get_hospital_bloc.dart';
 import 'package:ant_project/src/features/user/home/data/data_source/profile_remote_datasource.dart';
 import 'package:ant_project/src/features/user/home/data/repositories/profile_repository_impl.dart';
 import 'package:ant_project/src/features/user/home/domain/repositories/profile_repositories.dart';
@@ -60,4 +65,18 @@ Future<void> init() async {
   //DataSource
   sl.registerLazySingleton<HealthRemoteDatasource>(
       () => HealthRemoteDatasourceIMPL(client: sl()));
+
+  //=========================================================================
+
+  //Get Hospital
+  // * Bloc
+  sl.registerFactory(() => GetHospitalBloc(getHospital: sl()));
+  //Usecase
+  sl.registerLazySingleton(() => GetHospital(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<HospitalRepository>(
+      () => HospitalRepositoryIMPL(remoteDatasource: sl()));
+  //DataSource
+  sl.registerLazySingleton<HospitalRemoteDatasource>(
+      () => HospitalRemoteDatasourceIMPL(client: sl()));
 }

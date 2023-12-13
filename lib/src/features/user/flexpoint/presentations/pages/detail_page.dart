@@ -4,7 +4,7 @@ import 'package:iconamoon/iconamoon.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
 
 class DetailPage extends StatefulWidget {
-  //final String imgPath;
+  // final String imgPath;
   final String title;
   final String describ;
   final String avai;

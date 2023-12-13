@@ -79,7 +79,9 @@ class _FlexpointHistoryState extends State<FlexpointHistoryPage> {
                 Container(
                   child: const SingleChildScrollView(
                     child: Column(
-                      children: [ProductLayout()],
+                      children: [
+                        //ProductLayout()
+                      ],
                     ),
                   ),
                 ),

@@ -1,4 +1,4 @@
-import 'package:ant_project/presentation/pages/detail_page.dart';
+import 'package:ant_project/src/features/user/flexpoint/presentations/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductList extends StatelessWidget {
@@ -19,7 +19,7 @@ class ProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        final result = await Navigator.push(
+        Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => DetailPage(

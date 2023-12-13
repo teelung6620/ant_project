@@ -116,7 +116,7 @@ class _FlexpointState extends State<FlexpointPage> {
                                 itemCount: state.getItem.length,
                                 itemBuilder: (context, index) {
                                   return ProductList(
-                                      // imgPath: '${state.getItem.first.image}',
+                                      // imgPath: '${state.getItem[1].image}',
                                       title: '${state.getItem[index].name}',
                                       describ: '${state.getItem[index].detail}',
                                       avai: '${state.getItem[index].category}',
