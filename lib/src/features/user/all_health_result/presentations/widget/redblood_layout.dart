@@ -83,7 +83,7 @@ class RedbloodLayout extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        standard + ' ' + unit,
+                        standard,
                         style: TextStyle(
                             fontSize: 13,
                             color: const Color.fromARGB(255, 108, 108, 108)),

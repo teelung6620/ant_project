@@ -1,17 +1,20 @@
 import 'package:ant_project/src/features/user/flexpoint/presentations/pages/detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MedicalTreatment extends StatelessWidget {
-  final String imgPath;
-  final String title;
-  final String location;
-  final String date;
-  final String totalPrice;
+  final String? imgPath;
+  final String? title;
+  final String? location;
+  final String? date;
+  final String? category;
+  final String? totalPrice;
   final VoidCallback onTap;
 
   const MedicalTreatment({
     super.key,
     required this.imgPath,
+    required this.category,
     required this.title,
     required this.location,
     required this.date,
@@ -49,16 +52,48 @@ class MedicalTreatment extends StatelessWidget {
                   // mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(
+                        flex: 1,
+                        child: ClipOval(
+                          child: SvgPicture.asset(
+                            imgPath.toString(),
+                            height: MediaQuery.of(context).size.height * 0.1,
+                            width: MediaQuery.of(context).size.width * 0.1,
+                            fit: BoxFit.contain,
+                          ),
+                        )),
+                    Expanded(
                       flex: 1,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            imgPath,
-                            width: MediaQuery.of(context).size.width * 0.15,
+                          // Image.asset(
+                          //   imgPath,
+                          //   width: MediaQuery.of(context).size.width * 0.15,
 
-                            fit: BoxFit
-                                .cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
+                          //   fit: BoxFit
+                          //       .cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
+                          // ),
+                          Text(
+                            category == '1'
+                                ? 'OPD'
+                                : category == '2'
+                                    ? 'IPD'
+                                    : category == '3'
+                                        ? 'DENTAL'
+                                        : 'ไม่ทราบสถานะ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: category == '1'
+                                  ? Colors.blue
+                                  : category == '2'
+                                      ? Colors.red
+                                      : category == '3'
+                                          ? Colors.green
+                                          : Colors
+                                              .black, // สีเริ่มต้นหากไม่ตรงกับเงื่อนไขใด ๆ
+                            ),
+                            textAlign: TextAlign.center,
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.01,
@@ -99,7 +134,7 @@ class MedicalTreatment extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            title,
+                            title.toString(),
                             style: const TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.bold),
                           ),
@@ -107,7 +142,7 @@ class MedicalTreatment extends StatelessWidget {
                             height: MediaQuery.of(context).size.height * 0.01,
                           ),
                           Text(
-                            location,
+                            location.toString(),
                             style: TextStyle(
                               fontSize: 12,
                             ),
@@ -116,7 +151,7 @@ class MedicalTreatment extends StatelessWidget {
                             height: MediaQuery.of(context).size.height * 0.005,
                           ),
                           Text(
-                            date,
+                            date.toString(),
                             style: TextStyle(
                               fontSize: 12,
                             ),
@@ -125,7 +160,7 @@ class MedicalTreatment extends StatelessWidget {
                             height: MediaQuery.of(context).size.height * 0.005,
                           ),
                           Text(
-                            totalPrice + ' บาท',
+                            totalPrice.toString() + ' บาท',
                             style: TextStyle(
                               fontSize: 12,
                             ),

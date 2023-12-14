@@ -45,6 +45,8 @@ dependencies:
     http: ^1.1.0
     get_it: ^7.6.4
     flutter_rating_bar: ^4.0.0
+    pie_chart: ^5.4.0
+    intl: ^0.17.0
     # The following adds the Cupertino Icons font to your application.
     # Use with the CupertinoIcons class for iOS style icons.
 
@@ -83,6 +85,7 @@ flutter:
         - assets/icons/health/urine/
         - assets/icons/health/uric_acid/
         - assets/icons/health/lipid/
+        - assets/icons/health/Treatment-Report/
         - assets/icons/overview_manager/
         - assets/icons/learning_user/
         - assets/gifs/
