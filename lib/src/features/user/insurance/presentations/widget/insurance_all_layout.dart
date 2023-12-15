@@ -1,19 +1,20 @@
-import 'package:ant_project/src/features/user/flexpoint/presentations/pages/detail_page.dart';
-import 'package:ant_project/presentation/pages/guarantee_des_page.dart';
+import 'package:ant_project/src/features/user/insurance/presentations/pages/guarantee_des_page.dart';
 import 'package:flutter/material.dart';
 
-class GuaranteeLayout extends StatelessWidget {
+class InsuranceAllLayout extends StatelessWidget {
   final String imgPath;
   final String title;
-  final String age;
+  final String company;
+  final String detail;
   final String distance;
   final VoidCallback onTap;
 
-  const GuaranteeLayout({
+  const InsuranceAllLayout({
     super.key,
     required this.imgPath,
     required this.title,
-    required this.age,
+    required this.company,
+    required this.detail,
     required this.distance,
     required this.onTap,
   });
@@ -28,8 +29,9 @@ class GuaranteeLayout extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => GuaranteeDesPage(
+                      detail: detail.toString(),
                       title: title.toString(),
-                      age: age.toString(),
+                      company: company.toString(),
                       distance: distance.toString(),
                     )),
           );
@@ -57,7 +59,7 @@ class GuaranteeLayout extends StatelessWidget {
                 width: 10,
               ),
               Container(
-                child: Image.asset(
+                child: Image.network(
                   imgPath,
                   width: MediaQuery.of(context).size.width * 0.2,
 
@@ -78,13 +80,13 @@ class GuaranteeLayout extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.width * 0.02,
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'สวัสดิการประกันกลุ่ม คุ้มครองครบ จบใน\nแผนเดียว เพื่อพนักงานคนสำคัญของคุณ',
+                              detail,
                               style: TextStyle(
                                 fontSize: 12,
                                 color: Color.fromARGB(255, 113, 113, 113),
@@ -103,14 +105,14 @@ class GuaranteeLayout extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'ช่วงอายุผู้ขอเอาประกันภัย',
+                              'บริษัท',
                               style: TextStyle(
                                 fontSize: 10,
                                 color: Color.fromARGB(255, 0, 0, 0),
                               ),
                             ),
                             Text(
-                              age,
+                              company,
                               style: const TextStyle(
                                 fontSize: 15,
                                 color: Color.fromARGB(255, 0, 0, 0),
@@ -132,7 +134,7 @@ class GuaranteeLayout extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              distance,
+                              distance + ' ปี',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Color.fromARGB(255, 0, 0, 0),

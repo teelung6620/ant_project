@@ -54,7 +54,7 @@ class _FirstState extends State<FirstPage> {
                                 return Text('failure');
                               } else if (state is GetProfileSuccess) {
                                 return TextHeader(
-                                  title: 'Hi, ${state.getProfile.firstname}',
+                                  title: 'Hi, ${state.getProfile.firstnameTh}',
                                 );
                               }
                               return Container();
@@ -78,8 +78,13 @@ class _FirstState extends State<FirstPage> {
                             return CircleAvatar(
                               radius: 30,
                               child: ClipOval(
-                                child: Image.network(
-                                    '${NetworkAPI.baseURL}api/image/profile/${state.getProfile.image}'),
+                                child: state.getProfile.imageProfile != null
+                                    ? Image.network(
+                                        '${NetworkAPI.baseURL}api/image/profile/${state.getProfile.imageProfile}',
+                                      )
+                                    : Icon(Icons.account_circle,
+                                        size:
+                                            20), // แทนด้วย Account Icon ของคุณ
                               ),
                             );
                           }

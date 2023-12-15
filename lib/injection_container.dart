@@ -18,6 +18,11 @@ import 'package:ant_project/src/features/user/home/data/repositories/profile_rep
 import 'package:ant_project/src/features/user/home/domain/repositories/profile_repositories.dart';
 import 'package:ant_project/src/features/user/home/domain/usecase/get_profile.dart';
 import 'package:ant_project/src/features/user/home/presentations/bloc/get_profile_bloc.dart';
+import 'package:ant_project/src/features/user/insurance/data/datasource/insurance_remote_datasource.dart';
+import 'package:ant_project/src/features/user/insurance/data/repositories/insurance_repository_impl.dart';
+import 'package:ant_project/src/features/user/insurance/domain/repositories/insurance_repositories.dart';
+import 'package:ant_project/src/features/user/insurance/domain/usecase/get_insurance.dart';
+import 'package:ant_project/src/features/user/insurance/presentations/bloc/get_insurance_bloc.dart';
 import 'package:ant_project/src/features/user/treatment_history/data/datasource/treatment_remote_datasource.dart';
 import 'package:ant_project/src/features/user/treatment_history/data/repositories/treatment_repository_impl.dart';
 import 'package:ant_project/src/features/user/treatment_history/domain/repositories/health_repositories.dart';
@@ -98,4 +103,18 @@ Future<void> init() async {
   //DataSource
   sl.registerLazySingleton<TreatmentRemoteDatasource>(
       () => TreatmentRemoteDatasourceIMPL(client: sl()));
+
+  //=========================================================================
+
+  //Get Insurance
+  // * Bloc
+  sl.registerFactory(() => GetInsuranceBloc(getInsurance: sl()));
+  //Usecase
+  sl.registerLazySingleton(() => GetInsurance(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<InsuranceRepository>(
+      () => InsuranceRepositoryIMPL(remoteDatasource: sl()));
+  //DataSource
+  sl.registerLazySingleton<InsuranceRemoteDatasource>(
+      () => InsuranceRemoteDatasourceIMPL(client: sl()));
 }

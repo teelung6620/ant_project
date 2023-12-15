@@ -1,7 +1,7 @@
 import 'package:ant_project/presentation/pages/flexpoint_bag.dart';
 import 'package:ant_project/presentation/pages/flexpoint_history_page.dart';
-import 'package:ant_project/presentation/pages/guarantee_page.dart';
 import 'package:ant_project/src/features/user/health_check/presentations/pages/health_check_page.dart';
+import 'package:ant_project/src/features/user/insurance/presentations/pages/insurance_page.dart';
 import 'package:ant_project/src/features/user/treatment_history/presentations/pages/medical_treatment_page.dart';
 import 'package:ant_project/presentation/pages/my_guarantee_page.dart';
 import 'package:ant_project/presentation/widget/circle_icon2.dart';
@@ -108,7 +108,7 @@ class CircleLayout extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const GuaranteePage()),
+                        builder: (context) => const InsurancePage()),
                   );
                 },
               ),

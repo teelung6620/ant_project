@@ -4,7 +4,6 @@ import 'package:ant_project/presentation/widget/AppBarCustom2.dart';
 import 'package:ant_project/presentation/widget/button_exchange_bag.dart';
 import 'package:ant_project/presentation/widget/employee.dart';
 import 'package:ant_project/presentation/widget/employee_layout.dart';
-import 'package:ant_project/presentation/widget/guarantee_list.dart';
 import 'package:ant_project/presentation/widget/privileges_2.dart';
 import 'package:ant_project/presentation/widget/silver_appbar.dart';
 import 'package:ant_project/presentation/widget/silver_appbar_tabbar.dart';

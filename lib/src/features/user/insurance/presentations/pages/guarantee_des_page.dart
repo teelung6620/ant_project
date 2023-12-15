@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 
 class GuaranteeDesPage extends StatefulWidget {
   final String title;
-  final String age;
+  final String company;
   final String distance;
+  final String detail;
   const GuaranteeDesPage(
       {Key? key,
-      required this.age,
+      required this.company,
       required this.distance,
+      required this.detail,
       required this.title})
       : super(key: key);
 
@@ -45,7 +47,7 @@ class _GuaranteeDesState extends State<GuaranteeDesPage> {
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01),
                       Text(
-                        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                        widget.detail,
                         style: TextStyle(fontSize: 13, color: Colors.grey),
                       ),
                       Divider(),
@@ -84,7 +86,7 @@ class _GuaranteeDesState extends State<GuaranteeDesPage> {
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01),
                       Text(
-                        widget.age,
+                        widget.company,
                         style: TextStyle(fontSize: 13, color: Colors.grey),
                       ),
                       Divider(),
