@@ -1,64 +1,121 @@
 import 'package:equatable/equatable.dart';
 
 class ItemEntity extends Equatable {
-  final int? id;
+  final int? idProduct;
   final String? name;
-  final int? quantity;
   final String? detail;
-  final int? category;
-  final int? price;
-  final int? discount;
-  final int? newPrice;
-  final String? brand;
-  final int? skuCode;
-  final int? warranty;
-  final String? warrantyDetail;
-  final int? deliveryType;
-  final int? deliveryTime;
-  final int? deliveryCost;
-  final List<String>? image;
-  final String? type;
-  final int? count;
+  final String? image;
+  final int? idProductType;
+  final List<Item>? items;
+  final List<Image>? images;
+  final List<GetItemModelOption>? options;
 
   const ItemEntity({
-    this.id,
+    this.idProduct,
     this.name,
-    this.quantity,
     this.detail,
-    this.category,
-    this.price,
-    this.discount,
-    this.newPrice,
-    this.brand,
-    this.skuCode,
-    this.warranty,
-    this.warrantyDetail,
-    this.deliveryType,
-    this.deliveryTime,
-    this.deliveryCost,
     this.image,
-    this.type,
-    this.count,
+    this.idProductType,
+    this.items,
+    this.images,
+    this.options,
   });
   @override
   List<Object?> get props => [
-        id,
+        idProduct,
         name,
-        quantity,
         detail,
-        category,
-        price,
-        discount,
-        newPrice,
-        brand,
-        skuCode,
-        warranty,
-        warrantyDetail,
-        deliveryType,
-        deliveryTime,
-        deliveryCost,
         image,
-        type,
-        count,
+        idProductType,
+        items,
+        images,
+        options,
       ];
+}
+
+class Image {
+  final int? idProductImage;
+  final String? image;
+
+  Image({
+    this.idProductImage,
+    this.image,
+  });
+  toJson() {}
+}
+
+class Item {
+  final int? idProductItem;
+  final String? sku;
+  final String? image;
+  final int? active;
+  final int? idProductGroup;
+  final int? idReward;
+  final int? quantity;
+  final int? price;
+  final int? numberOfRedeem;
+  final List<Coin>? coins;
+  final List<ItemOption>? options;
+
+  Item({
+    this.idProductItem,
+    this.sku,
+    this.image,
+    this.active,
+    this.idProductGroup,
+    this.idReward,
+    this.quantity,
+    this.price,
+    this.numberOfRedeem,
+    this.coins,
+    this.options,
+  });
+  toJson() {}
+}
+
+class Coin {
+  final int? amount;
+
+  Coin({
+    this.amount,
+  });
+  toJson() {}
+}
+
+class ItemOption {
+  final int? idVariationOption;
+  final String? value;
+  final int? idVariation;
+
+  ItemOption({
+    this.idVariationOption,
+    this.value,
+    this.idVariation,
+  });
+  toJson() {}
+}
+
+class GetItemModelOption {
+  final int? idVariation;
+  final String? name;
+  final List<OptionOption>? option;
+
+  GetItemModelOption({
+    this.idVariation,
+    this.name,
+    this.option,
+  });
+  toJson() {}
+}
+
+class OptionOption {
+  final int? idVariationOption;
+  final String? value;
+
+  OptionOption({
+    this.idVariationOption,
+    this.value,
+  });
+
+  toJson() {}
 }

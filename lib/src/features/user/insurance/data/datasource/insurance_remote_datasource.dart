@@ -17,10 +17,7 @@ class InsuranceRemoteDatasourceIMPL implements InsuranceRemoteDatasource {
   Future<List<GetInsuranceModel>> getInsurance() async {
     final response = await client.get(
       Uri.parse('${NetworkAPI.baseURL}api/insurance/getAllInsurance'),
-      headers: {
-        'x-access-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEVtcGxveWVlcyI6MSwiaWRDb21wYW55IjoxLCJpZFJvbGUiOjQsImlhdCI6MTcwMjYxMDM2NSwiZXhwIjoxNzAyNjk2NzY1fQ.HKx-gx0OhjrI1norWsEYvqV8NEUNNgFRhp6mqZ7RE3Y'
-      },
+      headers: {'x-access-token': NetworkAPI.tokenURL},
     );
     if (response.statusCode == 200) {
       return insuranceListFromJson(response.body);

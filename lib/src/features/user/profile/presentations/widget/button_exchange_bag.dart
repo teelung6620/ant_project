@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
 class ButtonExchangeBag extends StatefulWidget {
-  const ButtonExchangeBag({Key? key}) : super(key: key);
+  final String flexpoint;
+  const ButtonExchangeBag({Key? key, required this.flexpoint})
+      : super(key: key);
 
   @override
   _ButtonExchangeBagState createState() => _ButtonExchangeBagState();
@@ -121,11 +123,11 @@ class _ButtonExchangeBagState extends State<ButtonExchangeBag> {
               //crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  '400',
+                  widget.flexpoint,
                   style: TextStyle(color: Colors.black, fontSize: 32),
                 ),
                 Text(
-                  '/500',
+                  '/1500',
                   style: TextStyle(color: Color(0xFF757575), fontSize: 13),
                 ),
               ],

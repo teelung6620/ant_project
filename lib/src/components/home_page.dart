@@ -1,9 +1,8 @@
-import 'package:ant_project/src/features/user/home/presentations/pages/first_page.dart';
-import 'package:ant_project/presentation/pages/flexpoint_bag.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/pages/flexpoint_page.dart';
 import 'package:ant_project/src/features/user/health/presentations/pages/health_page.dart';
 import 'package:ant_project/presentation/pages/privileges_page.dart';
 import 'package:ant_project/presentation/pages/profile_page.dart';
+import 'package:ant_project/src/features/user/profile/presentations/pages/first_page.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ming_cute_icons/ming_cute_icons.dart';

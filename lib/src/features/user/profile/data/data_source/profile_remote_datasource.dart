@@ -16,10 +16,7 @@ class ProfileRemoteDatasourceIMPL implements ProfileRemoteDatasource {
   Future<GetProfileModel> getProfile() async {
     final response = await client.get(
       Uri.parse('${NetworkAPI.baseURL}api/profile'),
-      headers: {
-        'x-access-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEVtcGxveWVlcyI6MSwiaWRDb21wYW55IjoxLCJpZFJvbGUiOjQsImlhdCI6MTcwMjYxMDM2NSwiZXhwIjoxNzAyNjk2NzY1fQ.HKx-gx0OhjrI1norWsEYvqV8NEUNNgFRhp6mqZ7RE3Y'
-      },
+      headers: {'x-access-token': NetworkAPI.tokenURL},
     );
     if (response.statusCode == 200) {
       return userListFromJson(response.body);
