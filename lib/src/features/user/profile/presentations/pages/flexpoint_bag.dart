@@ -1,8 +1,8 @@
 import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/presentation/widget/AppBarCustom2.dart';
-import 'package:ant_project/src/features/user/home/presentations/bloc/get_profile_bloc.dart';
-import 'package:ant_project/src/features/user/home/presentations/widget/button_exchange_bag.dart';
 import 'package:ant_project/presentation/widget/silver_appbar.dart';
+import 'package:ant_project/src/features/user/profile/presentations/bloc/get_profile_bloc.dart';
+import 'package:ant_project/src/features/user/profile/presentations/widget/button_exchange_bag.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,7 +87,7 @@ class _FlexpointBagState extends State<FlexpointBagPage> {
                                   sections: [
                                     PieChartSectionData(
                                       radius: 12,
-                                      color: Color(0xFFFFE4EB),
+                                      color: Color.fromARGB(255, 255, 194, 210),
                                       value: state
                                               .getProfile.uniwelfareFlexcoins
                                               ?.toDouble() ??
@@ -97,19 +97,19 @@ class _FlexpointBagState extends State<FlexpointBagPage> {
                                       // title:
                                       //     '${state.getProfile.uniwelfareFlexcoins}',
                                     ),
-                                    PieChartSectionData(
-                                      radius: 12,
-                                      color: Color.fromARGB(255, 245, 245, 245),
-                                      value: (1500 -
-                                              (state.getProfile
-                                                      .uniwelfareFlexcoins
-                                                      ?.toDouble() ??
-                                                  0.0))
-                                          .clamp(0.0, 1500.0),
-                                      title: '',
-                                      // title:
-                                      //     '${(1500 - (state.getProfile.uniwelfareFlexcoins?.toDouble() ?? 0.0)).toStringAsFixed(0)}',
-                                    ),
+                                    // PieChartSectionData(
+                                    //   radius: 12,
+                                    //   color: Color.fromARGB(255, 245, 245, 245),
+                                    //   value: (1500 -
+                                    //           (state.getProfile
+                                    //                   .uniwelfareFlexcoins
+                                    //                   ?.toDouble() ??
+                                    //               0.0))
+                                    //       .clamp(0.0, 1500.0),
+                                    //   title: '',
+                                    //   // title:
+                                    //   //     '${(1500 - (state.getProfile.uniwelfareFlexcoins?.toDouble() ?? 0.0)).toStringAsFixed(0)}',
+                                    // ),
                                   ],
                                   startDegreeOffset: -90,
                                 )),
@@ -118,7 +118,7 @@ class _FlexpointBagState extends State<FlexpointBagPage> {
                                   sections: [
                                     PieChartSectionData(
                                       radius: 12,
-                                      color: Color(0xFFFCB0C2),
+                                      color: Color.fromARGB(255, 255, 231, 237),
 
                                       value: state
                                               .getProfile.uniwelfareFlexcoins
@@ -129,19 +129,19 @@ class _FlexpointBagState extends State<FlexpointBagPage> {
                                       // title:
                                       //     '${state.getProfile.uniwelfareFlexcoins}',
                                     ),
-                                    PieChartSectionData(
-                                      radius: 12,
-                                      color: Color.fromARGB(255, 237, 237, 237),
-                                      value: (1500 -
-                                              (state.getProfile
-                                                      .uniwelfareFlexcoins
-                                                      ?.toDouble() ??
-                                                  0.0))
-                                          .clamp(0.0, 1500.0),
-                                      title: '',
-                                      // title:
-                                      //     '${(1500 - (state.getProfile.uniwelfareFlexcoins?.toDouble() ?? 0.0)).toStringAsFixed(0)}',
-                                    ),
+                                    // PieChartSectionData(
+                                    //   radius: 12,
+                                    //   color: Color.fromARGB(255, 237, 237, 237),
+                                    //   value: (1500 -
+                                    //           (state.getProfile
+                                    //                   .uniwelfareFlexcoins
+                                    //                   ?.toDouble() ??
+                                    //               0.0))
+                                    //       .clamp(0.0, 1500.0),
+                                    //   title: '',
+                                    //   // title:
+                                    //   //     '${(1500 - (state.getProfile.uniwelfareFlexcoins?.toDouble() ?? 0.0)).toStringAsFixed(0)}',
+                                    // ),
                                   ],
                                   startDegreeOffset: -90,
                                 )),

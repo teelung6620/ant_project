@@ -6,13 +6,17 @@ import 'package:item_count_number_button/item_count_number_button.dart';
 class DetailPage extends StatefulWidget {
   final String imgPath;
   final String title;
+  final String color;
+  final String storage;
   //final String describ;
   final String avai;
   final String coins;
   const DetailPage(
       {Key? key,
       required this.imgPath,
+      required this.storage,
       required this.title,
+      required this.color,
       //required this.describ,
       required this.avai,
       required this.coins})
@@ -132,6 +136,27 @@ class _DetailState extends State<DetailPage> {
                       Center(
                         child: Text(
                           widget.title,
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                              fontSize: 25,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).devicePixelRatio * 3,
+                      ),
+                      Center(
+                        child: Text(
+                          widget.color,
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                              fontSize: 25,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          widget.storage,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                               fontSize: 25,

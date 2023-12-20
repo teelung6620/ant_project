@@ -1,4 +1,3 @@
-import 'package:ant_project/src/features/user/home/data/model/get_profile_model.dart';
 import 'package:equatable/equatable.dart';
 
 class ProfileEntityTest extends Equatable {
@@ -65,7 +64,7 @@ class ProfileEntityTest extends Equatable {
   final dynamic updateBy;
   final String? roleName;
   final List<String>? roles;
-  final List<Education>? educations;
+  final List<dynamic>? educations;
   final dynamic imageProfile;
 
   const ProfileEntityTest({

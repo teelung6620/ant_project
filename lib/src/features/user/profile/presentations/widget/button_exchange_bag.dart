@@ -126,10 +126,10 @@ class _ButtonExchangeBagState extends State<ButtonExchangeBag> {
                   widget.flexpoint,
                   style: TextStyle(color: Colors.black, fontSize: 32),
                 ),
-                Text(
-                  '/1500',
-                  style: TextStyle(color: Color(0xFF757575), fontSize: 13),
-                ),
+                // Text(
+                //   '/1500',
+                //   style: TextStyle(color: Color(0xFF757575), fontSize: 13),
+                // ),
               ],
             ),
           ),

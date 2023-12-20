@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ant_project/src/features/user/home/domain/entity/profile_entity_test.dart';
+import 'package:ant_project/src/features/user/profile/domain/entity/profile_entity_test.dart';
 
 GetProfileModel userListFromJson(String str) =>
     GetProfileModel.fromJson(json.decode(str));
@@ -8,7 +8,7 @@ GetProfileModel userListFromJson(String str) =>
 String userListToJson(GetProfileModel data) => json.encode(data.toJson());
 
 class GetProfileModel extends ProfileEntityTest {
-  GetProfileModel({
+  const GetProfileModel({
     required super.idEmployees,
     required super.employeeId,
     required super.titleTh,

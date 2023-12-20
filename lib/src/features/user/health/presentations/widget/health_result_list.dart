@@ -1,4 +1,3 @@
-import 'package:ant_project/src/features/user/home/presentations/pages/flexpoint_bag.dart';
 import 'package:ant_project/presentation/widget/circle_icon2.dart';
 import 'package:ant_project/presentation/widget/employee.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/pages/addictive_page.dart';

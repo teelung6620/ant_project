@@ -1,9 +1,9 @@
 import 'package:ant_project/src/core/error/failure.dart';
-import 'package:ant_project/src/features/user/home/data/model/get_profile_model.dart';
-import 'package:ant_project/src/features/user/home/domain/entity/profile_entity_test.dart';
-import 'package:ant_project/src/features/user/home/domain/usecase/get_profile.dart';
-import 'package:bloc/bloc.dart';
+import 'package:ant_project/src/features/user/profile/domain/entity/profile_entity_test.dart';
+import 'package:ant_project/src/features/user/profile/domain/usecase/get_profile.dart';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'get_profile_event.dart';
 part 'get_profile_state.dart';

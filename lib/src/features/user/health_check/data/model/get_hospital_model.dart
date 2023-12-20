@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:ant_project/src/features/user/health_check/domain/entity/hospital_entity.dart';
-import 'package:ant_project/src/features/user/home/domain/entity/profile_entity_test.dart';
 
 List<GetHospitalModel> hospitalListFromJson(String str) =>
     List<GetHospitalModel>.from(

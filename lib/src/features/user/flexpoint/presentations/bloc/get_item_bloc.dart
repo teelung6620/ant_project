@@ -1,8 +1,9 @@
 import 'package:ant_project/src/core/error/failure.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entity.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/usecase/get_item.dart';
-import 'package:bloc/bloc.dart';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'get_item_event.dart';
 part 'get_item_state.dart';

@@ -1,4 +1,3 @@
-import 'package:ant_project/src/features/user/home/data/model/get_profile_model.dart';
 import 'package:equatable/equatable.dart';
 
 class HospitalEntity extends Equatable {

@@ -4,13 +4,17 @@ import 'package:flutter/material.dart';
 class ProductList extends StatelessWidget {
   final String imgPath;
   final String title;
+  final String color;
+  final String storage;
   //final String describ;
-  final String avai;
+  final String? avai;
   final String? coins;
   const ProductList(
       {super.key,
       required this.imgPath,
+      required this.storage,
       required this.title,
+      required this.color,
       //required this.describ,
       required this.avai,
       this.coins});
@@ -23,6 +27,8 @@ class ProductList extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DetailPage(
+              storage: storage.toString(),
+              color: color.toString(),
               imgPath: imgPath.toString(),
               title: title.toString(),
               //describ: describ.toString(),

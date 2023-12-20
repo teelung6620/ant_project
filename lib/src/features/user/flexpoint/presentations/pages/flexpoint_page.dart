@@ -116,6 +116,10 @@ class _FlexpointState extends State<FlexpointPage> {
                                 itemCount: state.getItem.length,
                                 itemBuilder: (context, index) {
                                   return ProductList(
+                                      storage:
+                                          '${state.getItem[index].options!.where((opt) => opt.idVariation == 2).map((opt) => opt.option!.map((o) => o.value).join(', ')).join(', ')}',
+                                      color:
+                                          '${state.getItem[index].options!.where((opt) => opt.idVariation == 1).map((opt) => opt.option!.map((o) => o.value).join(', ')).join(', ')}',
                                       imgPath: '${state.getItem[index].image}',
                                       title: '${state.getItem[index].name}',
                                       // describ: '${state.getItem[index].detail}',
