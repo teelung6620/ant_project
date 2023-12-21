@@ -35,7 +35,7 @@ class GetItemModel extends ItemEntity {
             : List<Item>.from(json["items"]!.map((x) => ItemModel.fromJson(x))),
         images: json["images"] == null
             ? []
-            : List<Image>.from(
+            : List<ImageE>.from(
                 json["images"]!.map((x) => ImageModel.fromJson(x))),
         options: json["options"] == null
             ? []
@@ -61,7 +61,7 @@ class GetItemModel extends ItemEntity {
       };
 }
 
-class ImageModel extends Image {
+class ImageModel extends ImageE {
   ImageModel({
     required super.idProductImage,
     required super.image,

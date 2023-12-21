@@ -7,7 +7,7 @@ class ItemEntity extends Equatable {
   final String? image;
   final int? idProductType;
   final List<Item>? items;
-  final List<Image>? images;
+  final List<ImageE>? images;
   final List<GetItemModelOption>? options;
 
   const ItemEntity({
@@ -33,11 +33,11 @@ class ItemEntity extends Equatable {
       ];
 }
 
-class Image {
+class ImageE {
   final int? idProductImage;
   final String? image;
 
-  Image({
+  ImageE({
     this.idProductImage,
     this.image,
   });

@@ -1,13 +1,15 @@
+import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_model.dart';
+import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entity.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
-class ProductList extends StatelessWidget {
+class ProductList extends StatefulWidget {
   final String imgPath;
   final String title;
-  final String color;
-  final String storage;
+  final List<GetItemModelOption> color;
+  final List<GetItemModelOption> storage;
   //final String describ;
-  final String? avai;
+  final String? price;
   final String? coins;
   const ProductList(
       {super.key,
@@ -16,9 +18,13 @@ class ProductList extends StatelessWidget {
       required this.title,
       required this.color,
       //required this.describ,
-      required this.avai,
+      required this.price,
       this.coins});
+  @override
+  State<ProductList> createState() => _ProductListState();
+}
 
+class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -27,13 +33,14 @@ class ProductList extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DetailPage(
-              storage: storage.toString(),
-              color: color.toString(),
-              imgPath: imgPath.toString(),
-              title: title.toString(),
+              price: widget.price.toString(),
+              storage: widget.storage,
+              color: widget.color,
+              imgPath: widget.imgPath.toString(),
+              title: widget.title.toString(),
               //describ: describ.toString(),
-              avai: avai.toString(),
-              coins: coins.toString(),
+              avai: widget.price.toString(),
+              coins: widget.coins.toString(),
             ),
           ),
         );
@@ -70,7 +77,7 @@ class ProductList extends StatelessWidget {
                     bottomLeft: Radius.circular(10),
                   ),
                   child: Image.network(
-                    imgPath,
+                    widget.imgPath,
                     width: MediaQuery.of(context).size.width * 0.35,
                     height:
                         MediaQuery.of(context).size.width * 0.35, // ปรับขนาดรูป
@@ -85,7 +92,7 @@ class ProductList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      widget.title,
                       style: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.bold),
                     ),
@@ -132,7 +139,7 @@ class ProductList extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'available : $avai',
+                      'มูลค่า : ${widget.price}',
                       style: const TextStyle(
                         fontSize: 12,
                         color: Color.fromARGB(255, 113, 113, 113),
@@ -150,7 +157,7 @@ class ProductList extends StatelessWidget {
                         //   color: Colors.amber,
                         // ),
                         Text(
-                          ' x$coins',
+                          ' x${widget.coins}',
                           style: const TextStyle(
                             fontSize: 12,
                             color: Color.fromARGB(255, 113, 113, 113),

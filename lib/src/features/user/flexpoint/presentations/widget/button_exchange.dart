@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
 class ButtonExchange extends StatefulWidget {
-  const ButtonExchange({Key? key}) : super(key: key);
+  final String? imgPath;
+  const ButtonExchange({required this.imgPath, Key? key}) : super(key: key);
 
   @override
   _ButtonExchangeState createState() => _ButtonExchangeState();
@@ -71,57 +72,68 @@ class _ButtonExchangeState extends State<ButtonExchange> {
     await showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          title: Stack(
+        return Container(
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // Image.asset(
-              //   'assets/images/Rectangle 90.png',
-              //   fit: BoxFit.cover,
-              // ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: ConfettiWidget(
+                  confettiController: controller,
+                  blastDirectionality: BlastDirectionality.explosive,
+                  // blastDirection: 3.14, // หรือใช้ 180 ก็ได้
+                  // shouldLoop: true,
+                  // emissionFrequency: 1,
+                  numberOfParticles: 200,
+                  gravity: 0.2,
+                  colors: const [
+                    Colors.green,
+                    Colors.blue,
+                    Colors.pink,
+                    Colors.orange
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.25,
+              ),
+              AlertDialog(
+                title:
+                    // Image.asset(
+                    //   'assets/images/Rectangle 90.png',
+                    //   fit: BoxFit.cover,
+                    // ),
 
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Spacer(),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(); // Close the AlertDialog
-                        },
-                        icon: const Icon(Icons.close),
-                      ),
-                    ],
-                  ),
-                  Image.asset(
-                    'assets/images/imageElec.png', // เปลี่ยนเป็น path ของรูปที่คุณต้องการใช้
-                    width: 100, // ปรับขนาดตามที่ต้องการ
-                    height: 100,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: ConfettiWidget(
-                      confettiController: controller,
-                      blastDirectionality: BlastDirectionality.explosive,
-                      // blastDirection: 3.14, // หรือใช้ 180 ก็ได้
-                      // shouldLoop: true,
-                      // emissionFrequency: 1,
-                      //numberOfParticles: 200,
-                      gravity: 0.2,
-                      colors: const [
-                        Colors.green,
-                        Colors.blue,
-                        Colors.pink,
-                        Colors.orange
+                    Column(
+                  children: [
+                    Row(
+                      children: [
+                        Spacer(),
+                        IconButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pop(); // Close the AlertDialog
+                          },
+                          icon: const Icon(Icons.close),
+                        ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 16), // ระยะห่างระหว่างรูปกับข้อความ
-                  const Text('สำเร็จ!'),
-                ],
+                    Image.network(
+                      widget.imgPath
+                          .toString(), // เปลี่ยนเป็น path ของรูปที่คุณต้องการใช้
+                      width: 100, // ปรับขนาดตามที่ต้องการ
+                      height: 100,
+                    ),
+
+                    const SizedBox(height: 16), // ระยะห่างระหว่างรูปกับข้อความ
+                    const Text('สำเร็จ!'),
+                  ],
+                ),
+                content: const Text('คุณได้ทำการแลกของรางวัลเรียบร้อยแล้ว!'),
               ),
             ],
           ),
-          content: const Text('คุณได้ทำการแลกของรางวัลเรียบร้อยแล้ว!'),
         );
       },
     );

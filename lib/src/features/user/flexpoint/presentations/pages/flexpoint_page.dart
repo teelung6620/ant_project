@@ -106,7 +106,9 @@ class _FlexpointState extends State<FlexpointPage> {
                           if (state is GetItemInitial) {
                             return Text('errIni');
                           } else if (state is GetItemLoading) {
-                            return CircularProgressIndicator();
+                            return CircularProgressIndicator(
+                              color: Colors.pink,
+                            );
                           } else if (state is GetItemFailure) {
                             return Text('failure');
                           } else if (state is GetItemSuccess) {
@@ -117,14 +119,13 @@ class _FlexpointState extends State<FlexpointPage> {
                                 itemBuilder: (context, index) {
                                   return ProductList(
                                       storage:
-                                          '${state.getItem[index].options!.where((opt) => opt.idVariation == 2).map((opt) => opt.option!.map((o) => o.value).join(', ')).join(', ')}',
-                                      color:
-                                          '${state.getItem[index].options!.where((opt) => opt.idVariation == 1).map((opt) => opt.option!.map((o) => o.value).join(', ')).join(', ')}',
+                                          state.getItem[index].options ?? [],
+                                      color: state.getItem[index].options ?? [],
                                       imgPath: '${state.getItem[index].image}',
                                       title: '${state.getItem[index].name}',
                                       // describ: '${state.getItem[index].detail}',
-                                      avai:
-                                          '${state.getItem[index].items![index].active}',
+                                      price:
+                                          '${state.getItem[index].items![index].price}',
                                       coins:
                                           ' ${state.getItem[index].items?[index].idProductItem}');
                                 },
