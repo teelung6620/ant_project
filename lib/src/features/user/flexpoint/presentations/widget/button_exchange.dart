@@ -1,9 +1,20 @@
+import 'package:ant_project/injection_container.dart';
+import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
+import 'package:http/http.dart' as http;
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class ButtonExchange extends StatefulWidget {
   final String? imgPath;
-  const ButtonExchange({required this.imgPath, Key? key}) : super(key: key);
+  final int quantity;
+  final int idReward;
+  const ButtonExchange(
+      {required this.imgPath,
+      required this.quantity,
+      required this.idReward,
+      Key? key})
+      : super(key: key);
 
   @override
   _ButtonExchangeState createState() => _ButtonExchangeState();
@@ -11,6 +22,36 @@ class ButtonExchange extends StatefulWidget {
 
 class _ButtonExchangeState extends State<ButtonExchange> {
   final controller = ConfettiController();
+  final getItemBloc = sl<GetItemBloc>();
+  int? idEmployees = 0;
+  int? quantity = 0;
+  int? idCompany = 0;
+
+  Future getProduct() async {
+    try {
+      var url = Uri.parse("http://localhost:8080/api/reward-active/1");
+      var response = await http.get(url);
+    } catch (error) {
+      print('Error: $error');
+      // ทำสิ่งที่คุณต้องการเมื่อเกิดข้อผิดพลาด
+    }
+  }
+
+  Future getUser() async {
+    // var url = Uri.parse("http://localhost:8080/api/profile");
+    //var response = await http.get(url);
+
+    //idEmployees = ingredientListFromJson(response.body);
+    final Map<String, dynamic> decodedToken = JwtDecoder.decode(
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEVtcGxveWVlcyI6MSwiaWRDb21wYW55IjoxLCJpZFJvbGUiOjQsImlhdCI6MTcwMzIxMjIyMSwiZXhwIjoxNzAzMjk4NjIxfQ.cFfovUXK-0KkAfdLQQ60W2s6TVaNadbrWmJiV7MxcOE');
+    idEmployees = int.tryParse(decodedToken['idEmployees'].toString());
+    idCompany = int.tryParse(decodedToken['idCompany'].toString());
+    print(decodedToken);
+    print(idEmployees);
+    print(idCompany);
+    print(widget.idReward);
+    print(widget.quantity);
+  }
 
   @override
   void dispose() {
@@ -50,7 +91,9 @@ class _ButtonExchangeState extends State<ButtonExchange> {
                       foregroundColor: Colors.white,
                     ),
                     onPressed: () async {
+                      //getItemBloc.add(RedeemedDataEvent());
                       Navigator.of(context).pop(true); // ยืนยันการลบ
+                      getUser();
                       await _celebrate();
                     },
                     child: const Text('ยืนยัน'),
@@ -152,7 +195,8 @@ class _ButtonExchangeState extends State<ButtonExchange> {
               backgroundColor: const Color.fromARGB(255, 251, 111, 158),
               foregroundColor: Colors.white),
           onPressed: () async {
-            await _showConfirmationDialog();
+            getUser();
+            //await _showConfirmationDialog();
           },
           child: const Text(
             'แลกของรางวัล',

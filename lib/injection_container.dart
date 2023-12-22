@@ -7,6 +7,7 @@ import 'package:ant_project/src/features/user/flexpoint/data/datasource/item_rem
 import 'package:ant_project/src/features/user/flexpoint/data/repositories/item_repository_impl.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/repositories/item_repositories.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/usecase/get_item.dart';
+import 'package:ant_project/src/features/user/flexpoint/domain/usecase/redeem.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
 import 'package:ant_project/src/features/user/health_check/data/datasource/hospital_remote_datasource.dart';
 import 'package:ant_project/src/features/user/health_check/data/repositories/hospital_repository_impl.dart';
@@ -53,9 +54,10 @@ Future<void> init() async {
 
   //Get Item
   // * Bloc
-  sl.registerFactory(() => GetItemBloc(getItem: sl()));
+  sl.registerFactory(() => GetItemBloc(reDeem: sl(), getItem: sl()));
   //Usecase
   sl.registerLazySingleton(() => GetItem(repository: sl()));
+  sl.registerLazySingleton(() => Redeem(repository: sl()));
   //Repository
   sl.registerLazySingleton<ItemRepository>(
       () => ItemRepositoryIMPL(remoteDatasource: sl()));

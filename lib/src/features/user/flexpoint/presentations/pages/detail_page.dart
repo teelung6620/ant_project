@@ -11,6 +11,8 @@ class DetailPage extends StatefulWidget {
   final String imgPath;
   final String title;
   final String price;
+  final int quantity;
+  final int idReward;
   final List<GetItemModelOption> color;
   final List<GetItemModelOption> storage;
   //final String describ;
@@ -20,6 +22,8 @@ class DetailPage extends StatefulWidget {
       {Key? key,
       required this.imgPath,
       required this.storage,
+      required this.quantity,
+      required this.idReward,
       required this.title,
       required this.price,
       required this.color,
@@ -408,6 +412,8 @@ class _DetailState extends State<DetailPage> {
                         _selectedStorageIndex != -1)
                       Center(
                           child: ButtonExchange(
+                        quantity: widget.quantity,
+                        idReward: widget.idReward,
                         imgPath: widget.imgPath,
                       ))
                     else

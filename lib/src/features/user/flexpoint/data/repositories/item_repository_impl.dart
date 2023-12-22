@@ -17,4 +17,22 @@ class ItemRepositoryIMPL implements ItemRepository {
       return Left(ServerFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, void>> redeem(
+    int idReward,
+    int quantity,
+    int idEmployee,
+  ) async {
+    try {
+      final data = await remoteDatasource.redeem(
+        idReward,
+        quantity,
+        idEmployee,
+      );
+      return Right(data);
+    } on ServerException {
+      return left(ServerFailure());
+    }
+  }
 }

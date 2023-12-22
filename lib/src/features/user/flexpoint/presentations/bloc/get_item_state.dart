@@ -32,3 +32,26 @@ final class GetItemSuccess extends GetItemState {
   @override
   List<Object> get props => [];
 }
+
+final class RedeemInitial extends GetItemState {
+  @override
+  List<Object> get props => [];
+}
+
+final class RedeemLoading extends GetItemState {
+  @override
+  List<Object> get props => [];
+}
+
+final class RedeemFailure extends GetItemState {
+  final Failure error;
+
+  RedeemFailure({required this.error});
+  @override
+  List<Object> get props => [];
+}
+
+final class RedeemSuccess extends GetItemState {
+  @override
+  List<Object> get props => [];
+}

@@ -4,4 +4,9 @@ import 'package:dartz/dartz.dart';
 
 abstract class ItemRepository {
   Future<Either<Failure, List<ItemEntity>>> getItem();
+  Future<Either<Failure, void>> redeem(
+    int idReward,
+    int quantity,
+    int idEmployee,
+  );
 }

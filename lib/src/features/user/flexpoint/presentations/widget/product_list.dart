@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 class ProductList extends StatefulWidget {
   final String imgPath;
   final String title;
+  final int quantity;
+  final int idReward;
   final List<GetItemModelOption> color;
   final List<GetItemModelOption> storage;
   //final String describ;
@@ -15,6 +17,8 @@ class ProductList extends StatefulWidget {
       {super.key,
       required this.imgPath,
       required this.storage,
+      required this.quantity,
+      required this.idReward,
       required this.title,
       required this.color,
       //required this.describ,
@@ -33,6 +37,8 @@ class _ProductListState extends State<ProductList> {
           context,
           MaterialPageRoute(
             builder: (context) => DetailPage(
+              quantity: widget.quantity,
+              idReward: widget.idReward,
               price: widget.price.toString(),
               storage: widget.storage,
               color: widget.color,
