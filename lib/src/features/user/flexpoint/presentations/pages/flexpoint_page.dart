@@ -1,13 +1,9 @@
 import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/presentation/widget/AppBarCustom.dart';
-import 'package:ant_project/presentation/widget/text_header.dart';
-import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_model.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
-import 'package:ant_project/src/features/user/flexpoint/presentations/widget/product_layout.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/widget/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconamoon/iconamoon.dart';
 
 class FlexpointPage extends StatefulWidget {
   const FlexpointPage({Key? key}) : super(key: key);

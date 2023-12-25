@@ -1,11 +1,9 @@
 import 'package:ant_project/src/features/user/flexpoint/presentations/widget/button_exchange.dart';
-import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_model.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entity.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/widget/button_exchange_no.dart';
 import 'package:flutter/material.dart';
 import 'package:iconamoon/iconamoon.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
-import 'dart:convert';
 
 class DetailPage extends StatefulWidget {
   final String imgPath;
@@ -101,7 +99,7 @@ class _DetailState extends State<DetailPage> {
     var filteredColor = widget.color
         .where((storageOption) => storageOption.idVariation == 1)
         .toList();
-    var filteredColorStock = widget.colorStock.toList();
+    //var filteredColorStock = widget.colorStock.toList();
     return Scaffold(
       // appBar: AppBar(
       //   leading: IconButton(
@@ -280,7 +278,7 @@ class _DetailState extends State<DetailPage> {
                                       _selectedStorageOptionId =
                                           colorOption.idVariationOption;
                                       print(
-                                          "Selected Color Option ID: $_selectedStorageOptionId");
+                                          "Selected Storage Option ID: $_selectedStorageOptionId");
                                     } else {
                                       _selectedStorageIndex = -1;
                                       _selectedStorageOptionId = null;
@@ -296,11 +294,11 @@ class _DetailState extends State<DetailPage> {
                         );
                       }).toList(),
                     ),
-                    ElevatedButton(
-                        onPressed: () {
-                          check();
-                        },
-                        child: Text('test')),
+                    // ElevatedButton(
+                    //     onPressed: () {
+                    //       check();
+                    //     },
+                    //     child: Text('test')),
                     // Row(
                     //   children: filteredStorage.map((storageOption) {
                     //     int index = widget.storage.indexOf(storageOption);

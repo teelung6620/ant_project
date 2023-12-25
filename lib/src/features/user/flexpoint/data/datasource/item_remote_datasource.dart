@@ -41,14 +41,14 @@ class ItemRemoteDatasourceIMPL implements ItemRemoteDatasource {
     final response = await client.post(
       url,
       headers: {
-        // 'Content-Type': 'application/json',
-        // 'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
         'x-access-token': NetworkAPI.tokenURL,
       },
       body: jsonEncode({
-        'idEmployee': idEmployee,
-        'quantity': quantity,
         'idReward': idReward,
+        'quantity': quantity,
+        'idEmployee': idEmployee,
         'coins': coins.map((coin) => {'amount': coin.amount}).toList(),
       }),
     );

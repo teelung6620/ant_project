@@ -34,18 +34,8 @@ class _ButtonExchangeState extends State<ButtonExchange> {
   final controller = ConfettiController();
   final getItemBloc = sl<GetItemBloc>();
   int? idEmployees = 0;
-  int? quantity = 0;
-  int? idCompany = 0;
 
-  Future getProduct() async {
-    try {
-      var url = Uri.parse("http://localhost:8080/api/reward-active/1");
-      var response = await http.get(url);
-    } catch (error) {
-      print('Error: $error');
-      // ทำสิ่งที่คุณต้องการเมื่อเกิดข้อผิดพลาด
-    }
-  }
+  int? idCompany = 0;
 
   Future getUser() async {
     // var url = Uri.parse("http://localhost:8080/api/profile");
@@ -57,12 +47,13 @@ class _ButtonExchangeState extends State<ButtonExchange> {
     idEmployees = int.tryParse(decodedToken['idEmployees'].toString());
     idCompany = int.tryParse(decodedToken['idCompany'].toString());
 
-    print(decodedToken);
-    print(idEmployees);
-    print(idCompany);
-    print(widget.idReward);
-    print(widget.quantity);
-    print('color:${widget.color}');
+    // print(decodedToken);
+    // print(idEmployees);
+    // print(idCompany);
+    // print('color:${widget.idReward}');
+    // print(widget.quantity);
+    // print('color:${widget.color}');
+    // print(widget.idReward);
 
     //print('idProduct:${filteredColorStock}');
   }
@@ -109,17 +100,17 @@ class _ButtonExchangeState extends State<ButtonExchange> {
                       Navigator.of(context).pop(true); // ยืนยันการลบ
                       // getUser();
 
-                      // getItemBloc.add(RedeemedDataEvent(
-                      //   idEmployee: idEmployees,
-                      //   idReward: widget.idReward,
-                      //   quantity: widget.quantity,
-                      //   coins: [
-                      //     CoinRe(
-                      //         amount:
-                      //             5), // แก้ตามโครงสร้างของข้อมูล Coins ที่คุณใช้
-                      //     // เพิ่ม Coins ตามต้องการ
-                      //   ],
-                      // ));
+                      getItemBloc.add(RedeemedDataEvent(
+                        idEmployee: idEmployees,
+                        idReward: widget.idReward,
+                        quantity: widget.quantity,
+                        coins: [
+                          CoinRe(
+                              amount:
+                                  5), // แก้ตามโครงสร้างของข้อมูล Coins ที่คุณใช้
+                          // เพิ่ม Coins ตามต้องการ
+                        ],
+                      ));
                       await _celebrate();
                     },
                     child: const Text('ยืนยัน'),
@@ -221,17 +212,18 @@ class _ButtonExchangeState extends State<ButtonExchange> {
               backgroundColor: const Color.fromARGB(255, 251, 111, 158),
               foregroundColor: Colors.white),
           onPressed: () async {
+            //print('idReward:${widget.idReward}');
             getUser();
-            getItemBloc.add(RedeemedDataEvent(
-              idEmployee: idEmployees,
-              idReward: widget.idReward,
-              quantity: widget.quantity,
-              coins: [
-                CoinRe(amount: 5), // แก้ตามโครงสร้างของข้อมูล Coins ที่คุณใช้
-                // เพิ่ม Coins ตามต้องการ
-              ],
-            ));
-            // await _showConfirmationDialog();
+            // getItemBloc.add(RedeemedDataEvent(
+            //   idEmployee: idEmployees,
+            //   idReward: widget.idReward,
+            //   quantity: widget.quantity,
+            //   coins: [
+            //     CoinRe(amount: 5), // แก้ตามโครงสร้างของข้อมูล Coins ที่คุณใช้
+            //     // เพิ่ม Coins ตามต้องการ
+            //   ],s
+            // ));
+            await _showConfirmationDialog();
           },
           child: const Text(
             'แลกของรางวัล',
