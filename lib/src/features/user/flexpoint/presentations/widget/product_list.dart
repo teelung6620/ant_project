@@ -8,8 +8,11 @@ class ProductList extends StatefulWidget {
   final String title;
   final int quantity;
   final int idReward;
+
   final List<GetItemModelOption> color;
   final List<GetItemModelOption> storage;
+  final List<Item> colorStock;
+  final List<Item> storageStock;
   //final String describ;
   final String? price;
   final String? coins;
@@ -21,6 +24,8 @@ class ProductList extends StatefulWidget {
       required this.idReward,
       required this.title,
       required this.color,
+      required this.colorStock,
+      required this.storageStock,
       //required this.describ,
       required this.price,
       this.coins});
@@ -37,6 +42,8 @@ class _ProductListState extends State<ProductList> {
           context,
           MaterialPageRoute(
             builder: (context) => DetailPage(
+              storageStock: widget.storageStock,
+              colorStock: widget.colorStock,
               quantity: widget.quantity,
               idReward: widget.idReward,
               price: widget.price.toString(),

@@ -118,6 +118,10 @@ class _FlexpointState extends State<FlexpointPage> {
                                 itemCount: state.getItem.length,
                                 itemBuilder: (context, index) {
                                   return ProductList(
+                                      storageStock:
+                                          state.getItem[index].items ?? [],
+                                      colorStock:
+                                          state.getItem[index].items ?? [],
                                       quantity: int.parse(
                                           '${state.getItem[index].items![index].quantity}'),
                                       idReward: int.parse(

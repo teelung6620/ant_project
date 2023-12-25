@@ -13,8 +13,11 @@ class DetailPage extends StatefulWidget {
   final String price;
   final int quantity;
   final int idReward;
+
   final List<GetItemModelOption> color;
   final List<GetItemModelOption> storage;
+  final List<Item> colorStock;
+  final List<Item> storageStock;
   //final String describ;
   final String avai;
   final String coins;
@@ -27,6 +30,8 @@ class DetailPage extends StatefulWidget {
       required this.title,
       required this.price,
       required this.color,
+      required this.colorStock,
+      required this.storageStock,
       //required this.describ,
       required this.avai,
       required this.coins})
@@ -40,6 +45,9 @@ class _DetailState extends State<DetailPage> {
   int selectedQuantity = 1;
   int _selectedColorIndex = -1;
   int _selectedStorageIndex = -1;
+  int? _selectedColorOptionId;
+  int? _selectedStorageOptionId;
+  bool isOutOfStock = false;
   bool _isSelceted = false;
   final List<int> _selectedIndices = [];
   bool _isSelectedForIndex(int index) {
@@ -58,6 +66,33 @@ class _DetailState extends State<DetailPage> {
     });
   }
 
+  void check() {
+    // วนลูปผ่านรายการ
+    for (var item in widget.colorStock) {
+      // ตรวจสอบว่า quantity เท่ากับ 0 หรือไม่
+
+      // ตรวจสอบว่าตัวเลือกสีที่เลือกตรงกับตัวเลือกในตัวแปร "color" หรือไม่
+      bool isColorMatch =
+          item.options![0].idVariationOption == _selectedColorOptionId;
+
+      bool isStorageMatch =
+          item.options![1].idVariationOption == _selectedStorageIndex;
+
+      // หากทั้งตัวเลือกสีและ storage ตรงกัน คุณได้พบรายการที่สอดคล้อง
+      if (isColorMatch && isStorageMatch) {
+        if (item.quantity == 0) {
+          print("Out of stock: ${item.idProductItem}");
+          setState(() {
+            isOutOfStock = true; // กำหนดค่า isOutOfStock เป็น true
+          });
+        } else {
+          print("รายการที่เลือก: ${item.idProductItem}");
+          // กระทำบางสิ่งกับรายการที่เลือก เช่น อัปเดต UI หรือดำเนินการอื่น ๆ
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var filteredStorage = widget.storage
@@ -66,6 +101,7 @@ class _DetailState extends State<DetailPage> {
     var filteredColor = widget.color
         .where((storageOption) => storageOption.idVariation == 1)
         .toList();
+    var filteredColorStock = widget.colorStock.toList();
     return Scaffold(
       // appBar: AppBar(
       //   leading: IconButton(
@@ -186,8 +222,7 @@ class _DetailState extends State<DetailPage> {
                       children: filteredColor.map((colorOption) {
                         return Row(
                           children: colorOption.option!.map((colorOption) {
-                            int index = colorOption.idVariationOption ??
-                                -1; // or use the appropriate identifier
+                            int index = colorOption.idVariationOption ?? -1;
                             bool isSelected = _selectedColorIndex == index;
 
                             return Padding(
@@ -199,8 +234,13 @@ class _DetailState extends State<DetailPage> {
                                   setState(() {
                                     if (newBoolValue) {
                                       _selectedColorIndex = index;
+                                      _selectedColorOptionId =
+                                          colorOption.idVariationOption;
+                                      print(
+                                          "Selected Color Option ID: $_selectedColorOptionId");
                                     } else {
                                       _selectedColorIndex = -1;
+                                      _selectedColorOptionId = null;
                                     }
                                   });
                                 },
@@ -225,8 +265,7 @@ class _DetailState extends State<DetailPage> {
                       children: filteredStorage.map((colorOption) {
                         return Row(
                           children: colorOption.option!.map((colorOption) {
-                            int index = colorOption.idVariationOption ??
-                                -1; // or use the appropriate identifier
+                            int index = colorOption.idVariationOption ?? -1;
                             bool isSelected = _selectedStorageIndex == index;
 
                             return Padding(
@@ -238,8 +277,13 @@ class _DetailState extends State<DetailPage> {
                                   setState(() {
                                     if (newBoolValue) {
                                       _selectedStorageIndex = index;
+                                      _selectedStorageOptionId =
+                                          colorOption.idVariationOption;
+                                      print(
+                                          "Selected Color Option ID: $_selectedStorageOptionId");
                                     } else {
                                       _selectedStorageIndex = -1;
+                                      _selectedStorageOptionId = null;
                                     }
                                   });
                                 },
@@ -252,6 +296,11 @@ class _DetailState extends State<DetailPage> {
                         );
                       }).toList(),
                     ),
+                    ElevatedButton(
+                        onPressed: () {
+                          check();
+                        },
+                        child: Text('test')),
                     // Row(
                     //   children: filteredStorage.map((storageOption) {
                     //     int index = widget.storage.indexOf(storageOption);
@@ -347,9 +396,9 @@ class _DetailState extends State<DetailPage> {
                     //     color: Color.fromARGB(255, 0, 0, 0),
                     //   ),
                     // ),
-                    SizedBox(
-                      height: MediaQuery.of(context).devicePixelRatio * 10,
-                    ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).devicePixelRatio * 10,
+                    // ),
                     Row(
                       children: [
                         Image.asset(
@@ -412,9 +461,12 @@ class _DetailState extends State<DetailPage> {
                         _selectedStorageIndex != -1)
                       Center(
                           child: ButtonExchange(
+                        colorStock: widget.colorStock,
                         quantity: widget.quantity,
                         idReward: widget.idReward,
                         imgPath: widget.imgPath,
+                        color: widget.color,
+                        storage: widget.storage,
                       ))
                     else
                       ButtonExchangeNo(),

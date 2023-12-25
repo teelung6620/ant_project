@@ -10,14 +10,7 @@ class Redeem {
 
   Redeem({required this.repository});
   Future<Either<Failure, void>> call(
-    int idReward,
-    int quantity,
-    int idEmployee,
-  ) async {
-    return await repository.redeem(
-      idEmployee,
-      quantity,
-      idReward,
-    );
+      int idReward, int quantity, int idEmployee, List<CoinRe> coins) async {
+    return await repository.redeem(idEmployee, quantity, idReward, coins);
   }
 }

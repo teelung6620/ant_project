@@ -1,4 +1,7 @@
 import 'package:ant_project/injection_container.dart';
+import 'package:ant_project/src/core/constant/network_api.dart';
+import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entity.dart';
+import 'package:ant_project/src/features/user/flexpoint/domain/entity/redeem_entity.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
@@ -9,10 +12,17 @@ class ButtonExchange extends StatefulWidget {
   final String? imgPath;
   final int quantity;
   final int idReward;
+
+  final List<Item> colorStock;
+  final List<GetItemModelOption> color;
+  final List<GetItemModelOption> storage;
   const ButtonExchange(
       {required this.imgPath,
       required this.quantity,
       required this.idReward,
+      required this.color,
+      required this.colorStock,
+      required this.storage,
       Key? key})
       : super(key: key);
 
@@ -42,15 +52,19 @@ class _ButtonExchangeState extends State<ButtonExchange> {
     //var response = await http.get(url);
 
     //idEmployees = ingredientListFromJson(response.body);
-    final Map<String, dynamic> decodedToken = JwtDecoder.decode(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEVtcGxveWVlcyI6MSwiaWRDb21wYW55IjoxLCJpZFJvbGUiOjQsImlhdCI6MTcwMzIxMjIyMSwiZXhwIjoxNzAzMjk4NjIxfQ.cFfovUXK-0KkAfdLQQ60W2s6TVaNadbrWmJiV7MxcOE');
+    final Map<String, dynamic> decodedToken =
+        JwtDecoder.decode(NetworkAPI.tokenURL);
     idEmployees = int.tryParse(decodedToken['idEmployees'].toString());
     idCompany = int.tryParse(decodedToken['idCompany'].toString());
+
     print(decodedToken);
     print(idEmployees);
     print(idCompany);
     print(widget.idReward);
     print(widget.quantity);
+    print('color:${widget.color}');
+
+    //print('idProduct:${filteredColorStock}');
   }
 
   @override
@@ -93,7 +107,19 @@ class _ButtonExchangeState extends State<ButtonExchange> {
                     onPressed: () async {
                       //getItemBloc.add(RedeemedDataEvent());
                       Navigator.of(context).pop(true); // ยืนยันการลบ
-                      getUser();
+                      // getUser();
+
+                      // getItemBloc.add(RedeemedDataEvent(
+                      //   idEmployee: idEmployees,
+                      //   idReward: widget.idReward,
+                      //   quantity: widget.quantity,
+                      //   coins: [
+                      //     CoinRe(
+                      //         amount:
+                      //             5), // แก้ตามโครงสร้างของข้อมูล Coins ที่คุณใช้
+                      //     // เพิ่ม Coins ตามต้องการ
+                      //   ],
+                      // ));
                       await _celebrate();
                     },
                     child: const Text('ยืนยัน'),
@@ -196,7 +222,16 @@ class _ButtonExchangeState extends State<ButtonExchange> {
               foregroundColor: Colors.white),
           onPressed: () async {
             getUser();
-            //await _showConfirmationDialog();
+            getItemBloc.add(RedeemedDataEvent(
+              idEmployee: idEmployees,
+              idReward: widget.idReward,
+              quantity: widget.quantity,
+              coins: [
+                CoinRe(amount: 5), // แก้ตามโครงสร้างของข้อมูล Coins ที่คุณใช้
+                // เพิ่ม Coins ตามต้องการ
+              ],
+            ));
+            // await _showConfirmationDialog();
           },
           child: const Text(
             'แลกของรางวัล',

@@ -24,8 +24,8 @@ class GetItemBloc extends Bloc<ItemEvent, GetItemState> {
 
     on<RedeemedDataEvent>((event, emit) async {
       emit(RedeemLoading());
-      var redeem =
-          await reDeem(event.idEmployee!, event.idReward!, event.quantity!);
+      var redeem = await reDeem(
+          event.idEmployee!, event.idReward!, event.quantity!, event.coins!);
       redeem.fold(
           (l) => emit(RedeemFailure(error: l)), (r) => emit(RedeemSuccess()));
     });

@@ -5,15 +5,15 @@ import 'package:ant_project/src/core/constant/network_api.dart';
 import 'package:ant_project/src/core/error/exception.dart';
 import 'package:ant_project/src/core/error/failure.dart';
 import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_model.dart';
+import 'package:ant_project/src/features/user/flexpoint/data/model/redeem_model.dart';
+import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entity.dart';
+import 'package:ant_project/src/features/user/flexpoint/domain/entity/redeem_entity.dart';
 import 'package:http/http.dart' as http;
 
 abstract class ItemRemoteDatasource {
   Future<List<GetItemModel>> getItem();
   Future<void> redeem(
-    int idReward,
-    int quantity,
-    int idEmployee,
-  );
+      int idReward, int quantity, int idEmployee, List<CoinRe> coins);
 }
 
 class ItemRemoteDatasourceIMPL implements ItemRemoteDatasource {
@@ -36,23 +36,20 @@ class ItemRemoteDatasourceIMPL implements ItemRemoteDatasource {
 
   @override
   Future<void> redeem(
-    int idReward,
-    int quantity,
-    int idEmployee,
-  ) async {
-    final url = Uri.parse(
-        "https://uniculture-371814.as.r.appspot.com/api/redeem-transaction");
+      int idReward, int quantity, int idEmployee, List<CoinRe> coins) async {
+    final url = Uri.parse("${NetworkAPI.baseURL}api/redeem-transaction");
     final response = await client.post(
       url,
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'x-access-token': '',
+        // 'Content-Type': 'application/json',
+        // 'Accept': 'application/json',
+        'x-access-token': NetworkAPI.tokenURL,
       },
       body: jsonEncode({
-        idEmployee,
-        quantity,
-        idReward,
+        'idEmployee': idEmployee,
+        'quantity': quantity,
+        'idReward': idReward,
+        'coins': coins.map((coin) => {'amount': coin.amount}).toList(),
       }),
     );
     print(response.body);
