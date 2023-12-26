@@ -102,8 +102,8 @@ class _ButtonExchangeState extends State<ButtonExchange> {
 
                       getItemBloc.add(RedeemedDataEvent(
                         idEmployee: idEmployees,
-                        idReward: widget.idReward,
-                        quantity: widget.quantity,
+                        quantity: widget.idReward,
+                        idReward: widget.quantity,
                         coins: [
                           CoinRe(
                               amount:

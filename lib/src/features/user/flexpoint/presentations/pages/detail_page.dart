@@ -46,6 +46,7 @@ class _DetailState extends State<DetailPage> {
   int? _selectedColorOptionId;
   int? _selectedStorageOptionId;
   bool isOutOfStock = false;
+  int? quantity2;
   bool _isSelceted = false;
   final List<int> _selectedIndices = [];
   bool _isSelectedForIndex(int index) {
@@ -74,7 +75,7 @@ class _DetailState extends State<DetailPage> {
           item.options![0].idVariationOption == _selectedColorOptionId;
 
       bool isStorageMatch =
-          item.options![1].idVariationOption == _selectedStorageIndex;
+          item.options![1].idVariationOption == _selectedStorageOptionId;
 
       // หากทั้งตัวเลือกสีและ storage ตรงกัน คุณได้พบรายการที่สอดคล้อง
       if (isColorMatch && isStorageMatch) {
@@ -82,9 +83,17 @@ class _DetailState extends State<DetailPage> {
           print("Out of stock: ${item.idProductItem}");
           setState(() {
             isOutOfStock = true; // กำหนดค่า isOutOfStock เป็น true
+            quantity2 = item.quantity ??
+                0; // กำหนดค่า selectedQuantity จาก item.quantity
+            print(quantity2);
           });
         } else {
           print("รายการที่เลือก: ${item.idProductItem}");
+          setState(() {
+            quantity2 = item.quantity ??
+                0; // กำหนดค่า selectedQuantity จาก item.quantity
+            print(quantity2);
+          });
           // กระทำบางสิ่งกับรายการที่เลือก เช่น อัปเดต UI หรือดำเนินการอื่น ๆ
         }
       }
@@ -294,11 +303,12 @@ class _DetailState extends State<DetailPage> {
                         );
                       }).toList(),
                     ),
-                    // ElevatedButton(
-                    //     onPressed: () {
-                    //       check();
-                    //     },
-                    //     child: Text('test')),
+                    ElevatedButton(
+                        onPressed: () {
+                          check();
+                          //print(widget.quantity);
+                        },
+                        child: Text('test')),
                     // Row(
                     //   children: filteredStorage.map((storageOption) {
                     //     int index = widget.storage.indexOf(storageOption);
@@ -456,11 +466,12 @@ class _DetailState extends State<DetailPage> {
                     ),
                     const Spacer(),
                     if (_selectedColorIndex != -1 &&
-                        _selectedStorageIndex != -1)
+                        _selectedStorageIndex != -1 &&
+                        isOutOfStock)
                       Center(
                           child: ButtonExchange(
                         colorStock: widget.colorStock,
-                        quantity: widget.quantity,
+                        quantity: quantity2 ?? 0,
                         idReward: widget.idReward,
                         imgPath: widget.imgPath,
                         color: widget.color,
