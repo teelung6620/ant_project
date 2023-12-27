@@ -49,7 +49,10 @@ class _FirstState extends State<FirstPage> {
                               if (state is GetProfileInitial) {
                                 return Text('errIni');
                               } else if (state is GetProfileLoading) {
-                                return CircularProgressIndicator();
+                                return CircularProgressIndicator(
+                                  color:
+                                      const Color.fromARGB(255, 255, 144, 181),
+                                );
                               } else if (state is GetProfileFailure) {
                                 return Text('failure');
                               } else if (state is GetProfileSuccess) {
@@ -71,20 +74,26 @@ class _FirstState extends State<FirstPage> {
                           if (state is GetProfileInitial) {
                             return Text('errIni');
                           } else if (state is GetProfileLoading) {
-                            return CircularProgressIndicator();
+                            return CircularProgressIndicator(
+                                color:
+                                    const Color.fromARGB(255, 255, 187, 210));
                           } else if (state is GetProfileFailure) {
                             return Text('failure');
                           } else if (state is GetProfileSuccess) {
                             return CircleAvatar(
+                              backgroundColor:
+                                  const Color.fromARGB(255, 255, 173, 200),
                               radius: 30,
                               child: ClipOval(
                                 child: state.getProfile.imageProfile != null
                                     ? Image.network(
                                         '${NetworkAPI.baseURL}api/image/profile/${state.getProfile.imageProfile}',
                                       )
-                                    : Icon(Icons.account_circle,
-                                        size:
-                                            20), // แทนด้วย Account Icon ของคุณ
+                                    : Icon(
+                                        Icons.account_circle,
+                                        size: 50,
+                                        color: Colors.white,
+                                      ), // แทนด้วย Account Icon ของคุณ
                               ),
                             );
                           }
@@ -101,9 +110,84 @@ class _FirstState extends State<FirstPage> {
                     ],
                   )),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                  const CoinExchange(
-                    title: '26',
+                  BlocBuilder<GetProfileBloc, GetProfileState>(
+                    builder: (context, state) {
+                      if (state is GetProfileInitial) {
+                        return Text('errIni');
+                      } else if (state is GetProfileLoading) {
+                        return CircularProgressIndicator(
+                            color: const Color.fromARGB(255, 255, 187, 210));
+                      } else if (state is GetProfileFailure) {
+                        return Text('failure');
+                      } else if (state is GetProfileSuccess) {
+                        return LayoutBuilder(builder:
+                            (BuildContext context, BoxConstraints constraints) {
+                          return Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).devicePixelRatio * 10,
+                              vertical:
+                                  MediaQuery.of(context).devicePixelRatio * 2,
+                            ),
+                            height: 180.0,
+                            width: constraints.maxWidth,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFFE7EB),
+                              borderRadius:
+                                  BorderRadius.circular(10), // กำหนดขอบโค้ง
+                            ),
+                            // color: Color.fromARGB(255, 255, 213, 227),
+                            //decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                            child: Row(
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      'Flexcoin ของฉัน',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Row(children: [
+                                      Text(
+                                        state.getProfile.uniwelfareFlexcoins
+                                            .toString(),
+                                        style: const TextStyle(
+                                            fontSize: 50,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ]),
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              const Color(0xFFFF7697),
+                                          foregroundColor: Colors.white),
+                                      onPressed: () {
+                                        // ตอบสนองเมื่อปุ่มถูกกด
+                                      },
+                                      child: const Text(
+                                        'แลก Flexcoin',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Spacer(),
+                                Image.asset(
+                                  'assets/images/image 2 (1).png',
+                                  scale: 1,
+                                )
+                              ],
+                            ),
+                          );
+                        });
+                      }
+                      return Container();
+                    },
                   ),
+
                   // CircleIcons(
                   //   title: 'test',
                   // ),

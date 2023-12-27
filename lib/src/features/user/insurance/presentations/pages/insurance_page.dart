@@ -25,7 +25,7 @@ class _InsuranceState extends State<InsurancePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 5, // จำนวน Tab ทั้งหมด
+        length: 6, // จำนวน Tab ทั้งหมด
         child: Scaffold(
           appBar: AppBar(
             leadingWidth: 200,
@@ -59,6 +59,9 @@ class _InsuranceState extends State<InsurancePage> {
                   text: 'ทั้งหมด',
                 ),
                 Tab(
+                  text: 'ประกันสุขภาพ',
+                ),
+                Tab(
                   text: 'ประกันกลุ่ม',
                 ),
                 Tab(
@@ -73,6 +76,7 @@ class _InsuranceState extends State<InsurancePage> {
               ],
               indicatorColor: Colors.pink,
               labelColor: Colors.pink,
+              tabAlignment: TabAlignment.start,
             ),
           ),
           body: Padding(
@@ -122,6 +126,60 @@ class _InsuranceState extends State<InsurancePage> {
                         return Container();
                       },
                     )),
+                  ),
+                  Container(
+                    child: SingleChildScrollView(
+                      child: BlocBuilder<GetInsuranceBloc, GetInsuranceState>(
+                        builder: (context, state) {
+                          if (state is GetInsuranceInitial) {
+                            return Text('errIni');
+                          } else if (state is GetInsuranceLoading) {
+                            return CircularProgressIndicator(
+                              color: Colors.pink[100],
+                            );
+                          } else if (state is GetInsuranceFailure) {
+                            return Text('failure');
+                          } else if (state is GetInsuranceSuccess) {
+                            // กรองเฉพาะรายการประกันที่มี "categoryName": "ประกันสุขภาพ"
+                            var healthInsuranceList = state.getInsurance
+                                .where((insurance) =>
+                                    insurance.categoryName == "ประกันสุขภาพ")
+                                .toList();
+
+                            return Container(
+                              height: MediaQuery.of(context).size.height *
+                                  healthInsuranceList.length *
+                                  0.2,
+                              child: ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: healthInsuranceList.length,
+                                itemBuilder: (context, index) {
+                                  return InsuranceAllLayout(
+                                    imgPath: healthInsuranceList[index]
+                                        .image
+                                        .toString(),
+                                    title: healthInsuranceList[index]
+                                        .name
+                                        .toString(),
+                                    detail: healthInsuranceList[index]
+                                        .detail
+                                        .toString(),
+                                    company: healthInsuranceList[index]
+                                        .companyName
+                                        .toString(),
+                                    distance: healthInsuranceList[index]
+                                        .protectionPeriod
+                                        .toString(),
+                                    onTap: () {},
+                                  );
+                                },
+                              ),
+                            );
+                          }
+                          return Container();
+                        },
+                      ),
+                    ),
                   ),
                   Container(
                     child: const SingleChildScrollView(

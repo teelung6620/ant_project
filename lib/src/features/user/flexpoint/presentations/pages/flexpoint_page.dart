@@ -4,6 +4,7 @@ import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_i
 import 'package:ant_project/src/features/user/flexpoint/presentations/widget/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 class FlexpointPage extends StatefulWidget {
   const FlexpointPage({Key? key}) : super(key: key);
@@ -19,6 +20,13 @@ class _FlexpointState extends State<FlexpointPage> {
     super.initState();
     getItemBloc.add(GetItemDataEvent());
   }
+
+  List<Color> _kDefaultRainbowColors = const [
+    Color.fromARGB(255, 255, 93, 147),
+    Color.fromARGB(255, 255, 123, 167),
+    Color.fromARGB(255, 255, 172, 200),
+    Color.fromARGB(255, 255, 228, 237),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +111,7 @@ class _FlexpointState extends State<FlexpointPage> {
                             return Text('errIni');
                           } else if (state is GetItemLoading) {
                             return CircularProgressIndicator(
-                              color: Colors.pink,
+                              color: const Color.fromARGB(255, 255, 187, 210),
                             );
                           } else if (state is GetItemFailure) {
                             return Text('failure');
@@ -130,8 +138,18 @@ class _FlexpointState extends State<FlexpointPage> {
                                       // describ: '${state.getItem[index].detail}',
                                       price:
                                           '${state.getItem[index].items![index].price}',
-                                      coins:
-                                          ' ${state.getItem[index].items?[index].idProductItem}');
+                                      coins: state.getItem.length > index &&
+                                              state.getItem[index].items !=
+                                                  null &&
+                                              state.getItem[index].items!
+                                                  .isNotEmpty &&
+                                              state.getItem[index].items![index]
+                                                      .coins !=
+                                                  null &&
+                                              state.getItem[index].items![index]
+                                                  .coins!.isNotEmpty
+                                          ? '${state.getItem[index].items![index].coins![0].amount}'
+                                          : 'No Coins Available');
                                 },
                               ),
                             );

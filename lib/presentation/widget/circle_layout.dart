@@ -1,4 +1,4 @@
-import 'package:ant_project/presentation/pages/flexpoint_history_page.dart';
+import 'package:ant_project/src/features/user/flexpoint/presentations/pages/flexpoint_history_page.dart';
 import 'package:ant_project/src/features/user/health_check/presentations/pages/health_check_page.dart';
 import 'package:ant_project/src/features/user/insurance/presentations/pages/insurance_page.dart';
 import 'package:ant_project/src/features/user/profile/presentations/pages/flexpoint_bag.dart';

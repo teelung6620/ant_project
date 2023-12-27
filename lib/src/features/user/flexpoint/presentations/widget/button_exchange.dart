@@ -102,6 +102,7 @@ class _ButtonExchangeState extends State<ButtonExchange> {
 
                       getItemBloc.add(RedeemedDataEvent(
                         idEmployee: idEmployees,
+                        //ค่าที่ส่ง quanity กับ idReward สลับกัน
                         quantity: widget.idReward,
                         idReward: widget.quantity,
                         coins: [

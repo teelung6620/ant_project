@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconamoon/iconamoon.dart';
 import 'package:easy_pie_chart/easy_pie_chart.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 class FlexpointBagPage extends StatefulWidget {
   const FlexpointBagPage({Key? key}) : super(key: key);
@@ -18,7 +19,12 @@ class FlexpointBagPage extends StatefulWidget {
 
 class _FlexpointBagState extends State<FlexpointBagPage> {
   final getProfileBloc = sl<GetProfileBloc>();
-
+  List<Color> _kDefaultRainbowColors = const [
+    Color.fromARGB(255, 255, 93, 147),
+    Color.fromARGB(255, 255, 123, 167),
+    Color.fromARGB(255, 255, 172, 200),
+    Color.fromARGB(255, 255, 228, 237),
+  ];
   @override
   void initState() {
     super.initState();
@@ -63,7 +69,11 @@ class _FlexpointBagState extends State<FlexpointBagPage> {
                       if (state is GetProfileInitial) {
                         return Text('errIni');
                       } else if (state is GetProfileLoading) {
-                        return CircularProgressIndicator();
+                        return LoadingIndicator(
+                          indicatorType: Indicator.ballScale,
+                          colors: _kDefaultRainbowColors,
+                          strokeWidth: 4.0,
+                        );
                       } else if (state is GetProfileFailure) {
                         return Text('failure');
                       } else if (state is GetProfileSuccess) {
@@ -171,7 +181,11 @@ class _FlexpointBagState extends State<FlexpointBagPage> {
                       if (state is GetProfileInitial) {
                         return Text('errIni');
                       } else if (state is GetProfileLoading) {
-                        return CircularProgressIndicator();
+                        return LoadingIndicator(
+                          indicatorType: Indicator.ballRotateChase,
+                          colors: _kDefaultRainbowColors,
+                          strokeWidth: 4.0,
+                        );
                       } else if (state is GetProfileFailure) {
                         return Text('failure');
                       } else if (state is GetProfileSuccess) {

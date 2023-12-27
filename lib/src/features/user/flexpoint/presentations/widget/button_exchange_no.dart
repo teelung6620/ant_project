@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
 class ButtonExchangeNo extends StatefulWidget {
-  const ButtonExchangeNo({Key? key}) : super(key: key);
+  final String title;
+  const ButtonExchangeNo({required this.title, Key? key}) : super(key: key);
 
   @override
   _ButtonExchangeNoState createState() => _ButtonExchangeNoState();
@@ -19,8 +20,8 @@ class _ButtonExchangeNoState extends State<ButtonExchangeNo> {
               backgroundColor: Color.fromARGB(255, 255, 215, 228),
               foregroundColor: Color.fromARGB(255, 255, 215, 228)),
           onPressed: () {},
-          child: const Text(
-            'แลกของรางวัล',
+          child: Text(
+            widget.title,
             style: TextStyle(color: Colors.white, fontSize: 25),
           ),
         ),
