@@ -29,6 +29,7 @@ class InsuranceAllLayout extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => GuaranteeDesPage(
+                      imgPath: imgPath,
                       detail: detail.toString(),
                       title: title.toString(),
                       company: company.toString(),

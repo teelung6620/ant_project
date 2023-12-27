@@ -54,12 +54,21 @@ class MedicalTreatment extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: ClipOval(
-                          child: SvgPicture.asset(
-                            imgPath.toString(),
-                            height: MediaQuery.of(context).size.height * 0.1,
-                            width: MediaQuery.of(context).size.width * 0.1,
-                            fit: BoxFit.contain,
-                          ),
+                          child: imgPath != ''
+                              ? SvgPicture.asset(
+                                  imgPath.toString(),
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.1,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.1,
+                                  fit: BoxFit.contain,
+                                )
+                              : Icon(
+                                  Icons.person, // เลือก icon ที่ต้องการแสดง
+                                  size:
+                                      MediaQuery.of(context).size.height * 0.1,
+                                  color: Colors.black, // เลือกสีของ icon
+                                ),
                         )),
                     Expanded(
                       flex: 1,

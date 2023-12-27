@@ -8,12 +8,14 @@ class GuaranteeDesPage extends StatefulWidget {
   final String company;
   final String distance;
   final String detail;
+  final String imgPath;
   const GuaranteeDesPage(
       {Key? key,
       required this.company,
       required this.distance,
       required this.detail,
-      required this.title})
+      required this.title,
+      required this.imgPath})
       : super(key: key);
 
   @override
@@ -38,7 +40,16 @@ class _GuaranteeDesState extends State<GuaranteeDesPage> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      Center(
+                        child: Image.network(
+                          widget.imgPath,
+                          width: MediaQuery.of(context).size.width * 0.5,
+
+                          fit: BoxFit
+                              .cover, // หรือ BoxFit.fill ขึ้นอยู่กับความต้องการ
+                        ),
+                      ),
+                      const Text(
                         'รายละเอียด',
                         style: TextStyle(
                           fontSize: 14,
@@ -48,10 +59,11 @@ class _GuaranteeDesState extends State<GuaranteeDesPage> {
                           height: MediaQuery.of(context).size.height * 0.01),
                       Text(
                         widget.detail,
-                        style: TextStyle(fontSize: 13, color: Colors.grey),
+                        style:
+                            const TextStyle(fontSize: 13, color: Colors.grey),
                       ),
-                      Divider(),
-                      Text(
+                      const Divider(),
+                      const Text(
                         'ความคุ้มครอง',
                         style: TextStyle(
                           fontSize: 14,
@@ -59,12 +71,12 @@ class _GuaranteeDesState extends State<GuaranteeDesPage> {
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01),
-                      Text(
+                      const Text(
                         'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                         style: TextStyle(fontSize: 13, color: Colors.grey),
                       ),
-                      Divider(),
-                      Text(
+                      const Divider(),
+                      const Text(
                         'ระยะเวลาคุ้มครอง',
                         style: TextStyle(
                           fontSize: 14,
@@ -76,8 +88,8 @@ class _GuaranteeDesState extends State<GuaranteeDesPage> {
                         widget.distance,
                         style: TextStyle(fontSize: 13, color: Colors.grey),
                       ),
-                      Divider(),
-                      Text(
+                      const Divider(),
+                      const Text(
                         'ช่วงอายุผู้ขอเอาประกัน',
                         style: TextStyle(
                           fontSize: 14,
@@ -87,12 +99,13 @@ class _GuaranteeDesState extends State<GuaranteeDesPage> {
                           height: MediaQuery.of(context).size.height * 0.01),
                       Text(
                         widget.company,
-                        style: TextStyle(fontSize: 13, color: Colors.grey),
+                        style:
+                            const TextStyle(fontSize: 13, color: Colors.grey),
                       ),
                       Divider(),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01),
-                      Text(
+                      const Text(
                         'รูปแบบประกัน',
                         style: TextStyle(
                           fontSize: 14,
@@ -120,13 +133,13 @@ class _GuaranteeDesState extends State<GuaranteeDesPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
+                          const Text(
                             '16,000',
                             style: TextStyle(
                               fontSize: 20,
                             ),
                           ),
-                          Text(
+                          const Text(
                             '  บาท',
                             style: TextStyle(
                               fontSize: 14,
