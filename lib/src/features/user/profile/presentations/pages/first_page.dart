@@ -1,5 +1,4 @@
 import 'package:ant_project/injection_container.dart';
-import 'package:ant_project/presentation/widget/circle_layout.dart';
 import 'package:ant_project/presentation/widget/coin_exchange.dart';
 import 'package:ant_project/presentation/widget/flexpoint_layout.dart';
 import 'package:ant_project/presentation/widget/insurance_layout.dart';
@@ -9,6 +8,7 @@ import 'package:ant_project/presentation/widget/text_listbutton.dart';
 import 'package:ant_project/presentation/widget/text_welcome.dart';
 import 'package:ant_project/src/core/constant/network_api.dart';
 import 'package:ant_project/src/features/user/profile/presentations/bloc/get_profile_bloc.dart';
+import 'package:ant_project/src/features/user/profile/presentations/widget/circle_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

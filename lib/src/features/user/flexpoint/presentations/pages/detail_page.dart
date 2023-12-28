@@ -167,7 +167,7 @@ class _DetailState extends State<DetailPage> {
   }
 
   Future<void> _showConfirmationDialog() async {
-    bool confirm = await showDialog(
+    showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
@@ -262,13 +262,7 @@ class _DetailState extends State<DetailPage> {
                 height: MediaQuery.of(context).size.height * 0.25,
               ),
               AlertDialog(
-                title:
-                    // Image.asset(
-                    //   'assets/images/Rectangle 90.png',
-                    //   fit: BoxFit.cover,
-                    // ),
-
-                    Column(
+                title: Column(
                   children: [
                     Row(
                       children: [

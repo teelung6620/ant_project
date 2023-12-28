@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -9,7 +10,7 @@ class RedbloodLayout extends StatelessWidget {
   final String standard;
   final String status;
 
-  const RedbloodLayout({
+  RedbloodLayout({
     super.key,
     required this.imgPath,
     required this.section,
@@ -18,11 +19,122 @@ class RedbloodLayout extends StatelessWidget {
     required this.standard,
     required this.status,
   });
-
+  final List<Color> gradientColor = [
+    Color.fromARGB(255, 255, 158, 247),
+    Color.fromARGB(255, 255, 142, 182)
+  ];
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Column(
+                children: [
+                  Text(section),
+                  Container(
+                      height: 250,
+                      width: 300,
+                      child: LineChart(LineChartData(
+                        titlesData: FlTitlesData(
+                          show: true,
+                          bottomTitles: SideTitles(
+                            showTitles: true,
+                            getTitles: (value) {
+                              switch (value.toInt()) {
+                                case 1:
+                                  return '2019';
+                                case 3:
+                                  return '2020';
+                                case 5:
+                                  return '2021';
+                                case 7:
+                                  return '2022';
+                                case 9:
+                                  return '2023';
+                              }
+                              return '';
+                            },
+                            margin: 10,
+                            interval: 1,
+                            reservedSize: 20,
+                            getTextStyles: (context, value) => const TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          leftTitles: SideTitles(
+                            showTitles: true,
+                            getTitles: (value) {
+                              // แสดงเฉพาะค่าจำนวนเต็ม 1-3
+                              if (value == 1 || value == 2 || value == 3) {
+                                return value.toInt().toString();
+                              }
+                              return '';
+                            },
+                            margin: 10,
+                            interval: 1,
+                            reservedSize: 20,
+                            getTextStyles: (context, value) => const TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          rightTitles: SideTitles(
+                            showTitles: true,
+                            getTitles: (value) {
+                              if (value == 1) {
+                                return '';
+                              } else if (value == 2) {
+                                return '';
+                              } else if (value == 3) {
+                                return '';
+                              }
+                              return ''; // ถ้าไม่ตรงกับเงื่อนไขใด ๆ ให้ส่งคืน SizedBox เพื่อไม่แสดงอะไรเลย
+                            },
+                            margin: 10,
+                            interval: 1,
+                            reservedSize: 20,
+                            getTextStyles: (context, value) => const TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          topTitles: SideTitles(showTitles: false),
+                        ),
+                        lineBarsData: [
+                          LineChartBarData(
+                              spots: [
+                                FlSpot(1, 1),
+                                FlSpot(3, double.tryParse(status) ?? 0.0),
+                                FlSpot(5, 3),
+                                FlSpot(7, 1),
+                                FlSpot(9, 2),
+                              ],
+                              isCurved: true,
+                              barWidth: 2,
+                              dotData: FlDotData(
+                                show: false,
+                              ),
+                              colors: gradientColor,
+                              belowBarData: BarAreaData(
+                                  show: true,
+                                  colors: gradientColor
+                                      .map((color) => color.withOpacity(0.4))
+                                      .toList())),
+                        ],
+                        minX: 1,
+                        maxX: 9,
+                        minY: 0,
+                        maxY: 4,
+                        // backgroundColor: const Color.fromARGB(
+                        //     255, 5, 37, 64), // สีพื้นหลังที่คุณต้องการ
+                      ))),
+                ],
+              ),
+            );
+          },
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -53,14 +165,18 @@ class RedbloodLayout extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 8, bottom: 5),
-                        child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              section,
-                              style: TextStyle(
-                                  color:
-                                      const Color.fromARGB(255, 126, 126, 126)),
-                            )),
+                        child: Row(
+                          children: [
+                            Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  section,
+                                  style: TextStyle(
+                                      color: const Color.fromARGB(
+                                          255, 126, 126, 126)),
+                                )),
+                          ],
+                        ),
                       ),
                       SvgPicture.asset(
                         imgPath,
