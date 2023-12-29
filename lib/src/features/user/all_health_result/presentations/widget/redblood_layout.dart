@@ -35,8 +35,8 @@ class RedbloodLayout extends StatelessWidget {
                 children: [
                   Text(section),
                   Container(
-                      height: 250,
-                      width: 300,
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      width: MediaQuery.of(context).size.width * 0.9,
                       child: LineChart(LineChartData(
                         titlesData: FlTitlesData(
                           show: true,

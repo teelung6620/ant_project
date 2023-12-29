@@ -25,6 +25,11 @@ import 'package:ant_project/src/features/user/profile/data/repositories/profile_
 import 'package:ant_project/src/features/user/profile/domain/repositories/profile_repositories.dart';
 import 'package:ant_project/src/features/user/profile/domain/usecase/get_profile.dart';
 import 'package:ant_project/src/features/user/profile/presentations/bloc/get_profile_bloc.dart';
+import 'package:ant_project/src/features/user/redeem_history/data/datasource/redeem_history_remote_datasource.dart';
+import 'package:ant_project/src/features/user/redeem_history/data/repositories/redeem_history_repository_impl.dart';
+import 'package:ant_project/src/features/user/redeem_history/domain/repositories/redeem_history_repositories.dart';
+import 'package:ant_project/src/features/user/redeem_history/domain/usecase/redeem_history_usecase.dart';
+import 'package:ant_project/src/features/user/redeem_history/presentations/bloc/redeem_history_bloc.dart';
 import 'package:ant_project/src/features/user/treatment_history/data/datasource/treatment_remote_datasource.dart';
 import 'package:ant_project/src/features/user/treatment_history/data/repositories/treatment_repository_impl.dart';
 import 'package:ant_project/src/features/user/treatment_history/domain/repositories/health_repositories.dart';
@@ -36,6 +41,9 @@ import 'package:http/http.dart' as http;
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  //External
+  sl.registerLazySingleton(() => http.Client());
+//---------------------------------------------------------
   //GetProfile
   // * Bloc
   sl.registerFactory(() => GetProfileBloc(getProfile: sl()));
@@ -47,8 +55,6 @@ Future<void> init() async {
   //DataSource
   sl.registerLazySingleton<ProfileRemoteDatasource>(
       () => ProfileRemoteDatasourceIMPL(client: sl()));
-  //External
-  sl.registerLazySingleton(() => http.Client());
 
 //=========================================================================
 
@@ -120,4 +126,18 @@ Future<void> init() async {
   //DataSource
   sl.registerLazySingleton<InsuranceRemoteDatasource>(
       () => InsuranceRemoteDatasourceIMPL(client: sl()));
+
+  //=========================================================================
+
+  //Get Redeem History
+  // * Bloc
+  sl.registerFactory(() => RedeemHistoryBloc(getRedeemHistory: sl()));
+  //Usecase
+  sl.registerLazySingleton(() => GetRedeemHistory(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<RedeemHistoryRepository>(
+      () => RedeemHistoryRepositoryIMPL(remoteDatasource: sl()));
+  //DataSource
+  sl.registerLazySingleton<RedeemHistoryRemoteDatasource>(
+      () => RedeemHistoryRemoteDatasourceIMPL(client: sl()));
 }

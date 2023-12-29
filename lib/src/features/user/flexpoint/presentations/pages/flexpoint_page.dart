@@ -103,61 +103,64 @@ class _FlexpointState extends State<FlexpointPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     child: BlocProvider(
-                      create: (context) => getItemBloc,
-                      child: SingleChildScrollView(
-                          child: BlocBuilder<GetItemBloc, GetItemState>(
-                        builder: (context, state) {
-                          if (state is GetItemInitial) {
-                            return Text('errIni');
-                          } else if (state is GetItemLoading) {
-                            return CircularProgressIndicator(
-                              color: const Color.fromARGB(255, 255, 187, 210),
-                            );
-                          } else if (state is GetItemFailure) {
-                            return Text('failure');
-                          } else if (state is GetItemSuccess) {
-                            return Container(
-                              height: MediaQuery.of(context).size.height,
-                              child: ListView.builder(
-                                itemCount: state.getItem.length,
-                                itemBuilder: (context, index) {
-                                  return ProductList(
-                                      storageStock:
-                                          state.getItem[index].items ?? [],
-                                      colorStock:
-                                          state.getItem[index].items ?? [],
-                                      quantity: int.parse(
-                                          '${state.getItem[index].items![index].quantity}'),
-                                      idReward: int.parse(
-                                          '${state.getItem[index].items![index].idReward}'),
-                                      storage:
-                                          state.getItem[index].options ?? [],
-                                      color: state.getItem[index].options ?? [],
-                                      imgPath: '${state.getItem[index].image}',
-                                      title: '${state.getItem[index].name}',
-                                      // describ: '${state.getItem[index].detail}',
-                                      price:
-                                          '${state.getItem[index].items![index].price}',
-                                      coins: state.getItem.length > index &&
-                                              state.getItem[index].items !=
-                                                  null &&
-                                              state.getItem[index].items!
-                                                  .isNotEmpty &&
-                                              state.getItem[index].items![index]
-                                                      .coins !=
-                                                  null &&
-                                              state.getItem[index].items![index]
-                                                  .coins!.isNotEmpty
-                                          ? '${state.getItem[index].items![index].coins![0].amount}'
-                                          : 'No Coins Available');
-                                },
-                              ),
-                            );
-                          }
-                          return Container();
-                        },
-                      )),
-                    ),
+                        create: (context) => getItemBloc,
+                        child: BlocBuilder<GetItemBloc, GetItemState>(
+                          builder: (context, state) {
+                            if (state is GetItemInitial) {
+                              return Text('errIni');
+                            } else if (state is GetItemLoading) {
+                              return CircularProgressIndicator(
+                                color: const Color.fromARGB(255, 255, 187, 210),
+                              );
+                            } else if (state is GetItemFailure) {
+                              return Text('failure');
+                            } else if (state is GetItemSuccess) {
+                              return Container(
+                                //height: MediaQuery.of(context).size.height,
+                                child: ListView.builder(
+                                  itemCount: state.getItem.length,
+                                  itemBuilder: (context, index) {
+                                    return ProductList(
+                                        storageStock:
+                                            state.getItem[index].items ?? [],
+                                        colorStock:
+                                            state.getItem[index].items ?? [],
+                                        quantity: int.parse(
+                                            '${state.getItem[index].items![index].quantity}'),
+                                        idReward: int.parse(
+                                            '${state.getItem[index].items![index].idReward}'),
+                                        storage:
+                                            state.getItem[index].options ?? [],
+                                        color:
+                                            state.getItem[index].options ?? [],
+                                        imgPath:
+                                            '${state.getItem[index].image}',
+                                        title: '${state.getItem[index].name}',
+                                        // describ: '${state.getItem[index].detail}',
+                                        price:
+                                            '${state.getItem[index].items![index].price}',
+                                        coins: state.getItem.length > index &&
+                                                state.getItem[index].items !=
+                                                    null &&
+                                                state.getItem[index].items!
+                                                    .isNotEmpty &&
+                                                state.getItem[index]
+                                                        .items![index].coins !=
+                                                    null &&
+                                                state
+                                                    .getItem[index]
+                                                    .items![index]
+                                                    .coins!
+                                                    .isNotEmpty
+                                            ? '${state.getItem[index].items![index].coins![0].amount}'
+                                            : 'No Coins Available');
+                                  },
+                                ),
+                              );
+                            }
+                            return Container();
+                          },
+                        )),
                   ),
                 ),
                 Container(

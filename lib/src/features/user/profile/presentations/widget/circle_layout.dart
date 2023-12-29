@@ -1,10 +1,10 @@
-import 'package:ant_project/src/features/user/flexpoint/presentations/pages/flexpoint_history_page.dart';
+import 'package:ant_project/src/features/user/redeem_history/presentations/pages/flexpoint_history_page.dart';
 import 'package:ant_project/src/features/user/health_check/presentations/pages/health_check_page.dart';
 import 'package:ant_project/src/features/user/insurance/presentations/pages/insurance_page.dart';
 import 'package:ant_project/src/features/user/profile/presentations/pages/flexpoint_bag.dart';
+import 'package:ant_project/src/features/user/profile/presentations/widget/circle_icon2.dart';
 import 'package:ant_project/src/features/user/treatment_history/presentations/pages/medical_treatment_page.dart';
 import 'package:ant_project/presentation/pages/my_guarantee_page.dart';
-import 'package:ant_project/presentation/widget/circle_icon2.dart';
 import 'package:flutter/material.dart';
 
 class CircleLayout extends StatelessWidget {
