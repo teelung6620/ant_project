@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:ant_project/src/core/constant/network_api.dart';
 import 'package:ant_project/src/core/error/exception.dart';
 import 'package:ant_project/src/core/error/failure.dart';
+import 'package:ant_project/src/core/storage/secure_storage.dart';
 import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_model.dart';
 import 'package:ant_project/src/features/user/flexpoint/data/model/redeem_model.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entity.dart';
@@ -25,7 +26,7 @@ class ItemRemoteDatasourceIMPL implements ItemRemoteDatasource {
   Future<List<GetItemModel>> getItem() async {
     final response = await client.get(
       Uri.parse('${NetworkAPI.baseURL}api/reward-active/1'),
-      headers: {'x-access-token': NetworkAPI.tokenURL},
+      headers: {'x-access-token': '${await LoginStorage.readToken()}'},
     );
     if (response.statusCode == 200) {
       return itemListFromJson(response.body);
@@ -43,7 +44,7 @@ class ItemRemoteDatasourceIMPL implements ItemRemoteDatasource {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'x-access-token': NetworkAPI.tokenURL,
+        'x-access-token': '${await LoginStorage.readToken()}',
       },
       body: jsonEncode({
         'idReward': idReward,

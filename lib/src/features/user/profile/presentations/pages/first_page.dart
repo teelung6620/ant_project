@@ -7,10 +7,12 @@ import 'package:ant_project/presentation/widget/text_list.dart';
 import 'package:ant_project/presentation/widget/text_listbutton.dart';
 import 'package:ant_project/presentation/widget/text_welcome.dart';
 import 'package:ant_project/src/core/constant/network_api.dart';
+import 'package:ant_project/src/core/features/user/presentation/provider/profile_provider.dart';
 import 'package:ant_project/src/features/user/profile/presentations/bloc/get_profile_bloc.dart';
 import 'package:ant_project/src/features/user/profile/presentations/widget/circle_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -29,6 +31,7 @@ class _FirstState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
+    //final profileProvider = Provider.of<ProfileProvider>(context);
     return Scaffold(
       body: BlocProvider(
         create: (context) => getProfileBloc,

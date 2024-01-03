@@ -1,3 +1,8 @@
+import 'package:ant_project/src/core/features/login/data/data_sources/remote/login_api.dart';
+import 'package:ant_project/src/core/features/login/data/repositories/login_repository_impl.dart';
+import 'package:ant_project/src/core/features/login/domain/repositories/login_repository.dart';
+import 'package:ant_project/src/core/features/login/domain/use_cases/login_usecase.dart';
+import 'package:ant_project/src/core/features/login/presentation/bloc/login_bloc.dart';
 import 'package:ant_project/src/features/user/all_health_result/data/datasource/health_remote_datasource.dart';
 import 'package:ant_project/src/features/user/all_health_result/data/repositories/health_repository_impl.dart';
 import 'package:ant_project/src/features/user/all_health_result/domain/repositories/health_repositories.dart';
@@ -140,4 +145,20 @@ Future<void> init() async {
   //DataSource
   sl.registerLazySingleton<RedeemHistoryRemoteDatasource>(
       () => RedeemHistoryRemoteDatasourceIMPL(client: sl()));
+
+  //=========================================================================
+
+  //Login
+  // * Bloc
+  sl.registerFactory(() => LoginBloc(
+        loginUseCase: sl(),
+      ));
+
+  //Usecase
+  sl.registerLazySingleton(() => LoginUseCase(repository: sl()));
+  //Repository
+  sl.registerLazySingleton<LoginRepository>(
+      () => LoginRepositoryImpl(loginApi: sl()));
+  //DataSource
+  sl.registerLazySingleton<LoginApi>(() => LoginApiImpl(client: sl()));
 }

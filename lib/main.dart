@@ -1,4 +1,5 @@
 import 'package:ant_project/src/components/home_page.dart';
+import 'package:ant_project/src/core/features/splash/splash.page.dart';
 import 'package:flutter/material.dart';
 import 'injection_container.dart' as di;
 
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         // colorScheme: ColorScheme.light(primary: Colors.white)
       ),
-      home: const HomePage(),
+      home: const SplashPage(),
     );
   }
 }
