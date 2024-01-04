@@ -7,6 +7,7 @@ import 'package:ant_project/src/core/features/user/presentation/provider/profile
 import 'package:ant_project/src/features/user/profile/presentations/bloc/get_profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -16,10 +17,17 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfileState extends State<ProfilePage> {
   final getProfileBloc = sl<GetProfileBloc>();
+  late ProfileProvider profileProvider;
+  bool isError = false;
+  void isLoading() async {
+    profileProvider = ProfileProvider.of(context, listen: false);
+    await profileProvider.getProfileData().then((value) => isError = value);
+  }
 
   @override
   void initState() {
     super.initState();
+    isLoading();
     getProfileBloc.add(GetProfileDataEvent());
   }
 
@@ -102,32 +110,43 @@ class _ProfileState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     //final profileProvider = Provider.of<ProfileProvider>(context, listen: true);
+    final providerData = Provider.of<ProfileProvider>(context, listen: true);
 
     return Scaffold(
-      body: Container(
-        height: 100,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const LoadingPage(
-                        isLogIn: false,
-                      )),
-            );
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              'logout',
-              style: TextStyle(fontSize: 17, color: Colors.white),
-            ),
+      body: Center(
+        child: Container(
+          height: 100,
+          child: Column(
+            children: [
+              Text(
+                providerData.profileData.idCompany.toString(),
+                style: TextStyle(fontSize: 20),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoadingPage(
+                              isLogIn: false,
+                            )),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    'logout',
+                    style: TextStyle(fontSize: 17, color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

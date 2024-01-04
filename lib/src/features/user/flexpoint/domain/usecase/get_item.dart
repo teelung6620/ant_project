@@ -8,7 +8,7 @@ class GetItem {
   final ItemRepository repository;
 
   GetItem({required this.repository});
-  Future<Either<Failure, List<ItemEntity>>> call() async {
-    return await repository.getItem();
+  Future<Either<Failure, List<ItemEntity>>> call(int idCom) async {
+    return await repository.getItem(idCom);
   }
 }

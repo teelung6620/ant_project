@@ -10,9 +10,9 @@ class ItemRepositoryIMPL implements ItemRepository {
   ItemRemoteDatasource remoteDatasource;
   ItemRepositoryIMPL({required this.remoteDatasource});
   @override
-  Future<Either<Failure, List<ItemEntity>>> getItem() async {
+  Future<Either<Failure, List<ItemEntity>>> getItem(int idCom) async {
     try {
-      final data = await remoteDatasource.getItem();
+      final data = await remoteDatasource.getItem(idCom);
       return Right(data);
     } on ServerException {
       return Left(ServerFailure());

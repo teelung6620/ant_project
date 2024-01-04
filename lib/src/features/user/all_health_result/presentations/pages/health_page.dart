@@ -1,7 +1,7 @@
 import 'package:ant_project/presentation/widget/AppBarCustom2.dart';
 import 'package:ant_project/presentation/widget/dropdown_year.dart';
 import 'package:ant_project/presentation/widget/silver_appbar.dart';
-import 'package:ant_project/src/features/user/health/presentations/widget/health_result_list.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/widget/health_result_list.dart';
 import 'package:flutter/material.dart';
 
 class HealthPage extends StatefulWidget {

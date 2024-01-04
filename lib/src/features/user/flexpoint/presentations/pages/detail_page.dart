@@ -1,5 +1,7 @@
 import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/src/core/constant/network_api.dart';
+import 'package:ant_project/src/core/error/token_expires.dart';
+import 'package:ant_project/src/core/features/user/presentation/provider/profile_provider.dart';
 import 'package:ant_project/src/features/user/flexpoint/domain/entity/redeem_entity.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/widget/button_exchange.dart';
@@ -55,6 +57,15 @@ class _DetailState extends State<DetailPage> {
   bool isOutOfStock = false;
   int? quantity2;
   bool _isSelceted = false;
+
+  late ProfileProvider profileProvider;
+  bool isError = false;
+  void isLoading() async {
+    TokenExpires.checkTokenExpires(context);
+    profileProvider = ProfileProvider.of(context, listen: false);
+    await profileProvider.getProfileData().then((value) => isError = value);
+  }
+
   final List<int> _selectedIndices = [];
   bool _isSelectedForIndex(int index) {
     // Replace this with the actual logic to determine if the chip at the given index is selected
@@ -162,7 +173,9 @@ class _DetailState extends State<DetailPage> {
   @override
   void initState() {
     super.initState();
-    getItemBloc.add(GetItemDataEvent());
+    isLoading();
+    getItemBloc
+        .add(GetItemDataEvent(idCom: profileProvider.profileData.idCompany!));
     check();
   }
 

@@ -24,8 +24,8 @@ class _LoadingPageState extends State<LoadingPage> {
     return Timer(const Duration(seconds: 2), () async {
       if (widget.isLogIn && await LoginStorage.readToken() != null) {
         String idRole = await LoginStorage.readIdRoles();
-        if (idRole == "1" || idRole == "2") {
-          idRole == "1"
+        if (idRole == "4" || idRole == "2") {
+          idRole == "4"
               ? logger.i("Role : User")
               : logger.i("Role : User_Manager");
           Navigator.pushReplacement(

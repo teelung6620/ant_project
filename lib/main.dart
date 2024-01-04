@@ -1,3 +1,4 @@
+import 'package:ant_project/injection.dart';
 import 'package:ant_project/src/components/home_page.dart';
 import 'package:ant_project/src/core/features/splash/splash.page.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +8,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // SharedPreferences prefs = await SharedPreferences.getInstance();
   await di.init();
-  runApp(const MyApp(
-      // token: prefs.getString('token'),
-      ));
+  runApp(Injection(router: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

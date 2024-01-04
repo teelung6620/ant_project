@@ -6,7 +6,6 @@ import 'package:ant_project/presentation/widget/silver_appbar.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/bloc/get_health_bloc.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/widget/redblodd_list.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/widget/redblood_layout.dart';
-import 'package:ant_project/src/features/user/health/presentations/widget/health_result_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

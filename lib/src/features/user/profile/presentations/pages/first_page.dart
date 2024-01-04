@@ -22,10 +22,17 @@ class FirstPage extends StatefulWidget {
 
 class _FirstState extends State<FirstPage> {
   final getProfileBloc = sl<GetProfileBloc>();
+  late ProfileProvider profileProvider;
+  bool isError = false;
+  void isLoading() async {
+    profileProvider = ProfileProvider.of(context, listen: false);
+    await profileProvider.getProfileData().then((value) => isError = value);
+  }
 
   @override
   void initState() {
     super.initState();
+    isLoading();
     getProfileBloc.add(GetProfileDataEvent());
   }
 

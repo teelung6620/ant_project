@@ -1,12 +1,14 @@
+import 'package:ant_project/button/bottom_navbar_provider.dart';
 import 'package:ant_project/src/core/storage/secure_storage.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/pages/flexpoint_page.dart';
-import 'package:ant_project/src/features/user/health/presentations/pages/health_page.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/pages/health_page.dart';
 import 'package:ant_project/presentation/pages/privileges_page.dart';
 import 'package:ant_project/src/features/user/profile/presentations/pages/profile_page.dart';
 import 'package:ant_project/src/features/user/profile/presentations/pages/first_page.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ming_cute_icons/ming_cute_icons.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +25,7 @@ class _MyHomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
       _pageController.animateToPage(index,
-          duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+          duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
     });
   }
 
@@ -38,19 +40,18 @@ class _MyHomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final navigationProvider = Provider.of<NavIndex>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       resizeToAvoidBottomInset: false,
       extendBody: true, //Bug
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
-        controller: _pageController,
-        children: _pages,
+        controller: navigationProvider.controller,
         onPageChanged: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
+          navigationProvider.setIndex(index);
         },
+        children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 14.0,
@@ -61,7 +62,10 @@ class _MyHomePageState extends State<HomePage> {
         showUnselectedLabels: true,
         showSelectedLabels: true,
         currentIndex: _selectedIndex,
-        onTap: _navigateBottomBar,
+        onTap: (index) {
+          navigationProvider.controller.jumpToPage(index);
+          navigationProvider.setIndex(index);
+        },
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
@@ -69,14 +73,14 @@ class _MyHomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _selectedIndex == 0
+                color: navigationProvider.currentIndex == 0
                     ? const Color(0xFFFCB0C2) // Selected color
                     : Colors.transparent, // Unselected color
               ),
-              child: _selectedIndex == 0
+              child: navigationProvider.currentIndex == 0
                   ? Icon(
                       FluentIcons.home_48_filled,
-                      color: _selectedIndex == 0
+                      color: navigationProvider.currentIndex == 0
                           ? Colors.white
                           : null, // Icon color
                     )
@@ -89,14 +93,14 @@ class _MyHomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _selectedIndex == 1
+                color: navigationProvider.currentIndex == 1
                     ? const Color(0xFFFCB0C2) // Selected color
                     : Colors.transparent, // Unselected color
               ),
-              child: _selectedIndex == 1
+              child: navigationProvider.currentIndex == 1
                   ? Icon(
                       MingCuteIcons.mgc_copper_coin_line,
-                      color: _selectedIndex == 1
+                      color: navigationProvider.currentIndex == 1
                           ? Colors.white
                           : null, // Icon color
                     )
@@ -109,14 +113,14 @@ class _MyHomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _selectedIndex == 2
+                color: navigationProvider.currentIndex == 2
                     ? const Color(0xFFFCB0C2) // Selected color
                     : Colors.transparent, // Unselected color
               ),
-              child: _selectedIndex == 2
+              child: navigationProvider.currentIndex == 2
                   ? Icon(
                       FluentIcons.person_heart_20_regular,
-                      color: _selectedIndex == 2
+                      color: navigationProvider.currentIndex == 2
                           ? Colors.white
                           : null, // Icon color
                     )
@@ -129,14 +133,14 @@ class _MyHomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _selectedIndex == 3
+                color: navigationProvider.currentIndex == 3
                     ? const Color(0xFFFCB0C2)
                     : Colors.transparent, // Unselected color
               ),
-              child: _selectedIndex == 3
+              child: navigationProvider.currentIndex == 3
                   ? Icon(
                       FluentIcons.heart_circle_hint_48_filled,
-                      color: _selectedIndex == 3
+                      color: navigationProvider.currentIndex == 3
                           ? Colors.white
                           : null, // Icon color
                     )
@@ -151,14 +155,14 @@ class _MyHomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(10), // Adjust padding as needed
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _selectedIndex == 4
+                color: navigationProvider.currentIndex == 4
                     ? const Color(0xFFFCB0C2) // Selected color
                     : Colors.transparent, // Unselected color
               ),
-              child: _selectedIndex == 4
+              child: navigationProvider.currentIndex == 4
                   ? Icon(
                       Icons.account_circle_outlined,
-                      color: _selectedIndex == 4
+                      color: navigationProvider.currentIndex == 4
                           ? Colors.white
                           : null, // Icon color
                     )

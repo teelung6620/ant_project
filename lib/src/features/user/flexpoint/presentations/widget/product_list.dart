@@ -2,6 +2,7 @@ import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_mode
 import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entity.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/pages/detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ProductList extends StatefulWidget {
   final String imgPath;
@@ -40,8 +41,10 @@ class _ProductListState extends State<ProductList> {
       onTap: () async {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (context) => DetailPage(
+          PageTransition(
+            duration: Durations.long1,
+            type: PageTransitionType.rightToLeft, // เลือก effect ที่ต้องการ
+            child: DetailPage(
               storageStock: widget.storageStock,
               colorStock: widget.colorStock,
               quantity: widget.quantity,

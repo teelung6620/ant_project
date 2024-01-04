@@ -1,5 +1,7 @@
 import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/presentation/widget/AppBarCustom.dart';
+import 'package:ant_project/src/core/error/token_expires.dart';
+import 'package:ant_project/src/core/features/user/presentation/provider/profile_provider.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/widget/product_list.dart';
 import 'package:flutter/material.dart';
@@ -14,19 +16,28 @@ class FlexpointPage extends StatefulWidget {
 
 class _FlexpointState extends State<FlexpointPage> {
   final getItemBloc = sl<GetItemBloc>();
+  late ProfileProvider profileProvider;
+  bool isError = false;
+  void isLoading() async {
+    // TokenExpires.checkTokenExpires(context);
+    profileProvider = ProfileProvider.of(context, listen: false);
+    await profileProvider.getProfileData().then((value) => isError = value);
+  }
 
   @override
   void initState() {
     super.initState();
-    getItemBloc.add(GetItemDataEvent());
+    isLoading();
+    getItemBloc
+        .add(GetItemDataEvent(idCom: profileProvider.profileData.idCompany!));
   }
 
-  List<Color> _kDefaultRainbowColors = const [
-    Color.fromARGB(255, 255, 93, 147),
-    Color.fromARGB(255, 255, 123, 167),
-    Color.fromARGB(255, 255, 172, 200),
-    Color.fromARGB(255, 255, 228, 237),
-  ];
+  // List<Color> _kDefaultRainbowColors = const [
+  //   Color.fromARGB(255, 255, 93, 147),
+  //   Color.fromARGB(255, 255, 123, 167),
+  //   Color.fromARGB(255, 255, 172, 200),
+  //   Color.fromARGB(255, 255, 228, 237),
+  // ];
 
   @override
   Widget build(BuildContext context) {

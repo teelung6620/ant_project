@@ -17,7 +17,7 @@ class GetItemBloc extends Bloc<ItemEvent, GetItemState> {
       : super(GetItemInitial()) {
     on<GetItemDataEvent>((event, emit) async {
       emit(GetItemLoading());
-      var getitem = await getItem();
+      var getitem = await getItem(event.idCom);
       getitem.fold((l) => emit(GetItemFailure(error: l)),
           (r) => emit(GetItemSuccess(getItem: r)));
     });

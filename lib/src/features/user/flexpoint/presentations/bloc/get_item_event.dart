@@ -8,8 +8,12 @@ abstract class ItemEvent extends Equatable {
 }
 
 class GetItemDataEvent extends ItemEvent {
+  final int idCom;
+
+  GetItemDataEvent({required this.idCom});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [idCom];
 }
 
 class RedeemedDataEvent extends ItemEvent {

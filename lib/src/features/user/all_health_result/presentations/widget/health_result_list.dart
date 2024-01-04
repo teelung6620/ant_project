@@ -7,7 +7,7 @@ import 'package:ant_project/src/features/user/all_health_result/presentations/pa
 import 'package:ant_project/src/features/user/all_health_result/presentations/pages/sugar_page.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/pages/urine_page.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/pages/whiteblood_page.dart';
-import 'package:ant_project/src/features/user/health/presentations/widget/health_result.dart';
+import 'package:ant_project/src/features/user/all_health_result/presentations/widget/health_result.dart';
 import 'package:flutter/material.dart';
 
 class HealthResultList extends StatelessWidget {
