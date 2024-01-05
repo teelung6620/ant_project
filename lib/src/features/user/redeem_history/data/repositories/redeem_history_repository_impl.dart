@@ -13,9 +13,10 @@ class RedeemHistoryRepositoryIMPL implements RedeemHistoryRepository {
   RedeemHistoryRemoteDatasource remoteDatasource;
   RedeemHistoryRepositoryIMPL({required this.remoteDatasource});
   @override
-  Future<Either<Failure, List<RedeemHistoryEntity>>> getRedeem() async {
+  Future<Either<Failure, List<RedeemHistoryEntity>>> getRedeem(
+      int idEmp) async {
     try {
-      final data = await remoteDatasource.getRedeem();
+      final data = await remoteDatasource.getRedeem(idEmp);
       return Right(data);
     } on ServerException {
       return Left(ServerFailure());

@@ -4,5 +4,5 @@ import 'package:ant_project/src/features/user/redeem_history/domain/entity/redee
 import 'package:dartz/dartz.dart';
 
 abstract class RedeemHistoryRepository {
-  Future<Either<Failure, List<RedeemHistoryEntity>>> getRedeem();
+  Future<Either<Failure, List<RedeemHistoryEntity>>> getRedeem(int idEmp);
 }

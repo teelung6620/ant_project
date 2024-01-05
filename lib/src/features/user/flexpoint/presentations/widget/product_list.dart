@@ -2,6 +2,7 @@ import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_mode
 import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entity.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/pages/detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 
 class ProductList extends StatefulWidget {
@@ -47,7 +48,7 @@ class _ProductListState extends State<ProductList> {
             child: DetailPage(
               storageStock: widget.storageStock,
               colorStock: widget.colorStock,
-              quantity: widget.quantity,
+              //quantity: widget.quantity,
               idReward: widget.idReward,
               price: widget.price.toString(),
               storage: widget.storage,
@@ -154,12 +155,18 @@ class _ProductListState extends State<ProductList> {
                         // ),
                       ],
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.015,
+                    ),
                     Text(
-                      'มูลค่า : ${widget.price}',
+                      'มูลค่า : ${NumberFormat('#,###').format(int.parse(widget.price.toString()))} บาท',
                       style: const TextStyle(
                         fontSize: 12,
                         color: Color.fromARGB(255, 113, 113, 113),
                       ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.02,
                     ),
                     Row(
                       children: [

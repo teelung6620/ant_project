@@ -18,7 +18,7 @@ class RedeemHistoryBloc extends Bloc<RedeemHistoryEvent, RedeemHistoryState> {
       : super(RedeemHistoryInitial()) {
     on<RedeemHistoryDataEvent>((event, emit) async {
       emit(RedeemHistoryLoading());
-      var getredeem = await getRedeemHistory();
+      var getredeem = await getRedeemHistory(event.idEmp);
       getredeem.fold((l) => emit(RedeemHistoryFailure(error: l)),
           (r) => emit(RedeemHistorySuccess(getRedeem: r)));
     });

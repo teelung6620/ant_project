@@ -36,19 +36,6 @@ class ItemRemoteDatasourceIMPL implements ItemRemoteDatasource {
   }
 
   @override
-  Future<List<GetItemModel>> getItem2(int idCom) async {
-    final response = await client.get(
-      Uri.parse('${NetworkAPI.baseURL}api/reward-active/$idCom'),
-      headers: {'x-access-token': '${await LoginStorage.readToken()}'},
-    );
-    if (response.statusCode == 200) {
-      return itemListFromJson(response.body);
-    } else {
-      throw ServerException(message: 'error');
-    }
-  }
-
-  @override
   Future<void> redeem(
       int idReward, int quantity, int idEmployee, List<CoinRe> coins) async {
     final url = Uri.parse("${NetworkAPI.baseURL}api/redeem-transaction");

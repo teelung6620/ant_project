@@ -8,6 +8,9 @@ abstract class RedeemHistoryEvent extends Equatable {
 }
 
 class RedeemHistoryDataEvent extends RedeemHistoryEvent {
+  final int idEmp;
+
+  RedeemHistoryDataEvent({required this.idEmp});
   @override
-  List<Object> get props => [];
+  List<Object> get props => [idEmp];
 }

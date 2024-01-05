@@ -10,6 +10,7 @@ import 'package:ant_project/src/features/user/flexpoint/presentations/widget/but
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:iconamoon/iconamoon.dart';
+import 'package:intl/intl.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
@@ -17,7 +18,7 @@ class DetailPage extends StatefulWidget {
   final String imgPath;
   final String title;
   final String price;
-  final int quantity;
+  //final int quantity;
   final int idReward;
 
   final List<GetItemModelOption> color;
@@ -31,7 +32,7 @@ class DetailPage extends StatefulWidget {
       {Key? key,
       required this.imgPath,
       required this.storage,
-      required this.quantity,
+      //required this.quantity,
       required this.idReward,
       required this.title,
       required this.price,
@@ -61,7 +62,7 @@ class _DetailState extends State<DetailPage> {
   late ProfileProvider profileProvider;
   bool isError = false;
   void isLoading() async {
-    TokenExpires.checkTokenExpires(context);
+    //TokenExpires.checkTokenExpires(context);
     profileProvider = ProfileProvider.of(context, listen: false);
     await profileProvider.getProfileData().then((value) => isError = value);
   }
@@ -139,30 +140,30 @@ class _DetailState extends State<DetailPage> {
 
   final controller = ConfettiController();
   final getItemBloc = sl<GetItemBloc>();
-  int? idEmployees = 0;
+  // int? idEmployees = 0;
 
-  int? idCompany = 0;
+  // int? idCompany = 0;
 
-  Future getUser() async {
-    // var url = Uri.parse("http://localhost:8080/api/profile");
-    //var response = await http.get(url);
+  // Future getUser() async {
+  //   // var url = Uri.parse("http://localhost:8080/api/profile");
+  //   //var response = await http.get(url);
 
-    //idEmployees = ingredientListFromJson(response.body);
-    final Map<String, dynamic> decodedToken =
-        JwtDecoder.decode(NetworkAPI.tokenURL);
-    idEmployees = int.tryParse(decodedToken['idEmployees'].toString());
-    idCompany = int.tryParse(decodedToken['idCompany'].toString());
+  //   //idEmployees = ingredientListFromJson(response.body);
+  //   final Map<String, dynamic> decodedToken =
+  //       JwtDecoder.decode(NetworkAPI.tokenURL);
+  //   idEmployees = int.tryParse(decodedToken['idEmployees'].toString());
+  //   idCompany = int.tryParse(decodedToken['idCompany'].toString());
 
-    // print(decodedToken);
-    // print(idEmployees);
-    // print(idCompany);
-    // print('color:${widget.idReward}');
-    // print(widget.quantity);
-    // print('color:${widget.color}');
-    // print(widget.idReward);
+  //   // print(decodedToken);
+  //   // print(idEmployees);
+  //   // print(idCompany);
+  //   // print('color:${widget.idReward}');
+  //   // print(widget.quantity);
+  //   // print('color:${widget.color}');
+  //   // print(widget.idReward);
 
-    //print('idProduct:${filteredColorStock}');
-  }
+  //   //print('idProduct:${filteredColorStock}');
+  // }
 
   @override
   void dispose() {
@@ -173,6 +174,7 @@ class _DetailState extends State<DetailPage> {
   @override
   void initState() {
     super.initState();
+    //print('idEmployees = ${idEmployees}');
     isLoading();
     getItemBloc
         .add(GetItemDataEvent(idCom: profileProvider.profileData.idCompany!));
@@ -216,15 +218,12 @@ class _DetailState extends State<DetailPage> {
                       // getUser();
 
                       getItemBloc.add(RedeemedDataEvent(
-                        idEmployee: idEmployees,
+                        idEmployee: profileProvider.profileData.idEmployees,
                         //ค่าที่ส่ง quanity กับ idReward สลับกัน
                         quantity: widget.idReward,
-                        idReward: widget.quantity,
+                        idReward: selectedQuantity,
                         coins: [
-                          CoinRe(
-                              amount:
-                                  5), // แก้ตามโครงสร้างของข้อมูล Coins ที่คุณใช้
-                          // เพิ่ม Coins ตามต้องการ
+                          CoinRe(amount: 5),
                         ],
                       ));
                       await _celebrate();
@@ -524,7 +523,7 @@ class _DetailState extends State<DetailPage> {
                       height: MediaQuery.of(context).devicePixelRatio * 3,
                     ),
                     Text(
-                      'มูลค่า : ${widget.price}  บาท',
+                      'มูลค่า : ${NumberFormat('#,###').format(int.parse(widget.price.toString()))}  บาท',
                       textAlign: TextAlign.start,
                       style: const TextStyle(
                         fontSize: 15,
@@ -601,6 +600,12 @@ class _DetailState extends State<DetailPage> {
                         ),
                       ],
                     ),
+                    // ElevatedButton(
+                    //     onPressed: () {
+                    //       print(
+                    //           'IdEmployee = ${profileProvider.profileData.idEmployees}');
+                    //     },
+                    //     child: Container()),
                     const Spacer(),
                     if (_selectedColorIndex != -1 &&
                         _selectedStorageIndex != -1 &&
@@ -620,7 +625,7 @@ class _DetailState extends State<DetailPage> {
                               foregroundColor: Colors.white),
                           onPressed: () async {
                             //print('idReward:${widget.idReward}');
-                            getUser();
+                            // getUser();
 
                             await _showConfirmationDialog();
                             setState(() {});

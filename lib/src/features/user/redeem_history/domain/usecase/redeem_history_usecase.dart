@@ -12,7 +12,7 @@ class GetRedeemHistory {
   final RedeemHistoryRepository repository;
 
   GetRedeemHistory({required this.repository});
-  Future<Either<Failure, List<RedeemHistoryEntity>>> call() async {
-    return await repository.getRedeem();
+  Future<Either<Failure, List<RedeemHistoryEntity>>> call(int idEmp) async {
+    return await repository.getRedeem(idEmp);
   }
 }

@@ -1,15 +1,16 @@
 import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/presentation/widget/coin_exchange.dart';
-import 'package:ant_project/presentation/widget/flexpoint_layout.dart';
 import 'package:ant_project/presentation/widget/insurance_layout.dart';
 import 'package:ant_project/presentation/widget/text_header.dart';
 import 'package:ant_project/presentation/widget/text_list.dart';
 import 'package:ant_project/presentation/widget/text_listbutton.dart';
 import 'package:ant_project/presentation/widget/text_welcome.dart';
+import 'package:ant_project/src/components/widget/loading2.dart';
 import 'package:ant_project/src/core/constant/network_api.dart';
 import 'package:ant_project/src/core/features/user/presentation/provider/profile_provider.dart';
 import 'package:ant_project/src/features/user/profile/presentations/bloc/get_profile_bloc.dart';
 import 'package:ant_project/src/features/user/profile/presentations/widget/circle_layout.dart';
+import 'package:ant_project/src/features/user/profile/presentations/widget/flexpoint_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -59,10 +60,7 @@ class _FirstState extends State<FirstPage> {
                               if (state is GetProfileInitial) {
                                 return Text('errIni');
                               } else if (state is GetProfileLoading) {
-                                return CircularProgressIndicator(
-                                  color:
-                                      const Color.fromARGB(255, 255, 144, 181),
-                                );
+                                return Loading2();
                               } else if (state is GetProfileFailure) {
                                 return Text('failure');
                               } else if (state is GetProfileSuccess) {
@@ -78,32 +76,47 @@ class _FirstState extends State<FirstPage> {
                           )
                         ],
                       ),
-                      Spacer(),
+                      //Spacer(),
                       BlocBuilder<GetProfileBloc, GetProfileState>(
                         builder: (context, state) {
                           if (state is GetProfileInitial) {
                             return Text('errIni');
                           } else if (state is GetProfileLoading) {
-                            return CircularProgressIndicator(
-                                color:
-                                    const Color.fromARGB(255, 255, 187, 210));
+                            return Loading2();
                           } else if (state is GetProfileFailure) {
                             return Text('failure');
                           } else if (state is GetProfileSuccess) {
-                            return CircleAvatar(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 255, 173, 200),
-                              radius: 30,
-                              child: ClipOval(
-                                child: state.getProfile.imageProfile != null
-                                    ? Image.network(
-                                        '${NetworkAPI.baseURL}api/image/profile/${state.getProfile.imageProfile}',
-                                      )
-                                    : Icon(
-                                        Icons.account_circle,
-                                        size: 50,
-                                        color: Colors.white,
-                                      ), // แทนด้วย Account Icon ของคุณ
+                            return Container(
+                              width: 160,
+                              // color: Colors.black,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    child: Image.asset(
+                                        'assets/images/Group 729.png'),
+                                  ),
+                                  Positioned(
+                                    right: 0,
+                                    top: 20,
+                                    child: CircleAvatar(
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 255, 173, 200),
+                                      radius: 35,
+                                      child: ClipOval(
+                                        child: state.getProfile.imageProfile !=
+                                                null
+                                            ? Image.network(
+                                                '${NetworkAPI.baseURL}api/image/profile/${state.getProfile.imageProfile}',
+                                              )
+                                            : Icon(
+                                                Icons.account_circle,
+                                                size: 70,
+                                                color: Colors.white,
+                                              ), // แทนด้วย Account Icon ของคุณ
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             );
                           }
@@ -125,8 +138,7 @@ class _FirstState extends State<FirstPage> {
                       if (state is GetProfileInitial) {
                         return Text('errIni');
                       } else if (state is GetProfileLoading) {
-                        return CircularProgressIndicator(
-                            color: const Color.fromARGB(255, 255, 187, 210));
+                        return Loading2();
                       } else if (state is GetProfileFailure) {
                         return Text('failure');
                       } else if (state is GetProfileSuccess) {

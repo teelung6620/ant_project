@@ -14,7 +14,7 @@ class GetHealthBloc extends Bloc<HealthEvent, GetHealthState> {
   GetHealthBloc({required this.getHealth}) : super(GetHealthInitial()) {
     on<GetHealthDataEvent>((event, emit) async {
       emit(GetHealthLoading());
-      var gethealth = await getHealth();
+      var gethealth = await getHealth(event.id);
       gethealth.fold((l) => emit(GetHealthFailure(error: l)),
           (r) => emit(GetHealthSuccess(getHealth: r)));
     });

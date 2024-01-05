@@ -12,9 +12,9 @@ class HealthRepositoryIMPL implements HealthRepository {
   HealthRemoteDatasource remoteDatasource;
   HealthRepositoryIMPL({required this.remoteDatasource});
   @override
-  Future<Either<Failure, HealthEntity>> getHealth() async {
+  Future<Either<Failure, HealthEntity>> getHealth(int id) async {
     try {
-      final data = await remoteDatasource.getHealth();
+      final data = await remoteDatasource.getHealth(id);
       return Right(data);
     } on ServerException {
       return Left(ServerFailure());

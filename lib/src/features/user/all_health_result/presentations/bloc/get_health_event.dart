@@ -8,6 +8,10 @@ abstract class HealthEvent extends Equatable {
 }
 
 class GetHealthDataEvent extends HealthEvent {
+  final int id;
+
+  GetHealthDataEvent({required this.id});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [id];
 }

@@ -15,11 +15,25 @@ class InsurancePage extends StatefulWidget {
 
 class _InsuranceState extends State<InsurancePage> {
   final getInsuranceBloc = sl<GetInsuranceBloc>();
-
+  int all = 0;
+  int health = 0;
+  int group = 0;
+  int person = 0;
+  int accident = 0;
+  int life = 0;
   @override
   void initState() {
     super.initState();
     getInsuranceBloc.add(GetInsuranceDataEvent());
+    // getInsuranceBloc.stream.listen((state) {
+    //   if (state is GetInsuranceSuccess) {
+    //     setState(() {
+    //       all = state.getInsurance.length;
+    //       draftItemsCount = state.manageItems?.draft?.length ?? 0;
+    //     });
+    //     print(allItemsCount);
+    //   }
+    // });
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/presentation/widget/AppBarCustom2.dart';
 import 'package:ant_project/presentation/widget/silver_appbar.dart';
+import 'package:ant_project/src/components/widget/loading.dart';
 import 'package:ant_project/src/features/user/profile/presentations/bloc/get_profile_bloc.dart';
 import 'package:ant_project/src/features/user/profile/presentations/widget/button_exchange_bag.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -69,11 +70,7 @@ class _FlexpointBagState extends State<FlexpointBagPage> {
                       if (state is GetProfileInitial) {
                         return Text('errIni');
                       } else if (state is GetProfileLoading) {
-                        return LoadingIndicator(
-                          indicatorType: Indicator.ballScale,
-                          colors: _kDefaultRainbowColors,
-                          strokeWidth: 4.0,
-                        );
+                        return Loading();
                       } else if (state is GetProfileFailure) {
                         return Text('failure');
                       } else if (state is GetProfileSuccess) {

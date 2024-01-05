@@ -126,18 +126,22 @@ class _ProductListState extends State<ProductRedeemList> {
                             : widget.idRedeemStatus == 2
                                 ? Colors.green
                                 : widget.idRedeemStatus == 3
-                                    ? Colors.red
-                                    : Colors.transparent,
+                                    ? Colors.blue
+                                    : widget.idRedeemStatus == 4
+                                        ? Colors.red
+                                        : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
                         widget.idRedeemStatus == 1
                             ? 'รอตรวจสอบ'
                             : widget.idRedeemStatus == 2
-                                ? 'รอตรวจสอบ2'
+                                ? 'สำเร็จ'
                                 : widget.idRedeemStatus == 3
-                                    ? 'รอตรวจสอบ3'
-                                    : widget.idRedeemStatus.toString(),
+                                    ? 'รับของรางวัลแล้ว'
+                                    : widget.idRedeemStatus == 4
+                                        ? 'ไม่สำเร็จ'
+                                        : widget.idRedeemStatus.toString(),
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
@@ -150,9 +154,11 @@ class _ProductListState extends State<ProductRedeemList> {
                       height: MediaQuery.of(context).size.width * 0.01,
                     ),
                     Text(
-                      DateFormat('yyyy-MM-dd').format(widget.redeemDate),
+                      'วันที่แลกของ ' +
+                          DateFormat('dd/MM/yyyy').format(widget.redeemDate),
                       style: const TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.bold),
+                        fontSize: 14,
+                      ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.width * 0.01,

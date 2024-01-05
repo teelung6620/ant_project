@@ -3,6 +3,7 @@ import 'package:ant_project/presentation/widget/AppBarCustom.dart';
 import 'package:ant_project/presentation/widget/AppBarCustom2.dart';
 import 'package:ant_project/presentation/widget/dropdown_year.dart';
 import 'package:ant_project/presentation/widget/silver_appbar.dart';
+import 'package:ant_project/src/core/features/user/presentation/provider/profile_provider.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/bloc/get_health_bloc.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/widget/redblodd_list.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/widget/redblood_layout.dart';
@@ -18,11 +19,19 @@ class AddictivePage extends StatefulWidget {
 
 class _AddictiveState extends State<AddictivePage> {
   final getHealthBloc = sl<GetHealthBloc>();
+  late ProfileProvider profileProvider;
+  bool isError = false;
+  void isLoading() async {
+    profileProvider = ProfileProvider.of(context, listen: false);
+    await profileProvider.getProfileData().then((value) => isError = value);
+  }
 
   @override
   void initState() {
     super.initState();
-    getHealthBloc.add(GetHealthDataEvent());
+    isLoading();
+    getHealthBloc
+        .add(GetHealthDataEvent(id: profileProvider.profileData.idEmployees!));
   }
 
   String dropdownvalue = '2566';

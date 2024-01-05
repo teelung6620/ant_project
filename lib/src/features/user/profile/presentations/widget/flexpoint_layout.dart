@@ -1,4 +1,4 @@
-import 'package:ant_project/presentation/widget/flexpoint_list.dart';
+import 'package:ant_project/src/features/user/profile/presentations/widget/flexpoint_list.dart';
 import 'package:flutter/material.dart';
 
 class FlexpointLayout extends StatelessWidget {

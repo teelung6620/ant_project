@@ -10,7 +10,7 @@ class GetHealth {
   final HealthRepository repository;
 
   GetHealth({required this.repository});
-  Future<Either<Failure, HealthEntity>> call() async {
-    return await repository.getHealth();
+  Future<Either<Failure, HealthEntity>> call(int id) async {
+    return await repository.getHealth(id);
   }
 }

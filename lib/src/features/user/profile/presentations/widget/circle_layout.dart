@@ -6,6 +6,7 @@ import 'package:ant_project/src/features/user/profile/presentations/widget/circl
 import 'package:ant_project/src/features/user/treatment_history/presentations/pages/medical_treatment_page.dart';
 import 'package:ant_project/presentation/pages/my_guarantee_page.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CircleLayout extends StatelessWidget {
   const CircleLayout({Key? key}) : super(key: key);
@@ -37,8 +38,11 @@ class CircleLayout extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const MedicalTreatmentPage()),
+                    PageTransition(
+                        duration: Durations.long1,
+                        type: PageTransitionType
+                            .rightToLeft, // เลือก effect ที่ต้องการ
+                        child: MedicalTreatmentPage()),
                   );
                 },
               )

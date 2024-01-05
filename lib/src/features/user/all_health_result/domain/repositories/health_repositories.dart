@@ -4,5 +4,5 @@ import 'package:ant_project/src/features/user/flexpoint/domain/entity/item_entit
 import 'package:dartz/dartz.dart';
 
 abstract class HealthRepository {
-  Future<Either<Failure, HealthEntity>>  getHealth();
+  Future<Either<Failure, HealthEntity>> getHealth(int id);
 }

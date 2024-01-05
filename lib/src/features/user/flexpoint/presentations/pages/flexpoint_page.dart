@@ -1,5 +1,7 @@
 import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/presentation/widget/AppBarCustom.dart';
+import 'package:ant_project/src/components/widget/loading.dart';
+import 'package:ant_project/src/components/widget/shimmer.dart';
 import 'package:ant_project/src/core/error/token_expires.dart';
 import 'package:ant_project/src/core/features/user/presentation/provider/profile_provider.dart';
 import 'package:ant_project/src/features/user/flexpoint/presentations/bloc/get_item_bloc.dart';
@@ -120,9 +122,12 @@ class _FlexpointState extends State<FlexpointPage> {
                             if (state is GetItemInitial) {
                               return Text('errIni');
                             } else if (state is GetItemLoading) {
-                              return CircularProgressIndicator(
-                                color: const Color.fromARGB(255, 255, 187, 210),
-                              );
+                              return Loading();
+                              // return Expanded(
+                              //     child: ShimmerComponent(
+                              //   width: MediaQuery.of(context).size.width,
+                              //   height: 100,
+                              // ));
                             } else if (state is GetItemFailure) {
                               return Text('failure');
                             } else if (state is GetItemSuccess) {

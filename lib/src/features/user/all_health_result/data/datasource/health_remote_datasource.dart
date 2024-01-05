@@ -5,7 +5,7 @@ import 'package:ant_project/src/features/user/flexpoint/data/model/get_item_mode
 import 'package:http/http.dart' as http;
 
 abstract class HealthRemoteDatasource {
-  Future<GetHealthModel> getHealth();
+  Future<GetHealthModel> getHealth(int id);
 }
 
 class HealthRemoteDatasourceIMPL implements HealthRemoteDatasource {
@@ -14,9 +14,9 @@ class HealthRemoteDatasourceIMPL implements HealthRemoteDatasource {
   HealthRemoteDatasourceIMPL({required this.client});
 
   @override
-  Future<GetHealthModel> getHealth() async {
-    final response = await client.get(
-        Uri.parse('${NetworkAPI.baseURL}api/healthCheck/getHealthCheckUser/1'));
+  Future<GetHealthModel> getHealth(int id) async {
+    final response = await client.get(Uri.parse(
+        '${NetworkAPI.baseURL}api/healthCheck/getHealthCheckUser/$id'));
     if (response.statusCode == 200) {
       return healthListFromJson(response.body);
     } else {

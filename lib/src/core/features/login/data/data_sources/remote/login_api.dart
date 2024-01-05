@@ -37,7 +37,7 @@ class LoginApiImpl implements LoginApi {
         tokenData['exp'],
       );
       await LoginStorage.setToken(data.accessToken!);
-      print(data.accessToken!);
+      //print(data.accessToken!);
       return LoginEntity(roles: data.roles, accessToken: data.accessToken);
     } else {
       throw ServerException(message: "Server error occurred");
