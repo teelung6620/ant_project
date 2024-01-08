@@ -1,3 +1,4 @@
+import 'package:ant_project/src/features/user/insurance/presentations/pages/insurance_page.dart';
 import 'package:flutter/material.dart';
 
 class TextListButton extends StatelessWidget {
@@ -16,7 +17,12 @@ class TextListButton extends StatelessWidget {
           style: TextButton.styleFrom(
               textStyle: const TextStyle(fontSize: 18),
               foregroundColor: Colors.pink),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const InsurancePage()),
+            );
+          },
           child: Text(
             title,
             style: const TextStyle(color: Colors.black),

@@ -2,11 +2,12 @@ import 'package:ant_project/injection_container.dart';
 import 'package:ant_project/presentation/widget/coin_exchange.dart';
 import 'package:ant_project/presentation/widget/insurance_layout.dart';
 import 'package:ant_project/presentation/widget/text_header.dart';
-import 'package:ant_project/presentation/widget/text_list.dart';
-import 'package:ant_project/presentation/widget/text_listbutton.dart';
+import 'package:ant_project/src/features/user/profile/presentations/widget/text_list.dart';
+import 'package:ant_project/src/features/user/profile/presentations/widget/text_listbutton.dart';
 import 'package:ant_project/presentation/widget/text_welcome.dart';
 import 'package:ant_project/src/components/widget/loading2.dart';
 import 'package:ant_project/src/core/constant/network_api.dart';
+import 'package:ant_project/src/core/error/token_expires.dart';
 import 'package:ant_project/src/core/features/user/presentation/provider/profile_provider.dart';
 import 'package:ant_project/src/features/user/profile/presentations/bloc/get_profile_bloc.dart';
 import 'package:ant_project/src/features/user/profile/presentations/widget/circle_layout.dart';
@@ -33,6 +34,7 @@ class _FirstState extends State<FirstPage> {
   @override
   void initState() {
     super.initState();
+    TokenExpires.checkTokenExpires(context);
     isLoading();
     getProfileBloc.add(GetProfileDataEvent());
   }

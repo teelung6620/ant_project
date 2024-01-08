@@ -259,14 +259,18 @@ class _DetailState extends State<DetailPage> {
                   blastDirectionality: BlastDirectionality.explosive,
                   // blastDirection: 3.14, // หรือใช้ 180 ก็ได้
                   // shouldLoop: true,
-                  // emissionFrequency: 1,
-                  numberOfParticles: 200,
-                  gravity: 0.2,
+                  //emissionFrequency: 1,
+
+                  strokeWidth: 2,
+                  numberOfParticles: 150,
+                  gravity: 0.1,
                   colors: const [
                     Colors.green,
                     Colors.blue,
                     Colors.pink,
-                    Colors.orange
+                    Colors.yellow,
+                    Colors.purple,
+                    Colors.pink
                   ],
                 ),
               ),

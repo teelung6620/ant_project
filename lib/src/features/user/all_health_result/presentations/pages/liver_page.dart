@@ -34,6 +34,8 @@ class _LiverState extends State<LiverPage> {
         .add(GetHealthDataEvent(id: profileProvider.profileData.idEmployees!));
   }
 
+  String selectedYear = '2020';
+
   String dropdownvalue = '2566';
   var items = [
     '2560',
@@ -70,52 +72,107 @@ class _LiverState extends State<LiverPage> {
                       } else if (state is GetHealthFailure) {
                         return Text('failure');
                       } else if (state is GetHealthSuccess) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.6,
-                          child: ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: state.getHealth.time!.length,
-                            itemBuilder: (context, timeIndex) {
-                              var time = state.getHealth.time![timeIndex];
-
-                              for (var testResult in time.testResult!) {
-                                if (testResult.category == 5) {
-                                  return GridView.builder(
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount:
-                                          2, // number of items in each row
-                                      mainAxisSpacing:
-                                          5.0, // spacing between rows
-                                      crossAxisSpacing:
-                                          2.0, // spacing between columns
-                                      childAspectRatio: 0.91,
+                        var filteredData = state.getHealth.time!
+                            .where(
+                                (time) => time.year.toString() == selectedYear)
+                            .toList();
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 50),
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Container(
+                                  height: 30.0, // Adjust the height as needed
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    border: Border.all(
+                                      color: Color(
+                                          0xFFEC5B7E), // Change color as needed
+                                      width: 2.0,
                                     ),
-                                    padding: EdgeInsets.all(8.0),
-                                    shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemCount: testResult.result!.length,
-                                    itemBuilder: (context, resultIndex) {
-                                      var result1 =
-                                          testResult.result![resultIndex];
+                                  ),
+                                  child: Center(
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton(
+                                        borderRadius: BorderRadius.circular(10),
+                                        value: selectedYear,
+                                        icon: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Color(0xFFEC5B7E),
+                                        ),
+                                        items: state.getHealth.time!.map((e) {
+                                          return DropdownMenuItem(
+                                            value: selectedYear,
+                                            child: Text(
+                                              e.year.toString(),
+                                              style: TextStyle(
+                                                color: Color(0xFFEC5B7E),
+                                              ),
+                                            ),
+                                          );
+                                        }).toList(),
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            selectedYear = newValue!;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.6,
+                              child: ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: filteredData.length,
+                                itemBuilder: (context, timeIndex) {
+                                  var time = filteredData[timeIndex];
 
-                                      return RedbloodLayout(
-                                        imgPath:
-                                            'assets/icons/health/${result1.icon}',
-                                        section: result1.section.toString(),
-                                        value: result1.value.toString(),
-                                        unit: result1.unit.toString(),
-                                        standard: result1.standard.toString(),
-                                        status: result1.status.toString(),
+                                  for (var testResult in time.testResult!) {
+                                    if (testResult.category == 5) {
+                                      return GridView.builder(
+                                        gridDelegate:
+                                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount:
+                                              2, // number of items in each row
+                                          mainAxisSpacing:
+                                              5.0, // spacing between rows
+                                          crossAxisSpacing:
+                                              3.0, // spacing between columns
+                                          childAspectRatio: 0.91,
+                                        ),
+                                        padding: EdgeInsets.all(8.0),
+                                        shrinkWrap: true,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount: testResult.result!.length,
+                                        itemBuilder: (context, resultIndex) {
+                                          var result1 =
+                                              testResult.result![resultIndex];
+
+                                          return RedbloodLayout(
+                                            imgPath:
+                                                'assets/icons/health/${result1.icon}',
+                                            section: result1.section.toString(),
+                                            value: result1.value.toString(),
+                                            unit: result1.unit.toString(),
+                                            standard:
+                                                result1.standard.toString(),
+                                            status: result1.status.toString(),
+                                          );
+                                        },
                                       );
-                                    },
-                                  );
-                                }
-                              }
+                                    }
+                                  }
 
-                              return Container(); // หรือ return null; ตามต้องการ
-                            },
-                          ),
+                                  return Container(); // หรือ return null; ตามต้องการ
+                                },
+                              ),
+                            ),
+                          ],
                         );
                       }
                       return Container();

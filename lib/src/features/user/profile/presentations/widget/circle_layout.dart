@@ -27,8 +27,10 @@ class CircleLayout extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const FlexpointBagPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: FlexpointBagPage()),
                   );
                 },
               ),
@@ -39,9 +41,8 @@ class CircleLayout extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageTransition(
-                        duration: Durations.long1,
-                        type: PageTransitionType
-                            .rightToLeft, // เลือก effect ที่ต้องการ
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
                         child: MedicalTreatmentPage()),
                   );
                 },
@@ -70,8 +71,10 @@ class CircleLayout extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const FlexpointHistoryPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: FlexpointHistoryPage()),
                   );
                 },
               ),
@@ -96,8 +99,10 @@ class CircleLayout extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const HealthCheckPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const HealthCheckPage()),
                   );
                 },
               ),
@@ -111,8 +116,10 @@ class CircleLayout extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const InsurancePage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const InsurancePage()),
                   );
                 },
               ),
@@ -129,8 +136,10 @@ class CircleLayout extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => const MyGuaranteePage()),
+                PageTransition(
+                    duration: Durations.medium3,
+                    type: PageTransitionType.rightToLeft,
+                    child: const MyGuaranteePage()),
               );
             },
           ),

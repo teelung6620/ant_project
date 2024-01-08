@@ -73,7 +73,7 @@ class _MedicalTreatmentState extends State<MedicalTreatmentPage> {
 
                             // Format the date using DateFormat
                             String formattedDate =
-                                DateFormat('yyyy-MM-dd').format(date);
+                                DateFormat('dd/MM/yyyy').format(date);
 
                             return MedicalTreatment(
                                 imgPath:

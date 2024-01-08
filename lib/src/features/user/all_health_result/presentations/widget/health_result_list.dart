@@ -9,6 +9,7 @@ import 'package:ant_project/src/features/user/all_health_result/presentations/pa
 import 'package:ant_project/src/features/user/all_health_result/presentations/pages/whiteblood_page.dart';
 import 'package:ant_project/src/features/user/all_health_result/presentations/widget/health_result.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HealthResultList extends StatelessWidget {
   const HealthResultList({Key? key}) : super(key: key);
@@ -28,8 +29,10 @@ class HealthResultList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const RedbloodPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const RedbloodPage()),
                   );
                 },
               ),
@@ -42,8 +45,10 @@ class HealthResultList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const WhitebloodPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const WhitebloodPage()),
                   );
                 },
               ),
@@ -58,7 +63,10 @@ class HealthResultList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SugarPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const SugarPage()),
                   );
                 },
               ),
@@ -71,7 +79,10 @@ class HealthResultList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const KidneyPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const KidneyPage()),
                   );
                 },
               ),
@@ -86,7 +97,10 @@ class HealthResultList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LiverPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const LiverPage()),
                   );
                 },
               ),
@@ -99,7 +113,10 @@ class HealthResultList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LipidPage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const LipidPage()),
                   );
                 },
               ),
@@ -114,7 +131,10 @@ class HealthResultList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const UrinePage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const UrinePage()),
                   );
                 },
               ),
@@ -127,8 +147,10 @@ class HealthResultList extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const AddictivePage()),
+                    PageTransition(
+                        duration: Durations.medium3,
+                        type: PageTransitionType.rightToLeft,
+                        child: const AddictivePage()),
                   );
                 },
               ),

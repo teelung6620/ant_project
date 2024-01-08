@@ -1,6 +1,7 @@
 import 'package:ant_project/src/features/user/flexpoint/presentations/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 class MedicalTreatment extends StatelessWidget {
   final String? imgPath;
@@ -169,7 +170,7 @@ class MedicalTreatment extends StatelessWidget {
                             height: MediaQuery.of(context).size.height * 0.005,
                           ),
                           Text(
-                            totalPrice.toString() + ' บาท',
+                            '${NumberFormat('#,###').format(int.parse(totalPrice.toString()))} บาท',
                             style: TextStyle(
                               fontSize: 12,
                             ),
